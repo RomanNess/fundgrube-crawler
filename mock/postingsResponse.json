@@ -1,0 +1,4373 @@
+{
+  "brands": [
+    {
+      "id": 62,
+      "name": "LG",
+      "count": 9
+    },
+    {
+      "id": 123,
+      "name": "PHILIPS",
+      "count": 1
+    },
+    {
+      "id": 143,
+      "name": "SAMSUNG",
+      "count": 11
+    },
+    {
+      "id": 150,
+      "name": "SENNHEISER",
+      "count": 2
+    },
+    {
+      "id": 157,
+      "name": "SONY",
+      "count": 34
+    },
+    {
+      "id": 223,
+      "name": "JBL",
+      "count": 15
+    },
+    {
+      "id": 265,
+      "name": "LOGITECH",
+      "count": 15
+    },
+    {
+      "id": 286,
+      "name": "MICROSOFT",
+      "count": 9
+    },
+    {
+      "id": 554,
+      "name": "KOCH",
+      "count": 1
+    },
+    {
+      "id": 645,
+      "name": "SEAGATE",
+      "count": 11
+    },
+    {
+      "id": 653,
+      "name": "HP",
+      "count": 64
+    },
+    {
+      "id": 682,
+      "name": "NINTENDO",
+      "count": 37
+    },
+    {
+      "id": 845,
+      "name": "ACER",
+      "count": 73
+    },
+    {
+      "id": 1214,
+      "name": "Avanquest",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "BigBen",
+      "count": 2
+    },
+    {
+      "id": 1214,
+      "name": "BRAUN PETER HANDELSVERTRETUNG",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "Capcom",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "DeepSilver",
+      "count": 3
+    },
+    {
+      "id": 1214,
+      "name": "FOCUS",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "Kalypso",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "Markt+Technik",
+      "count": 17
+    },
+    {
+      "id": 1214,
+      "name": "Nordic Games",
+      "count": 1
+    },
+    {
+      "id": 1214,
+      "name": "Sega",
+      "count": 4
+    },
+    {
+      "id": 1214,
+      "name": "THQ Nordic",
+      "count": 1
+    },
+    {
+      "id": 1229,
+      "name": "IRIDIUM",
+      "count": 9
+    },
+    {
+      "id": 1230,
+      "name": "LENOVO",
+      "count": 17
+    },
+    {
+      "id": 1259,
+      "name": "HORI",
+      "count": 3
+    },
+    {
+      "id": 1318,
+      "name": "MEDION",
+      "count": 31
+    },
+    {
+      "id": 1339,
+      "name": "WD",
+      "count": 34
+    },
+    {
+      "id": 1372,
+      "name": "HTC",
+      "count": 13
+    },
+    {
+      "id": 1388,
+      "name": "AOC",
+      "count": 8
+    },
+    {
+      "id": 1394,
+      "name": "CAPTIVA",
+      "count": 107
+    },
+    {
+      "id": 1399,
+      "name": "SNAKEBYTE",
+      "count": 12
+    },
+    {
+      "id": 2184,
+      "name": "HAUPPAUGE",
+      "count": 1
+    },
+    {
+      "id": 2257,
+      "name": "GIGABYTE",
+      "count": 5
+    },
+    {
+      "id": 2277,
+      "name": "THRUSTMASTER",
+      "count": 28
+    },
+    {
+      "id": 2286,
+      "name": "ROCCAT",
+      "count": 7
+    },
+    {
+      "id": 2301,
+      "name": "VIEWSONIC",
+      "count": 1
+    },
+    {
+      "id": 2383,
+      "name": "ASUS",
+      "count": 94
+    },
+    {
+      "id": 2407,
+      "name": "DELL",
+      "count": 3
+    },
+    {
+      "id": 2578,
+      "name": "STEELSERIES",
+      "count": 2
+    },
+    {
+      "id": 2705,
+      "name": "WHITE PEAR",
+      "count": 1
+    },
+    {
+      "id": 3033,
+      "name": "RAZER",
+      "count": 37
+    },
+    {
+      "id": 3045,
+      "name": "MSI",
+      "count": 34
+    },
+    {
+      "id": 3200,
+      "name": "ACTIVISION BLIZZARD",
+      "count": 11
+    },
+    {
+      "id": 3200,
+      "name": "ACTIVISION BLIZZARD DEUTSCHLAN",
+      "count": 1
+    },
+    {
+      "id": 3200,
+      "name": "TOYS FOR BOB",
+      "count": 6
+    },
+    {
+      "id": 3200,
+      "name": "Treyarch",
+      "count": 6
+    },
+    {
+      "id": 3273,
+      "name": "EUROVIDEO MEDIEN GMBH (SW)",
+      "count": 1
+    },
+    {
+      "id": 3273,
+      "name": "WILD RIVER",
+      "count": 1
+    },
+    {
+      "id": 3299,
+      "name": "OUTRIGHT GAMES",
+      "count": 4
+    },
+    {
+      "id": 3299,
+      "name": "Piggyback",
+      "count": 1
+    },
+    {
+      "id": 3392,
+      "name": "Funbox",
+      "count": 1
+    },
+    {
+      "id": 3427,
+      "name": "POWER A",
+      "count": 4
+    },
+    {
+      "id": 3484,
+      "name": "PDP",
+      "count": 1
+    },
+    {
+      "id": 3484,
+      "name": "PDP LLC",
+      "count": 8
+    },
+    {
+      "id": 3581,
+      "name": "HUAWEI",
+      "count": 1
+    },
+    {
+      "id": 3682,
+      "name": "TURTLE BEACH",
+      "count": 20
+    },
+    {
+      "id": 3714,
+      "name": "GIOTECK",
+      "count": 1
+    },
+    {
+      "id": 3834,
+      "name": "BETHESDA",
+      "count": 11
+    },
+    {
+      "id": 3964,
+      "name": "PEAQ",
+      "count": 18
+    },
+    {
+      "id": 3970,
+      "name": "ISY",
+      "count": 23
+    },
+    {
+      "id": 3974,
+      "name": "RAPOO",
+      "count": 1
+    },
+    {
+      "id": 4080,
+      "name": "IIYAMA",
+      "count": 1
+    },
+    {
+      "id": 4101,
+      "name": "CYANIDE",
+      "count": 4
+    },
+    {
+      "id": 4101,
+      "name": "TEYON",
+      "count": 1
+    },
+    {
+      "id": 4132,
+      "name": "TRUST",
+      "count": 21
+    },
+    {
+      "id": 4216,
+      "name": "BENQ",
+      "count": 1
+    },
+    {
+      "id": 4408,
+      "name": "MILLENNIUM 2000",
+      "count": 1
+    },
+    {
+      "id": 4433,
+      "name": "PLAYSEAT",
+      "count": 2
+    },
+    {
+      "id": 4803,
+      "name": "GOOGLE",
+      "count": 1
+    },
+    {
+      "id": 4835,
+      "name": "BANG&OLUFSEN",
+      "count": 1
+    },
+    {
+      "id": 5360,
+      "name": "2K",
+      "count": 2
+    },
+    {
+      "id": 5360,
+      "name": "2K GAMES",
+      "count": 3
+    },
+    {
+      "id": 5360,
+      "name": "2K SPORTS",
+      "count": 14
+    },
+    {
+      "id": 5360,
+      "name": "PRIVATE DIVISION",
+      "count": 1
+    },
+    {
+      "id": 5360,
+      "name": "ROCKSTAR",
+      "count": 1
+    },
+    {
+      "id": 5360,
+      "name": "TAKE 2",
+      "count": 4
+    },
+    {
+      "id": 5360,
+      "name": "TAKE-TWO INTERACTIVE GMBH",
+      "count": 1
+    },
+    {
+      "id": 5419,
+      "name": "SPEEDLINK",
+      "count": 23
+    },
+    {
+      "id": 5712,
+      "name": "BIGBEN",
+      "count": 9
+    },
+    {
+      "id": 5834,
+      "name": "CORSAIR",
+      "count": 29
+    },
+    {
+      "id": 6298,
+      "name": "NACON",
+      "count": 30
+    },
+    {
+      "id": 6553,
+      "name": "ASTRO GAMING",
+      "count": 13
+    },
+    {
+      "id": 6780,
+      "name": "SK GAMES",
+      "count": 1
+    },
+    {
+      "id": 6785,
+      "name": "BLUE MICROPHONES",
+      "count": 12
+    },
+    {
+      "id": 6798,
+      "name": "PIRANHA",
+      "count": 1
+    },
+    {
+      "id": 6802,
+      "name": "HYPERX",
+      "count": 68
+    },
+    {
+      "id": 6875,
+      "name": "NORDIC GAME SUPPLY",
+      "count": 1
+    },
+    {
+      "id": 6896,
+      "name": "READY 2 GAMING",
+      "count": 2
+    },
+    {
+      "id": 6900,
+      "name": "KONIX",
+      "count": 9
+    },
+    {
+      "id": 6927,
+      "name": "AKRACING",
+      "count": 2
+    },
+    {
+      "id": 6928,
+      "name": "AROZZI",
+      "count": 3
+    },
+    {
+      "id": 6945,
+      "name": "DXRACER",
+      "count": 3
+    },
+    {
+      "id": 7444,
+      "name": "MAGIX",
+      "count": 6
+    },
+    {
+      "id": 7564,
+      "name": "ELGATO",
+      "count": 16
+    },
+    {
+      "id": 7624,
+      "name": "AEROCOOL",
+      "count": 1
+    },
+    {
+      "id": 7794,
+      "name": "purple Hills",
+      "count": 7
+    },
+    {
+      "id": 7794,
+      "name": "S.A.D. (SW)",
+      "count": 2
+    },
+    {
+      "id": 8519,
+      "name": "PALADONE PRODUCTS",
+      "count": 1
+    },
+    {
+      "id": 8593,
+      "name": "TESORO",
+      "count": 7
+    },
+    {
+      "id": 8719,
+      "name": "SOFTWARE PYRAMIDE",
+      "count": 3
+    },
+    {
+      "id": 8995,
+      "name": "NEXT LEVEL RACING",
+      "count": 1
+    },
+    {
+      "id": 9564,
+      "name": "astragon",
+      "count": 7
+    },
+    {
+      "id": 9564,
+      "name": "astragon/Focus",
+      "count": 1
+    },
+    {
+      "id": 9564,
+      "name": "ASTRAGON/GIANTS",
+      "count": 6
+    },
+    {
+      "id": 9564,
+      "name": "astragon/Maximum Games",
+      "count": 1
+    },
+    {
+      "id": 9564,
+      "name": "ASTRAGON/MICROIDS",
+      "count": 3
+    },
+    {
+      "id": 9564,
+      "name": "ASTRAGON/STILLALIVE",
+      "count": 1
+    },
+    {
+      "id": 9768,
+      "name": "STEALTH",
+      "count": 2
+    },
+    {
+      "id": 9846,
+      "name": "R.D.S.",
+      "count": 2
+    },
+    {
+      "id": 10188,
+      "name": "Electronic Arts GmbH",
+      "count": 1
+    },
+    {
+      "id": 10188,
+      "name": "MARKT+TECHNIK",
+      "count": 5
+    },
+    {
+      "id": 10188,
+      "name": "MARVELOUS GAMES",
+      "count": 4
+    },
+    {
+      "id": 10188,
+      "name": "SONY",
+      "count": 3
+    },
+    {
+      "id": 10188,
+      "name": "Sony Interactive Entertainment",
+      "count": 2
+    },
+    {
+      "id": 10188,
+      "name": "Ubisoft",
+      "count": 11
+    },
+    {
+      "id": 10188,
+      "name": "Ubisoft GmbH",
+      "count": 1
+    },
+    {
+      "id": 10188,
+      "name": "Warner Bros.",
+      "count": 3
+    },
+    {
+      "id": 10188,
+      "name": "WILD RIVER GAMES GMBH",
+      "count": 2
+    },
+    {
+      "id": 10234,
+      "name": "EA",
+      "count": 5
+    },
+    {
+      "id": 10234,
+      "name": "ELECTRONIC ARTS",
+      "count": 46
+    },
+    {
+      "id": 10243,
+      "name": "DEVOLVER DIGITAL",
+      "count": 1
+    },
+    {
+      "id": 10243,
+      "name": "EPIC GAMES",
+      "count": 2
+    },
+    {
+      "id": 10243,
+      "name": "FLASHPOINT (SW)",
+      "count": 1
+    },
+    {
+      "id": 10243,
+      "name": "GEARBOX PUBLISHING",
+      "count": 1
+    },
+    {
+      "id": 10243,
+      "name": "STONE LANTERN GAMES",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "ATLUS",
+      "count": 4
+    },
+    {
+      "id": 10280,
+      "name": "BHV",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "CODEMASTERS",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "FOCUS HOME INTERACTIVE",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "KALYPSO",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "MILESTONE",
+      "count": 1
+    },
+    {
+      "id": 10280,
+      "name": "PARADOX INTERACTIVE",
+      "count": 2
+    },
+    {
+      "id": 10280,
+      "name": "SEGA",
+      "count": 2
+    },
+    {
+      "id": 10280,
+      "name": "SQUARE ENIX",
+      "count": 13
+    },
+    {
+      "id": 10280,
+      "name": "WARNER BROS ENTERTAINMENT",
+      "count": 3
+    },
+    {
+      "id": 10282,
+      "name": "KONAMI",
+      "count": 1
+    },
+    {
+      "id": 10308,
+      "name": "MICROSOFT (SOFTWARE)",
+      "count": 5
+    },
+    {
+      "id": 10312,
+      "name": "GAMEMILL",
+      "count": 1
+    },
+    {
+      "id": 10312,
+      "name": "ININ GAMES",
+      "count": 1
+    },
+    {
+      "id": 10312,
+      "name": "SKYBOUND",
+      "count": 2
+    },
+    {
+      "id": 10312,
+      "name": "SOLD OUT",
+      "count": 1
+    },
+    {
+      "id": 10312,
+      "name": "SOLDOUT",
+      "count": 9
+    },
+    {
+      "id": 10312,
+      "name": "WILD RIVER",
+      "count": 3
+    },
+    {
+      "id": 10313,
+      "name": "NINTENDO OF EUROPE (PL)",
+      "count": 41
+    },
+    {
+      "id": 10313,
+      "name": "NINTENDO OF EUROPE GMBH",
+      "count": 1
+    },
+    {
+      "id": 10356,
+      "name": "GUERRILLA",
+      "count": 2
+    },
+    {
+      "id": 10356,
+      "name": "HOUSEMARQUE",
+      "count": 3
+    },
+    {
+      "id": 10356,
+      "name": "INSOMNIAC",
+      "count": 3
+    },
+    {
+      "id": 10356,
+      "name": "KOJIMA PRODUCTIONS",
+      "count": 3
+    },
+    {
+      "id": 10356,
+      "name": "POLYPHONY DIGITAL",
+      "count": 3
+    },
+    {
+      "id": 10356,
+      "name": "QUANTIC DREAM",
+      "count": 1
+    },
+    {
+      "id": 10356,
+      "name": "SONY INTERACTIVE ENT. GMBH",
+      "count": 1
+    },
+    {
+      "id": 10356,
+      "name": "STUDIO INSOMNIAC GAMES",
+      "count": 5
+    },
+    {
+      "id": 10356,
+      "name": "SUCKER PUNCH PRODUCTIONS",
+      "count": 8
+    },
+    {
+      "id": 10356,
+      "name": "TEAM NINJA",
+      "count": 3
+    },
+    {
+      "id": 10356,
+      "name": "VIRTUAL TOYS",
+      "count": 1
+    },
+    {
+      "id": 10371,
+      "name": "UBI SOFT",
+      "count": 1
+    },
+    {
+      "id": 10371,
+      "name": "UBI SOFT GMBH",
+      "count": 5
+    },
+    {
+      "id": 10371,
+      "name": "Ubisoft",
+      "count": 26
+    },
+    {
+      "id": 10371,
+      "name": "UBISOFT GMBH",
+      "count": 1
+    },
+    {
+      "id": 11727,
+      "name": "UNI",
+      "count": 1
+    },
+    {
+      "id": 11727,
+      "name": "WBHE",
+      "count": 1
+    },
+    {
+      "id": 11874,
+      "name": "EPOS",
+      "count": 59
+    },
+    {
+      "id": 11982,
+      "name": "RECARO",
+      "count": 2
+    },
+    {
+      "id": 11992,
+      "name": "RAZER LICENSE",
+      "count": 3
+    },
+    {
+      "id": 12067,
+      "name": "PIRANHA BYTES",
+      "count": 1
+    },
+    {
+      "id": 12067,
+      "name": "THQ NORDIC",
+      "count": 5
+    },
+    {
+      "id": 12088,
+      "name": "POGA",
+      "count": 4
+    },
+    {
+      "id": 12093,
+      "name": "LOUPEDECK",
+      "count": 1
+    },
+    {
+      "id": 12100,
+      "name": "KYLOTONN",
+      "count": 1
+    },
+    {
+      "id": 12100,
+      "name": "RACEWARD STUDIO",
+      "count": 4
+    }
+  ],
+  "outlets": [
+    {
+      "id": 67,
+      "nameFull": "Saturn Neu-Isenburg",
+      "name": "Neu-Isenburg",
+      "isActive": true,
+      "count": 76
+    },
+    {
+      "id": 23,
+      "nameFull": "Saturn Iserlohn",
+      "name": "Iserlohn",
+      "isActive": true,
+      "count": 60
+    },
+    {
+      "id": 301,
+      "nameFull": "Saturn Köln Hansaring",
+      "name": "Köln Hansaring",
+      "isActive": true,
+      "count": 60
+    },
+    {
+      "id": 310,
+      "nameFull": "Saturn Köln City",
+      "name": "Köln City",
+      "isActive": true,
+      "count": 59
+    },
+    {
+      "id": 783,
+      "nameFull": "Saturn Kerpen",
+      "name": "Kerpen",
+      "isActive": true,
+      "count": 55
+    },
+    {
+      "id": 202,
+      "nameFull": "Saturn Mainz",
+      "name": "Mainz",
+      "isActive": true,
+      "count": 54
+    },
+    {
+      "id": 82,
+      "nameFull": "Saturn Hanau",
+      "name": "Hanau",
+      "isActive": true,
+      "count": 50
+    },
+    {
+      "id": 55,
+      "nameFull": "Saturn München Neuhauser Straße",
+      "name": "München Neuhauser Straße",
+      "isActive": true,
+      "count": 45
+    },
+    {
+      "id": 58,
+      "nameFull": "Saturn Karlsruhe",
+      "name": "Karlsruhe",
+      "isActive": true,
+      "count": 43
+    },
+    {
+      "id": 312,
+      "nameFull": "Saturn Siegen",
+      "name": "Siegen",
+      "isActive": true,
+      "count": 39
+    },
+    {
+      "id": 205,
+      "nameFull": "Saturn Darmstadt",
+      "name": "Darmstadt",
+      "isActive": true,
+      "count": 30
+    },
+    {
+      "id": 223,
+      "nameFull": "Saturn Münster in den Arkaden",
+      "name": "Münster in den Arkaden",
+      "isActive": true,
+      "count": 27
+    },
+    {
+      "id": 16,
+      "nameFull": "Saturn Remscheid",
+      "name": "Remscheid",
+      "isActive": true,
+      "count": 25
+    },
+    {
+      "id": 66,
+      "nameFull": "Saturn Wolfsburg",
+      "name": "Wolfsburg",
+      "isActive": true,
+      "count": 24
+    },
+    {
+      "id": 520,
+      "nameFull": "Saturn Karlsruhe Durlach",
+      "name": "Karlsruhe Durlach",
+      "isActive": true,
+      "count": 23
+    },
+    {
+      "id": 31,
+      "nameFull": "Saturn Leonberg",
+      "name": "Leonberg",
+      "isActive": true,
+      "count": 23
+    },
+    {
+      "id": 1292,
+      "nameFull": "Saturn Frankfurt Skyline Plaza",
+      "name": "Frankfurt Skyline Plaza",
+      "isActive": true,
+      "count": 22
+    },
+    {
+      "id": 64,
+      "nameFull": "Saturn Kassel",
+      "name": "Kassel",
+      "isActive": true,
+      "count": 22
+    },
+    {
+      "id": 304,
+      "nameFull": "Saturn Düren",
+      "name": "Düren",
+      "isActive": true,
+      "count": 21
+    },
+    {
+      "id": 1175,
+      "nameFull": "Saturn Celle",
+      "name": "Celle",
+      "isActive": true,
+      "count": 20
+    },
+    {
+      "id": 75,
+      "nameFull": "Saturn Tübingen",
+      "name": "Tübingen",
+      "isActive": true,
+      "count": 20
+    },
+    {
+      "id": 1249,
+      "nameFull": "Saturn Jena",
+      "name": "Jena",
+      "isActive": true,
+      "count": 19
+    },
+    {
+      "id": 4,
+      "nameFull": "Saturn Dortmund City",
+      "name": "Dortmund City",
+      "isActive": true,
+      "count": 18
+    },
+    {
+      "id": 79,
+      "nameFull": "Saturn Kleve",
+      "name": "Kleve",
+      "isActive": true,
+      "count": 18
+    },
+    {
+      "id": 11,
+      "nameFull": "Saturn München OEZ",
+      "name": "München OEZ",
+      "isActive": true,
+      "count": 18
+    },
+    {
+      "id": 87,
+      "nameFull": "Saturn Zwickau",
+      "name": "Zwickau",
+      "isActive": true,
+      "count": 18
+    },
+    {
+      "id": 211,
+      "nameFull": "Saturn Chemnitz Röhrsdorf",
+      "name": "Chemnitz Röhrsdorf",
+      "isActive": true,
+      "count": 17
+    },
+    {
+      "id": 328,
+      "nameFull": "Saturn Hamburg Bergedorf",
+      "name": "Hamburg Bergedorf",
+      "isActive": true,
+      "count": 16
+    },
+    {
+      "id": 47,
+      "nameFull": "Saturn Freiburg",
+      "name": "Freiburg",
+      "isActive": true,
+      "count": 15
+    },
+    {
+      "id": 68,
+      "nameFull": "Saturn Hilden",
+      "name": "Hilden",
+      "isActive": true,
+      "count": 14
+    },
+    {
+      "id": 778,
+      "nameFull": "Saturn Landshut",
+      "name": "Landshut",
+      "isActive": true,
+      "count": 14
+    },
+    {
+      "id": 1293,
+      "nameFull": "Saturn Paderborn",
+      "name": "Paderborn",
+      "isActive": true,
+      "count": 14
+    },
+    {
+      "id": 28,
+      "nameFull": "Saturn Essen",
+      "name": "Essen",
+      "isActive": true,
+      "count": 13
+    },
+    {
+      "id": 95,
+      "nameFull": "Saturn Oberhausen",
+      "name": "Oberhausen",
+      "isActive": true,
+      "count": 13
+    },
+    {
+      "id": 309,
+      "nameFull": "Saturn Aachen",
+      "name": "Aachen",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 46,
+      "nameFull": "Saturn Erfurt",
+      "name": "Erfurt",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 56,
+      "nameFull": "Saturn Lünen",
+      "name": "Lünen",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 24,
+      "nameFull": "Saturn Magdeburg",
+      "name": "Magdeburg",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 222,
+      "nameFull": "Saturn Neckarsulm",
+      "name": "Neckarsulm",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 1375,
+      "nameFull": "Saturn Offenbach Ring Center",
+      "name": "Offenbach Ring Center",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 29,
+      "nameFull": "Saturn Reutlingen",
+      "name": "Reutlingen",
+      "isActive": true,
+      "count": 12
+    },
+    {
+      "id": 384,
+      "nameFull": "Saturn Esslingen",
+      "name": "Esslingen",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 626,
+      "nameFull": "Saturn Hattingen",
+      "name": "Hattingen",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 319,
+      "nameFull": "Saturn Köln Weiden",
+      "name": "Köln Weiden",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 30,
+      "nameFull": "Saturn Ludwigsburg",
+      "name": "Ludwigsburg",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 1824,
+      "nameFull": "Saturn Müllheim",
+      "name": "Müllheim",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 88,
+      "nameFull": "Saturn Osnabrück",
+      "name": "Osnabrück",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 72,
+      "nameFull": "Saturn Rostock",
+      "name": "Rostock",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 54,
+      "nameFull": "Saturn Witten",
+      "name": "Witten",
+      "isActive": true,
+      "count": 11
+    },
+    {
+      "id": 318,
+      "nameFull": "Saturn Hürth",
+      "name": "Hürth",
+      "isActive": true,
+      "count": 10
+    },
+    {
+      "id": 323,
+      "nameFull": "Saturn Köln Porz",
+      "name": "Köln Porz",
+      "isActive": true,
+      "count": 10
+    },
+    {
+      "id": 1331,
+      "nameFull": "Saturn Lübeck Dänischburg",
+      "name": "Lübeck Dänischburg",
+      "isActive": true,
+      "count": 10
+    },
+    {
+      "id": 6,
+      "nameFull": "Saturn Nürnberg",
+      "name": "Nürnberg",
+      "isActive": true,
+      "count": 10
+    },
+    {
+      "id": 203,
+      "nameFull": "Saturn Wuppertal",
+      "name": "Wuppertal",
+      "isActive": true,
+      "count": 10
+    },
+    {
+      "id": 206,
+      "nameFull": "Saturn Halle",
+      "name": "Halle",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 1,
+      "nameFull": "Saturn Hannover",
+      "name": "Hannover",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 18,
+      "nameFull": "Saturn Koblenz Forum Mittelrhein",
+      "name": "Koblenz Forum Mittelrhein",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 136,
+      "nameFull": "Saturn Marl",
+      "name": "Marl",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 1330,
+      "nameFull": "Saturn Norderstedt",
+      "name": "Norderstedt",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 212,
+      "nameFull": "Saturn Weimar",
+      "name": "Weimar",
+      "isActive": true,
+      "count": 9
+    },
+    {
+      "id": 1203,
+      "nameFull": "Saturn Baunatal",
+      "name": "Baunatal",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 10,
+      "nameFull": "Saturn Bielefeld",
+      "name": "Bielefeld",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 40,
+      "nameFull": "Saturn Hamburg Altstadt",
+      "name": "Hamburg Altstadt",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 797,
+      "nameFull": "Saturn Hamburg Elbe-Einkaufszentrum",
+      "name": "Hamburg Elbe-Einkaufszentrum",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 51,
+      "nameFull": "Saturn Isernhagen",
+      "name": "Isernhagen",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 15,
+      "nameFull": "Saturn Leipzig Allee-Center",
+      "name": "Leipzig Allee-Center",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 1306,
+      "nameFull": "Saturn Troisdorf",
+      "name": "Troisdorf",
+      "isActive": true,
+      "count": 8
+    },
+    {
+      "id": 396,
+      "nameFull": "Saturn Chemnitz Roter Turm",
+      "name": "Chemnitz Roter Turm",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 224,
+      "nameFull": "Saturn Flensburg",
+      "name": "Flensburg",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 50,
+      "nameFull": "Saturn Frankfurt Zeil",
+      "name": "Frankfurt Zeil",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 207,
+      "nameFull": "Saturn Kaiserslautern",
+      "name": "Kaiserslautern",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 74,
+      "nameFull": "Saturn Krefeld",
+      "name": "Krefeld",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 17,
+      "nameFull": "Saturn Leipzig Hauptbahnhof",
+      "name": "Leipzig Hauptbahnhof",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 81,
+      "nameFull": "Saturn München Riem",
+      "name": "München Riem",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 209,
+      "nameFull": "Saturn Saarbrücken",
+      "name": "Saarbrücken",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 214,
+      "nameFull": "Saturn Stuttgart am Schlossplatz",
+      "name": "Stuttgart am Schlossplatz",
+      "isActive": true,
+      "count": 7
+    },
+    {
+      "id": 793,
+      "nameFull": "Saturn Bad Homburg",
+      "name": "Bad Homburg",
+      "isActive": true,
+      "count": 6
+    },
+    {
+      "id": 91,
+      "nameFull": "Saturn Dortmund Eving",
+      "name": "Dortmund Eving",
+      "isActive": true,
+      "count": 6
+    },
+    {
+      "id": 201,
+      "nameFull": "Saturn Erlangen",
+      "name": "Erlangen",
+      "isActive": true,
+      "count": 6
+    },
+    {
+      "id": 9,
+      "nameFull": "Saturn Lüdenscheid",
+      "name": "Lüdenscheid",
+      "isActive": true,
+      "count": 6
+    },
+    {
+      "id": 302,
+      "nameFull": "Saturn Sankt Augustin",
+      "name": "Sankt Augustin",
+      "isActive": true,
+      "count": 6
+    },
+    {
+      "id": 221,
+      "nameFull": "Saturn Berlin Gesundbrunnen",
+      "name": "Berlin Gesundbrunnen",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 25,
+      "nameFull": "Saturn Berlin Leipziger Platz",
+      "name": "Berlin Leipziger Platz",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 60,
+      "nameFull": "Saturn Braunschweig",
+      "name": "Braunschweig",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 61,
+      "nameFull": "Saturn Gummersbach",
+      "name": "Gummersbach",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 307,
+      "nameFull": "Saturn Neuss",
+      "name": "Neuss",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 42,
+      "nameFull": "Saturn Solingen",
+      "name": "Solingen",
+      "isActive": true,
+      "count": 5
+    },
+    {
+      "id": 216,
+      "nameFull": "Saturn Berlin Spandau",
+      "name": "Berlin Spandau",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 335,
+      "nameFull": "Saturn Bocholt",
+      "name": "Bocholt",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 276,
+      "nameFull": "Saturn Bochum",
+      "name": "Bochum",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 70,
+      "nameFull": "Saturn Dresden Altmarkt-Galerie",
+      "name": "Dresden Altmarkt-Galerie",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 625,
+      "nameFull": "Saturn Gießen",
+      "name": "Gießen",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 83,
+      "nameFull": "Saturn Kempten",
+      "name": "Kempten",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 308,
+      "nameFull": "Saturn Leverkusen",
+      "name": "Leverkusen",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 623,
+      "nameFull": "Saturn Senden",
+      "name": "Senden",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 1196,
+      "nameFull": "Saturn Wiesbaden Luisen Forum",
+      "name": "Wiesbaden Luisen Forum",
+      "isActive": true,
+      "count": 4
+    },
+    {
+      "id": 210,
+      "nameFull": "Saturn Berlin Marzahn",
+      "name": "Berlin Marzahn",
+      "isActive": true,
+      "count": 3
+    },
+    {
+      "id": 1437,
+      "nameFull": "Saturn Bremen Duckwitzstraße",
+      "name": "Bremen Duckwitzstraße",
+      "isActive": true,
+      "count": 3
+    },
+    {
+      "id": 8,
+      "nameFull": "Saturn Hamm",
+      "name": "Hamm",
+      "isActive": true,
+      "count": 3
+    },
+    {
+      "id": 44,
+      "nameFull": "Saturn Ingolstadt",
+      "name": "Ingolstadt",
+      "isActive": true,
+      "count": 3
+    },
+    {
+      "id": 130,
+      "nameFull": "Saturn Berlin Europa-Center",
+      "name": "Berlin Europa-Center",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 217,
+      "nameFull": "Saturn Berlin Reinickendorf",
+      "name": "Berlin Reinickendorf",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 5,
+      "nameFull": "Saturn Bremen",
+      "name": "Bremen",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 220,
+      "nameFull": "Saturn Bremen Habenhausen",
+      "name": "Bremen Habenhausen",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 379,
+      "nameFull": "Saturn Duisburg",
+      "name": "Duisburg",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 63,
+      "nameFull": "Saturn Freising",
+      "name": "Freising",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 208,
+      "nameFull": "Saturn Hamburg Poppenbüttel",
+      "name": "Hamburg Poppenbüttel",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 230,
+      "nameFull": "Saturn Koblenz An der Römervilla",
+      "name": "Koblenz An der Römervilla",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 94,
+      "nameFull": "Saturn Ludwigshafen",
+      "name": "Ludwigshafen",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 73,
+      "nameFull": "Saturn Moers",
+      "name": "Moers",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 1390,
+      "nameFull": "Saturn Mönchengladbach Minto",
+      "name": "Mönchengladbach Minto",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 35,
+      "nameFull": "Saturn Mülheim Rhein Ruhr Zentrum",
+      "name": "Mülheim Rhein Ruhr Zentrum",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 383,
+      "nameFull": "Saturn Passau",
+      "name": "Passau",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 78,
+      "nameFull": "Saturn Regensburg",
+      "name": "Regensburg",
+      "isActive": true,
+      "count": 2
+    },
+    {
+      "id": 85,
+      "nameFull": "Saturn Ansbach",
+      "name": "Ansbach",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 213,
+      "nameFull": "Saturn Bad Oeynhausen",
+      "name": "Bad Oeynhausen",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 12,
+      "nameFull": "Saturn Berlin Alexanderplatz",
+      "name": "Berlin Alexanderplatz",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 49,
+      "nameFull": "Saturn Berlin Schloßstraße",
+      "name": "Berlin Schloßstraße",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 317,
+      "nameFull": "Saturn Düsseldorf Sevens Home of Saturn",
+      "name": "Düsseldorf Sevens Home of Saturn",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 84,
+      "nameFull": "Saturn Friedberg",
+      "name": "Friedberg",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 1250,
+      "nameFull": "Saturn Kiel",
+      "name": "Kiel",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 22,
+      "nameFull": "Saturn Pforzheim",
+      "name": "Pforzheim",
+      "isActive": true,
+      "count": 1
+    },
+    {
+      "id": 1289,
+      "nameFull": "Saturn Potsdam",
+      "name": "Potsdam",
+      "isActive": true,
+      "count": 1
+    }
+  ],
+  "postings": [
+    {
+      "posting_id": "e6194b60-f031-4e25-b2c7-e8067ad9dac1",
+      "posting_text": "Neuware",
+      "price": "139.00",
+      "price_old": "319.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 56,
+      "name": "AKRACING Core EXSE Schwarz/Carbon Gaming Stuhl, Carbon",
+      "brand": {
+        "id": 6927,
+        "name": "AKRACING"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/31b5554e0e7f4ad5a6a07101fd3750aa"
+      ],
+      "outlet": {
+        "id": 60,
+        "name": "Braunschweig"
+      },
+      "pim_id": 2681077
+    },
+    {
+      "posting_id": "640664b9-c381-447c-88e5-b47053ebb058",
+      "posting_text": "Original verpackt.inkl 3 Jhare Garantie",
+      "price": "269.00",
+      "price_old": "449.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "MSI Optix MAG271CQP  27 Zoll WQHD Monitor (1 ms Reaktionszeit, 144 Hz)",
+      "brand": {
+        "id": 3045,
+        "name": "MSI"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A+++",
+          "to": "D"
+        },
+        "energyEfficiencyLabelEu2017_1369": false,
+        "efficiencyClass": "C",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_69853472",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_69853468",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4c74fa1bfe3044d5aa86041561597f6e",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/734b3ab73ed746ea8bfa463a8d329682",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f4e4ec5d782c4189a4d19ae0e26159da"
+      ],
+      "outlet": {
+        "id": 60,
+        "name": "Braunschweig"
+      },
+      "pim_id": 2597542
+    },
+    {
+      "posting_id": "d22b7d6c-9ddf-450c-9305-13a1d0044269",
+      "posting_text": "Produkttyp\tZubehör für PS5\r\nPassend für\tPS5 Controller zur Synchronisation und zum Laden\r\nKabellänge\t3 m\r\nAnschluss A\tUSB Typ-C\r\nAnschluss B\tUSB Typ-C\r\nFarbe (laut Hersteller)\tSchwarz/Weiß\r\nGewicht (laut Hersteller)\t64.3 g\r\nGewicht\t64.3 g\r\nLieferumfang\t1x Ladekabel",
+      "price": "7.00",
+      "price_old": "14.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 53,
+      "name": "ISY IC-6003 Zubehör für PS5, Schwarz/Weiß",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4fbb3fe18c014ba5a00cba2ca2b90dd3"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2701268
+    },
+    {
+      "posting_id": "c4628830-8232-43de-86ff-96e6b34fc3df",
+      "posting_text": "Produkttyp\tNintendo Switch Netzteil\r\nFarbe (laut Hersteller)\tGrau\r\nGewicht (laut Hersteller)\t200 g\r\nBreite\t120 mm\r\nHöhe\t50 mm\r\nTiefe\t160 mm\r\nLieferumfang\tNintendo Switch-Netzteil",
+      "price": "15.00",
+      "price_old": "29.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 50,
+      "name": "NINTENDO Netzteil Nintendo Switch Netzteil, Grau",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/61fd6f3993174681ac75a615a3c92496"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2221529
+    },
+    {
+      "posting_id": "07cf4007-8d94-460f-a5f8-a8e039103f2f",
+      "posting_text": "Ausstellungsstück",
+      "price": "927.00",
+      "price_old": "1099.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 16,
+      "name": "ACER Nitro 5 (AN515-55-790P) RGB Tastaturbeleuchtung, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i7 Prozessor, 8 GB RAM, 512 GB SSD, GeForce GTX 1660Ti, Schwarz/Rot",
+      "brand": {
+        "id": 845,
+        "name": "ACER"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f0f7b173a43b4faba1518ff2555d546c"
+      ],
+      "outlet": {
+        "id": 63,
+        "name": "Freising"
+      },
+      "pim_id": 2689491
+    },
+    {
+      "posting_id": "23495296-11a9-4ab6-b2b1-11517640a290",
+      "posting_text": "Aussteller",
+      "price": "579.00",
+      "price_old": "799.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 28,
+      "name": "HP PAVILION GAM 15-EC2345NG, Gaming Notebook mit 15,6 Zoll Display, AMD Ryzen™ 5 Prozessor, 8 GB RAM, 512 GB SSD, NVIDIA® GeForce® GTX 1650, Schwarz",
+      "brand": {
+        "id": 653,
+        "name": "HP"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/fcb4b5d7893f49f1a95abf74432b7047"
+      ],
+      "outlet": {
+        "id": 63,
+        "name": "Freising"
+      },
+      "pim_id": 2727171
+    },
+    {
+      "posting_id": "e3d5a520-b9e3-4d35-875a-c864c557abb6",
+      "posting_text": "Hierbei handelt es sich um Neuware.",
+      "price": "999.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "ASUS ROG Zephyrus G14 (GA401QC-K2125T), Gaming Notebook mit 14 Zoll Display, AMD Ryzen™ 9 Prozessor, 16 GB RAM, 512 GB SSD, GeForce RTX 3050, Eclipse Gray",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/ed80c1f9ae9a4cd6bf97b307aa9a219a"
+      ],
+      "outlet": {
+        "id": 1196,
+        "name": "Wiesbaden Luisen Forum"
+      },
+      "pim_id": 2748008
+    },
+    {
+      "posting_id": "09ec1900-0b63-42bc-98fe-a1ce8672dbcb",
+      "posting_text": "Hierbei handelt es sich um Neuware, die Verpackung weist Gebrauchsspuren auf.",
+      "price": "89.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "ELGATO Key Light Air Studiobeleuchtung",
+      "brand": {
+        "id": 7564,
+        "name": "ELGATO"
+      },
+      "eek": {
+        "classRange": null,
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_87414100",
+          "mimetype": "image/jpeg"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_87414099",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2377eb7e3ad646598b6c946cbf261a98"
+      ],
+      "outlet": {
+        "id": 1196,
+        "name": "Wiesbaden Luisen Forum"
+      },
+      "pim_id": 2626259
+    },
+    {
+      "posting_id": "aff455df-e1e0-4992-af42-a967b143e64d",
+      "posting_text": "Hierbei handelt es sich um Neuware, die Verpackung weist leichte Gebrauchsspuren auf.",
+      "price": "79.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "ELGATO Cam Link 4K Kamera Adapter, Schwarz",
+      "brand": {
+        "id": 7564,
+        "name": "ELGATO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3329df1299ec40f09e30fa50acfad6ba"
+      ],
+      "outlet": {
+        "id": 1196,
+        "name": "Wiesbaden Luisen Forum"
+      },
+      "pim_id": 2511682
+    },
+    {
+      "posting_id": "01b8a21f-92ed-4230-9204-776f65276d38",
+      "posting_text": "neu",
+      "price": "7.00",
+      "price_old": "34.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 80,
+      "name": "NINTENDO Joy-Con-AA-, Batteriezubehör 2er Set, Schwarz",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/221e3a1be6ce45dcadb335fe3549aee0"
+      ],
+      "outlet": {
+        "id": 24,
+        "name": "Magdeburg"
+      },
+      "pim_id": 2256529
+    },
+    {
+      "posting_id": "55c6c05a-0957-4fd3-ac89-2ae3e526ea9a",
+      "posting_text": "Ob alleine Zocken oder eine Gaming-Session mit Freunden: Das Gaming Notebook ASUS ROG Strix G15 G513QM-HN254T begleitet Sie durch jede Quest und jeden Task!    ---- neu + unbenutzt ----  Verpackung wurde für Ansichtszwecke geöffnet",
+      "price": "1100.00",
+      "price_old": "1599.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "ASUS ROG Strix G15 (G513QM-HN254T), Gaming NoteBook mit 15,6 Zoll Display, AMD Ryzen™ 9 Prozessor, 16 GB RAM, 512 GB SSD, Nvidia GeForce RTX™ 3060, Eclipse Gray",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9e525539f83f406492cd96632c92d5a2"
+      ],
+      "outlet": {
+        "id": 217,
+        "name": "Berlin Reinickendorf"
+      },
+      "pim_id": 2704383
+    },
+    {
+      "posting_id": "5cac9bac-40e8-4dbf-9bf7-a43ca77f0271",
+      "posting_text": "++++Ware ist Aussteller. Volle Garantie+++\r\n\r\nKabelgebundenes Rennlenkrad mit Pedalen für die Nintendo Switch\r\nTechnische Daten\r\nTechnische Merkmale\t\r\nProdukttyp\tLenkrad mit Pedalen\r\nUnterstützte Plattformen\tNintendo Switch\r\nController\t\r\nSteuerkreuz\tJa\r\nAusstattung\t\r\nPedale\tJa\r\nAllgemeine Merkmale\t\r\nFarbe (laut Hersteller)\tSchwarz\r\nLieferumfang\t1x Rennlenkrad mit Pedalen\r\nHersteller Artikelnummer\tR2GNSWRACINGWHEEL",
+      "price": "59.12",
+      "price_old": "79.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 26,
+      "name": "READY 2 GAMING Nintendo Switch Racing Wheel, Lenkrad mit Pedalen, Schwarz",
+      "brand": {
+        "id": 6896,
+        "name": "READY 2 GAMING"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e4442c296fbd4467b77c7a828efeb11a",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/5ac0e2af69454adca6b681888c064204",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4d2003fd160b44828509ffe86aed0f38"
+      ],
+      "outlet": {
+        "id": 30,
+        "name": "Ludwigsburg"
+      },
+      "pim_id": 2673009
+    },
+    {
+      "posting_id": "c4cb095b-301b-4adf-b40d-ecbdbd4c7b95",
+      "posting_text": "Aussteller ohne Zubehör",
+      "price": "896.00",
+      "price_old": "1349.00",
+      "shipping_cost": 0,
+      "shipping_type": "collect",
+      "discount_in_percent": 34,
+      "name": "LG 49WL95C-WE 49 Zoll 2K UltraWide QHD Monitor (5 ms Reaktionszeit, 60 Hz)",
+      "brand": {
+        "id": 62,
+        "name": "LG"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "G",
+        "colorCode": "rgb(227 6 19)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_82927539",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_85702640",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/a5c4c4405977488cb30acf19c04c3f2f"
+      ],
+      "outlet": {
+        "id": 317,
+        "name": "Düsseldorf Sevens Home of Saturn"
+      },
+      "pim_id": 2710484
+    },
+    {
+      "posting_id": "e5c02aae-7e20-4b73-b32d-23fb5e13a6f3",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/50da4950ce33429185acf5f662369bc6",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/306b74961a234693aebe86d9e2d1b43f"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "9ef9b1f7-ee2a-4801-817f-7f441cf14193",
+      "posting_text": "Restposten.\r\nOriginal verpackter Artikel.",
+      "price": "127.00",
+      "price_old": "169.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 25,
+      "name": "RAZER Huntsman V2 Tenkeyless, Tastatur, Opto-Mechanical, Razer Linear Optical Switch (Rot), kabelgebunden, Schwarz",
+      "brand": {
+        "id": 3033,
+        "name": "RAZER"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/18c50b75e307446b98ad7daad05a23d0"
+      ],
+      "outlet": {
+        "id": 66,
+        "name": "Wolfsburg"
+      },
+      "pim_id": 2758703
+    },
+    {
+      "posting_id": "a9f60a97-e449-42d3-97c7-a7fff0d88a51",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/dedcbcaf4e624cdda75da4a161bea5cf",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2f80176ca21743338fcade3bdb12a48c"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "165e70f1-10bc-4063-b70f-aa90526a8c2a",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/49886d1398f8499785d8f431c9c2c023",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/62509d3d27ea493e9909d6b207213111"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "085202e3-4359-43f4-87f0-4cbc61dc6acb",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/c162ed225c694c9f8b452f8d3505f4b9",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8372605406b244009629647c67902f15"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "dcc42004-9b81-4744-9c3d-24a47a7e0611",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/86eada92b7f04c549672037757b8a3eb",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/7a3ef8744ac347bcbe90e1a4774c26ba"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "bf993b48-4d37-4a05-b282-f2599ffee6ea",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/887bd02fffeb4293aae3e4ef96554277",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2e9b5af3ac3b4dfc8c0adfb4ad8da21f"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "54fa379e-701b-45fe-a1c8-97dc5a9e4486",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "89.00",
+      "price_old": "129.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 32,
+      "name": "ELGATO Cam Link 4K Kamera Adapter, Schwarz",
+      "brand": {
+        "id": 7564,
+        "name": "ELGATO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/d4e84825a0944c0293cd2382c0d3a01e",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/442813f7f45c40aaba8a525a96d9a439"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2511682
+    },
+    {
+      "posting_id": "c42629ef-1f38-4fb2-b555-04621d6b3d34",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3793bfbbf91442fa81b8ccaf5c768f21",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/68d6194cf095429b827469e5e119b254"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "599b0762-668e-4e04-b4c9-c81caee8f5c5",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "59.00",
+      "price_old": "84.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "HYPERX Cloud Stinger Core Wireless (Playstation) HHSS1C-KB-WT/G, Over-ear Headset Weiß",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/991878d7cf0b44d190fbd398431a9173",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9b60cbc4e96b42768169958403ce1780"
+      ],
+      "outlet": {
+        "id": 10,
+        "name": "Bielefeld"
+      },
+      "pim_id": 2669947
+    },
+    {
+      "posting_id": "711683a7-81ba-46c4-8e7e-7fd5904dc267",
+      "posting_text": "Neu&OVP\r\n\r\nGenießen Sie die Vorteiler einer konstanten Firmware, flüssiger Grafik und einer einheitlichen Plattform beim Zocken: Mit der NINTENDO Switch Lite Grau Spielekonsole können Sie allein oder gemeinsam mit Freunden spielen, Spaß haben und sich die Zeit vertreiben. Dieses Gerät besticht durch zeitloses Design in grauer Farbe und fügt sich so in jedes Raumkonzept perfekt ein.\r\n\r\nWas verbirgt sich hinter der Außenhülle?\r\nSpeicherkarten werden im Micro-SD-Format eingelesen. Die Speicherkarte von Ihrem Smartphone ist also bei Bedarf auch in der Konsole einsetzbar. Die Akku-Laufzeit beträgt bis zu 6 Std, womit Sie viele Stunden Spielspaß vor sich haben, selbst ohne Lademöglichkeit.\r\nZur Verbindung mit den anderen Geräten steht außerdem noch eine Reihe von Anschlüssen zur Verfügung: 1x 3.5 mm Klinke und 1x USB Type C.\r\nWie groß ist das Display?\r\nErleben Sie Ihre Spielewelten auf dem 5,5 Zoll großen Touchdisplay - und das auch noch in Farbe! Hier werden Ihnen die Bilder in einer 1.280 x 720 Pixel großen Auflösung präsentiert. Ihr Leben wird nicht virtuell, sondern ganz real ein kleines Stückchen aufregender, denn diese Spielekonsole macht einfach Spaß! Allein, zu zweit, mit der Familie oder Freunden: Es wird immer eine aufregende und unvergessliche Zeit!",
+      "price": "166.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "NINTENDO Switch Lite Grau",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/6750873803cf4c4eab33bb87ed461eb4"
+      ],
+      "outlet": {
+        "id": 82,
+        "name": "Hanau"
+      },
+      "pim_id": 2576515
+    },
+    {
+      "posting_id": "cbcadc02-2b9f-4b2b-b085-089f635ff12a",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8e2aed9816404b39ae13e1797fdbec45",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/dacf22a11d7e4f9daf76db9d20301e16"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "e75234e2-929d-4d2d-b5e1-fc501daa25d4",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "490.00",
+      "price_old": "680.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 28,
+      "name": "HP Reverb G2 Controllers VR Headset mit Controller",
+      "brand": {
+        "id": 653,
+        "name": "HP"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8c72cda8167e4b189384d86d99999395"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2692813
+    },
+    {
+      "posting_id": "22b38133-5449-4c0f-ab3a-dcf59325791f",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2756c05e4123450eb05b73d0780e8e60",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8f2fa3bcc0724b698a1e2c49590b2c90"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "01d2ddff-47ff-4a57-a4ac-40bc159dc644",
+      "posting_text": "Geöffnete Originalverpackung, Ausstellungsstück, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "65.00",
+      "price_old": "149.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "TURTLE BEACH Stealth 700 Gen 2 für PS5 und PS4, Over-ear Gaming Headset Bluetooth Schwarz",
+      "brand": {
+        "id": 3682,
+        "name": "TURTLE BEACH"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/68e6d03f624b4bb28696bff57697cb92"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2674918
+    },
+    {
+      "posting_id": "81ab1899-97a1-488a-a5d8-9edeca3a1ab9",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/7354ef81dd204f8b861eb6845c5e2425",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/ffbde68de99d42ba95dc09acf672a52d"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "d69b41d0-c96b-4a50-93e6-02e5d311b0f8",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/179a2a16d546441fa6a55626d62403b7"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "2ca20c78-6696-4af4-bd3e-266434849964",
+      "posting_text": "Ungeöffnete Originalverpackung, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "80.00",
+      "price_old": "119.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 33,
+      "name": "TRUST GXT 252 Emita USB Studio-Mikrofon, Schwarz",
+      "brand": {
+        "id": 4132,
+        "name": "TRUST"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9bf1dff095484d219ad62b379b0b936a",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3973d9fd49994004bb2afe85d82c0105"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2229580
+    },
+    {
+      "posting_id": "6e62ef1c-95fc-40f0-9ae5-a11d8c1e5a1e",
+      "posting_text": "Gerät kann ein Vorführgerät sein, eventuell ist die Verpackung geöffnet oder nicht mehr vorhanden - volle Garantie! Kann gerne gegen Aufpreis bis auf 5 Jahre verlängert werden.",
+      "price": "47.00",
+      "price_old": "94.99",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 51,
+      "name": "EPOS H3, Over-ear Gaming Headset Weiß",
+      "brand": {
+        "id": 11874,
+        "name": "EPOS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4096fb219c974d68a04d6ffcdbac5300"
+      ],
+      "outlet": {
+        "id": 310,
+        "name": "Köln City"
+      },
+      "pim_id": 2727941
+    },
+    {
+      "posting_id": "ace1e6e6-c6cd-4955-9d7d-35ca7ed1ee27",
+      "posting_text": "Gerät kann ein Vorführgerät sein, eventuell ist die Verpackung geöffnet oder nicht mehr vorhanden - volle Garantie! Kann gerne gegen Aufpreis bis auf 5 Jahre verlängert werden.",
+      "price": "1127.00",
+      "price_old": "1219.00",
+      "shipping_cost": 14.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 8,
+      "name": "RECARO Exo Platinum Gaming Chair 2.0, sky Gaming Stuhl, Grau / Schwarz / Weiß",
+      "brand": {
+        "id": 11982,
+        "name": "RECARO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/dbd7485a292748cb902e1b591c928d98"
+      ],
+      "outlet": {
+        "id": 310,
+        "name": "Köln City"
+      },
+      "pim_id": 2728160
+    },
+    {
+      "posting_id": "333f3fba-2e98-4976-ab3d-5b10418b9061",
+      "posting_text": "Ohne Netzteil \r\nEinzelstück mit leichten Gebrauchsspuren",
+      "price": "600.00",
+      "price_old": "1399.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "CAPTIVA I57-957, Gaming Notebook mit 17,3 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 1 TB SSD, GTX 1660 Ti, Schwarz/Silber",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/834c40801aee4e658a7163142b427d79"
+      ],
+      "outlet": {
+        "id": 44,
+        "name": "Ingolstadt"
+      },
+      "pim_id": 2698658
+    },
+    {
+      "posting_id": "608ee7f4-597f-411c-939f-e7bd79334aff",
+      "posting_text": "Geöffnete Originalverpackung, Ausstellungsstück, leichte Gebrauchsspuren, kostenloser Versand",
+      "price": "1200.00",
+      "price_old": "1699.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 29,
+      "name": "MSI GE66 10SF Raider, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 1 TB SSD, GeForce RTX 2070, Anthrazitgrau/Silber",
+      "brand": {
+        "id": 3045,
+        "name": "MSI"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e5ebd26e372548d9916063bddb3d815b",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/95a9c91ecc5744f3bb38519856d477b0"
+      ],
+      "outlet": {
+        "id": 18,
+        "name": "Koblenz Forum Mittelrhein"
+      },
+      "pim_id": 2649683
+    },
+    {
+      "posting_id": "5e0b964e-5a87-4509-bc0a-336d69dfb591",
+      "posting_text": "Merkmale\t\r\nProdukttyp\tZubehör für PS5\r\nPassend für\tPS5 Controller zur Synchronisation und zum Laden\r\nKabellänge\t3 m\r\nAnschluss A\tUSB Typ-C\r\nAnschluss B\tUSB Typ-C\r\nFarbe (laut Hersteller)\tSchwarz/Weiß\r\nGewicht (laut Hersteller)\t64.3 g\r\nGewicht\t64.3 g\r\nLieferumfang\t1x Ladekabel\r\nBesondere Merkmale\tmit LED-Licht, hochwertiges Flechtkabel\r\nHersteller Artikelnummer\tIC-6003",
+      "price": "8.00",
+      "price_old": "19.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 60,
+      "name": "ISY IC-6003 Zubehör für PS5, Schwarz/Weiß",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/bc184ff1af744a8a9667a0062ea52421"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2701268
+    },
+    {
+      "posting_id": "71bc0043-3aa3-4853-9aae-e69507d3210c",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tPS5 Controller Caps\r\nUnterstützte Plattformen\tPlayStation 5\r\nAusstattung\t\r\nBesondere Merkmale\tleicht anzubringen und zu entfernen, verbessert Haptik der Analog-Sticks, schützt vor Verschleiß\r\nAllgemeine Merkmale\t\r\nFarbe (laut Hersteller)\tSchwarz\r\nGewicht\t12.7 g\r\nLieferumfang\t6x Controller Caps\r\nHersteller Artikelnummer\tIC-6005",
+      "price": "5.00",
+      "price_old": "9.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 50,
+      "name": "ISY IC-6005, PS5 Controller Caps, Schwarz",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e8e0d544a9dc4451b59a128ffe9c661d"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2701271
+    },
+    {
+      "posting_id": "db7ba424-e35c-4bff-912b-44396009a8d8",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tOptisches Kabel\r\nKabellänge\t2 m\r\nAusstattung\t\r\nBesondere Merkmale\tOptisches ODT-Verbindungskabel zur Übertragung des optischen Digital-Audiosignals von der Konsole zum TV oder einen AV-Receiver. Hochflexibler Lichtleiter für ultraschnelle und störungsfreie Signalübertragung.\r\nAllgemeine Merkmale\t\r\nGesamthöhe\t50 mm\r\nBreite\t90 mm\r\nHöhe\t50 mm\r\nTiefe\t200 mm\r\nFarbe (laut Hersteller)\tSchwarz\r\nGewicht (laut Hersteller)\t90 g\r\nLieferumfang\tOptisches Kabel\r\nHersteller Artikelnummer\t2V012181",
+      "price": "8.00",
+      "price_old": "14.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 47,
+      "name": "ISY IC-650, Optisches Kabel, Schwarz",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/7555d9298b2d4fd1bed963f12034ebf7"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 1925567
+    },
+    {
+      "posting_id": "a068bcdb-5c6d-4283-9d34-5360cd4add38",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tGaming Festplatte\r\nUnterstützte Plattformen\tXbox One, Other\r\nSpeichertyp\tHDD\r\nSpeicherkapazität\t2 TB\r\nKonnektivität\t\r\nUSB Anschluss\tUSB 3.2 Gen 1\r\nAnschlüsse\tUSB 3.2 Gen 1\r\nMaximale Übertragungsgeschwindigkeit\t130 Mbit/s",
+      "price": "75.00",
+      "price_old": "99.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 25,
+      "name": "WD Black P10 Game Drive für Xbox One 2 TB, 2,5 Zoll, Gaming Festplatte, Schwarz/Weiß",
+      "brand": {
+        "id": 1339,
+        "name": "WD"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/056d8a008d7940b8921062381b96e23b"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2705624
+    },
+    {
+      "posting_id": "61370ca0-c67f-4872-b9b6-9711a6841d7e",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tGaming SSD\r\nUnterstützte Plattformen\tPlayStation 5, PlayStation 4, PC, MAC\r\nSpeichertyp\tSSD\r\nSpeicherkapazität\t500 GB\r\nKonnektivität\t\r\nAnschlüsse\tUSB Type-C™ Superspeed USB\r\nMaximale Übertragungsgeschwindigkeit\t900 Mbit/s\r\nAllgemeine Merkmale\t\r\nGesamthöhe\t60.5 mm\r\nBreite\t35 mm\r\nHöhe\t58 mm\r\nTiefe\t96 mm\r\nFarbe (laut Hersteller)\tSchwarz\r\nGewicht (laut Hersteller)\t125 g\r\nGewicht\t125 g\r\nLieferumfang\tWD_BLACK™ D30 Game Drive SSD 500 GB, USB Type-C™-auf-Type-A-Kabel, Kurzanleitung\r\nHersteller Artikelnummer\tWDBATL5000ABK-WESN",
+      "price": "65.00",
+      "price_old": "89.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 28,
+      "name": "WD _BLACK™ D30 Game Drive 500 GB Gaming Speicher für PS4/PS5, SSD-Geschwindigkeit, Gaming SSD, Schwarz",
+      "brand": {
+        "id": 1339,
+        "name": "WD"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/71698bfe2eff479f92073c72e9751eba"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2740363
+    },
+    {
+      "posting_id": "5ec540d3-4ef7-4f48-8588-8daf04d78073",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tGaming Headset\r\nTragevariante\tOver-ear\r\nPassend für\tPlayStation 5 und PlayStation 4\r\nAnwendungsbereich\tAudio/TV\r\nSignalübertragung\tkabelgebunden\r\nUnterstützte Plattformen\tPlayStation 4, PlayStation 5\r\nAusstattung\t\r\nLautstärkeregelung\tJa\r\nIntegriertes Mikrofon\tJa\r\nSteuerung\tAn der Hörmuschel\r\nHeadsetfunktion\tJa\r\nStummschaltung\tJa\r\nLautstärkebegrenzer\tJa\r\nBesondere Merkmale\tFlip-to-Mute-Funktion, Kompatibel mit 3D-Audio auf PlayStation 5-Konsolen\r\nAllgemeine Merkmale\t\r\nBreite\t196 mm\r\nHöhe\t228 mm\r\nTiefe\t83 mm\r\nGewicht (laut Hersteller)\t372 g\r\nGewicht\t372 g\r\nFarbe (laut Hersteller)\tWeiß\r\nLieferumfang\tGaming Headset, Kurzanleitung",
+      "price": "18.00",
+      "price_old": "29.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "PDP LLC LVL40 Kabelgebundenes Stereo-Gaming-Headset, Over-ear Gaming Headset Weiß",
+      "brand": {
+        "id": 3484,
+        "name": "PDP LLC"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/593e3307f41b4b57b7ddf91d2f701d6c"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2729385
+    },
+    {
+      "posting_id": "2a766a7f-fe90-483e-9d76-90b7f529501f",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tZubehör für Nintendo Switch\r\nUnterstützte Plattformen\tNintendo Switch, Nintendo Switch Lite\r\nAusstattung\t\r\nBesondere Merkmale\tSemi-Hartschalen-Konstruktion, Kompatibel mit Nintendo Switch, Nintendo Switch Lite und Nintendo Switch (OLED-Modell), Offiziell lizenziert von Nintendo\r\nAllgemeine Merkmale\t\r\nBreite\t165 mm\r\nHöhe\t216 mm\r\nTiefe\t292 mm\r\nFarbe (laut Hersteller)\tMehrfarbig\r\nGewicht (laut Hersteller)\t392 g\r\nGewicht\t392 g\r\nLieferumfang\tHartschalencase kompatibel für Nintendo Switch, Switch Lite oder Switch (OLED Modell), Konsole nicht im Lieferumfang enthalten.\r\nHersteller Artikelnummer\t500-139-EU-C6LI",
+      "price": "18.00",
+      "price_old": "29.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "PDP LLC Commuter Case, Zubehör für Nintendo Switch, Mehrfarbig",
+      "brand": {
+        "id": 3484,
+        "name": "PDP LLC"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4c9cb9c2e789483888e587931cc7d754"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2754199
+    },
+    {
+      "posting_id": "c03be9ef-9b17-4d34-a53d-16b3f9b207d1",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tGaming Headset\r\nTragevariante\tOver-ear\r\nSignalübertragung\tkabelgebunden\r\nFrequenzgang\t20 Hz – 20 kHz\r\nMikrofonfrequenz\t100 Hz – 10 KHz\r\nRauschabstand\t60 dB (A)\r\nAusstattung\t\r\nLautstärkeregelung\tJa\r\nIntegriertes Mikrofon\tJa\r\nSteuerung\tAn der Hörmuschel\r\nSteuerungsfunktionen\tMikrofon-Stumm-Taste & Lautstärleregler\r\nHeadsetfunktion\tJa\r\nStummschaltung\tJa\r\nAnschlüsse\t3,5-mm-Klinkenanschluss\r\nDrehbare Ohrmuscheln\tJa\r\nBesondere Merkmale\tRazer Triforce 50-MM Treiber",
+      "price": "35.00",
+      "price_old": "69.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 50,
+      "name": "RAZER Razer Kaira X für PlayStation, Over-ear Gaming Headset Weiß/Schwarz mit blauen Details",
+      "brand": {
+        "id": 3033,
+        "name": "RAZER"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/67ab197ecd434900afe5e06aae862bf8"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2758699
+    },
+    {
+      "posting_id": "ee2283c2-b8e9-4fd6-a209-2edfb74203a0",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tHeadset Ständer inklusive Beleuchtung\r\nKonnektivität\t\r\nAnschluss A\tUSB\r\nAllgemeine Merkmale\t\r\nBreite\t196 mm\r\nHöhe\t240 mm\r\nTiefe\t120 mm\r\nFarbe (laut Hersteller)\tSchwarz\r\nGewicht\t315 g\r\nLieferumfang\tHeadset Ständer, USB-Kabel\r\nHersteller Artikelnummer\tPP8962PS",
+      "price": "12.00",
+      "price_old": "24.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 52,
+      "name": "PALADONE PRODUCTS Playstation, Headset Ständer inklusive Beleuchtung, Schwarz",
+      "brand": {
+        "id": 8519,
+        "name": "PALADONE PRODUCTS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/93272c06bd0d46a58e1f8099cbcee9e7"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2761105
+    },
+    {
+      "posting_id": "07dd5b68-65b0-4676-914f-957977d7b703",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tGaming Headset\r\nTragevariante\tOn-ear\r\nSignalübertragung\tkabelgebunden\r\nUnterstützte Plattformen\tPlayStation 4, Xbox One\r\nAusstattung\t\r\nBesondere Merkmale\tKomfortables Headset Design, kristallklare Kommunikations- und Tonqualität, Lautstärkeregelung und Stummschalter\r\nAllgemeine Merkmale\t\r\nKabellänge\t1.2 m\r\nFarbe (laut Hersteller)\tSchwarz\r\nLieferumfang\tGaming-Headset\r\nHersteller Artikelnummer\tIC-1001",
+      "price": "8.00",
+      "price_old": "19.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 60,
+      "name": "ISY IC-1001 HeadCom, On-ear Gaming Headset Schwarz",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/25384ac481f84ec09894e463d7ac44a9"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2111219
+    },
+    {
+      "posting_id": "5b29d00c-115c-47fa-a1b4-902a77923335",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tZubehör für PS5\r\nKabellänge\t3 m\r\nKonnektivität\t\r\nSignalübertragung\tkabelgebunden\r\nAnschlüsse\t3.5 mm-Stecker\r\nAusstattung\t\r\nNoise-Cancelling\tNein\r\nEnergieversorgung\t\r\nLadetechnik\tPS5-Controller-Ladekabel USB Typ C auf USB Typ C\r\nAllgemeine Merkmale\t\r\nFarbe (laut Hersteller)\tWeiß/Schwarz\r\nGewicht (laut Hersteller)\t237 g\r\nGewicht\t237 g\r\nLieferumfang\t1x Gaming-Headset, 6x Controller Caps, 1x Ladekabel USB Typ C auf USB Typ C, 1x Bedienungsanleitung\r\nHersteller Artikelnummer\tIC-6006",
+      "price": "15.00",
+      "price_old": "39.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 62,
+      "name": "ISY IC 6006, Zubehör für PS5, Weiß/Schwarz",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/252a75da919e44bb94cbeaf5ddb384d3"
+      ],
+      "outlet": {
+        "id": 1292,
+        "name": "Frankfurt Skyline Plaza"
+      },
+      "pim_id": 2701272
+    },
+    {
+      "posting_id": "bdaf862b-ffec-4ddd-8c7b-263021f8cfbb",
+      "posting_text": "Neuware. Ungeöffnet.",
+      "price": "107.00",
+      "price_old": "174.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 39,
+      "name": "BLUE MICROPHONES Yeti X professionelles USB Mikrofon, Blackout",
+      "brand": {
+        "id": 6785,
+        "name": "BLUE MICROPHONES"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/48a8f4edeb6c4012a52a7e3a32c92eb7",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3cba5e2754854f8a80352b851ba18aba",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/df78abd280a74ce6b4a4a90f612bf0e0"
+      ],
+      "outlet": {
+        "id": 85,
+        "name": "Ansbach"
+      },
+      "pim_id": 2646483
+    },
+    {
+      "posting_id": "17c342dd-fd07-481b-a150-bc0e7a8410a4",
+      "posting_text": "CAPTIVA CAPTIVA R66-736, Gaming Notebook mit 17,3 Zoll Display, AMD Ryzen™ 5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau\r\nOriginal Verpackt, Restposten",
+      "price": "1297.00",
+      "price_old": "1699.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 24,
+      "name": "CAPTIVA CAPTIVA R66-736, Gaming Notebook mit 17,3 Zoll Display, AMD Ryzen™ 5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/6863ae40d4b9416593dbb4b1f1982ae4",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/db197ad91def4936b1be9a4ffc4df527",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/b6bcd2454d714af6b29c623720e4cc6f"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2781377
+    },
+    {
+      "posting_id": "b2690f60-30e5-48f1-b319-6aec07ffd008",
+      "posting_text": "CAPTIVA I63-851, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau\r\nOriginal Verpackt, Restposten",
+      "price": "887.00",
+      "price_old": "1699.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 48,
+      "name": "CAPTIVA I63-851, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/5fe327f0c11e4569926a6fdce4f61d31",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f61cdb70f7c74536883c35bd69dc07ae",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9e9381d262f64e90b3ff9d802d0796d4"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2776171
+    },
+    {
+      "posting_id": "9d48bf5e-92aa-4fc5-845b-4b35057b49ce",
+      "posting_text": "CAPTIVA CAPTIVA I66-735, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia Geforce RTX 3050, Grau\r\nOriginal Verpackt, Restposten",
+      "price": "777.00",
+      "price_old": "1399.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 44,
+      "name": "CAPTIVA CAPTIVA I66-735, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia Geforce RTX 3050, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/fea6e18cd19344639685fb6705197bfc",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/46e3352963df4a2b99f63be4369e6fd8",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/0291ae4399bc49d1a58c1d25966ddbe1"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2781376
+    },
+    {
+      "posting_id": "66947285-38f8-4eb5-8257-8e804dcc9b4d",
+      "posting_text": "MEDION Beast X25 (MD62259), Gaming Notebook mit 17,3 Zoll Display, AMD Ryzen™ 9 Prozessor, 32 GB RAM, 1 GB SSD, Nvidia GeForce RTX™ 3080 Laptop GPU, Schwarz\r\nRückläufer,",
+      "price": "2197.00",
+      "price_old": "2599.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 15,
+      "name": "MEDION Beast X25 (MD62259), Gaming Notebook mit 17,3 Zoll Display, AMD Ryzen™ 9 Prozessor, 32 GB RAM, 1 GB SSD, Nvidia GeForce RTX™ 3080 Laptop GPU, Schwarz",
+      "brand": {
+        "id": 1318,
+        "name": "MEDION"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/38960953bba943e7b32097bd6df39f3a",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/60245b139fe244c0add1b4074c5f8ceb",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/04389f3dc1d94e1e8d95780ae5b009a6"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2809206
+    },
+    {
+      "posting_id": "271d36f7-7180-412d-8464-211cd01dcfb5",
+      "posting_text": "ASUS ROG Zephyrus M16 GU603ZE-LS032W, Gaming Notebook mit 16 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 512 GB SSD, Nvidia GeForce RTX 3050 Ti, Schwarz\r\nRestposten, Original Verpackt",
+      "price": "1557.00",
+      "price_old": "1799.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 13,
+      "name": "ASUS ROG Zephyrus M16 GU603ZE-LS032W, Gaming Notebook mit 16 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 512 GB SSD, Nvidia GeForce RTX 3050 Ti, Schwarz",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/69630f7dc5bc456db963ba2f7001e9a7",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/a5d42edcfc2f496eb47f90ea267936e0",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/b71ca33fa2fa454d98b76e22e5f9b3fc"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2780373
+    },
+    {
+      "posting_id": "3253e34b-3c45-43af-8f2d-789212427747",
+      "posting_text": "HYPERX CloudX™ HX-HS5CX-SR, Over-ear Gaming Headset Schwarz\r\nRückläufer aus Onlineshopping \r\nVerpackung geöffnet",
+      "price": "37.00",
+      "price_old": "69.99",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 47,
+      "name": "HYPERX CloudX™ HX-HS5CX-SR, Over-ear Gaming Headset Schwarz",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/56c7589187744061b5dcd8cbafbb57d6",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/0cefaa2e72214594ad7ab2ad7ff8141f",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/12c9e0f721fd4726b0f0626e0f54c6ec"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2450508
+    },
+    {
+      "posting_id": "a7c67856-b17f-466c-b567-e2774264999d",
+      "posting_text": "Professional Farmer: Cattle and Crops - [PC]\r\nRestposten",
+      "price": "5.97",
+      "price_old": "29.99",
+      "shipping_cost": 1.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 80,
+      "name": "Professional Farmer: Cattle and Crops - [PC]",
+      "brand": {
+        "id": 1229,
+        "name": "IRIDIUM"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/eb09488f2f704b07a7f5af8bee399852",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/c4daa52e489541f5bc39dd6e4a81544a"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2691396
+    },
+    {
+      "posting_id": "4a2be046-be3b-46d7-abb3-6dbdfa9988ed",
+      "posting_text": "WD Black P10 Game Drive für Xbox One 2 TB, 2,5 Zoll, Gaming Festplatte, Schwarz/Weiß\r\nRestposten",
+      "price": "67.00",
+      "price_old": "109.99",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 39,
+      "name": "WD Black P10 Game Drive für Xbox One 2 TB, 2,5 Zoll, Gaming Festplatte, Schwarz/Weiß",
+      "brand": {
+        "id": 1339,
+        "name": "WD"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/41867223634546ec90042018eecf47a8"
+      ],
+      "outlet": {
+        "id": 309,
+        "name": "Aachen"
+      },
+      "pim_id": 2705624
+    },
+    {
+      "posting_id": "c9700fa7-e91c-4a63-89e8-bf530a710755",
+      "posting_text": "Produkttyp\tZubehörset\r\nPassend für\tNintendo Switch Lite\r\nGewicht (laut Hersteller)\t17 g\r\nGewicht\t17 g\r\nBreite\t116 mm\r\nHöhe\t36 mm\r\nTiefe\t263 mm\r\nFarbe (laut Hersteller)\tPastell-Blau/Weiß/Pastell-Grün\r\nLieferumfang\t1x Schutztasche, 1x Schutzfolie",
+      "price": "7.00",
+      "price_old": "9.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 30,
+      "name": "NINTENDO Switch Lite-Tasche (Animal Crossing: New Horizons-Edition) & -Schutzfolie Zubehörset, Pastell-Blau/Weiß/Pastell-Grün",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/a2d905a339614f8ca996c24bec9843d7"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2633122
+    },
+    {
+      "posting_id": "5d5e6c5f-9cc3-46a1-b64c-04bd95913428",
+      "posting_text": "Produkttyp\tZubehör Nintendo Switch\r\nPassend für\tNintendo Switch™\r\nMaterial\tEVA\r\nGewicht (laut Hersteller)\t385 g\r\nGewicht\t385 g\r\nBreite\t260 mm\r\nHöhe\t150 mm\r\nTiefe\t50 mm\r\nFarbe (laut Hersteller)\tMehrfarbig\r\nLieferumfang\tTasche und Box",
+      "price": "15.00",
+      "price_old": "24.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "R.D.S. Deluxe Transporttasche Zubehör Nintendo Switch, Mehrfarbig",
+      "brand": {
+        "id": 9846,
+        "name": "R.D.S."
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/822b5d6078a64544acf9f4b92549ac28"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2629322
+    },
+    {
+      "posting_id": "ca0cb29f-19d2-4e38-9ab7-0549e3ba608a",
+      "posting_text": "Produkttyp\tStarter Kit Nintendo Switch LiteTM\r\nPassend für\tNintendo Switch LiteTM\r\nMaterial\tNylon\r\nBesondere Merkmale\tPassgenau für Nintendo Switch Lite, robuste Hülle zum Schutz und Aufbewahren Ihrer Switch LiteTM, Starter Kit besteht aus 6 Teilen\r\nGewicht (laut Hersteller)\t139 g\r\nGewicht\t139 g\r\nBreite\t233 mm\r\nHöhe\t113 mm\r\nTiefe\t42 mm\r\nFarbe (laut Hersteller)\tSchwarz\r\nLieferumfang\t1x Etui für den sicheren Transport deiner Switch Lite, 1x Screen Protector für deine Switch Lite, 1x Applikator zum Anbringen des Schutzglases, 1x Reinigungstuch, 2x Thumbsticks",
+      "price": "6.00",
+      "price_old": "14.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 60,
+      "name": "ISY IC-5011  Starter Kit Nintendo Switch LiteTM, Schwarz",
+      "brand": {
+        "id": 3970,
+        "name": "ISY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/1d04cce5598c403aa060fc8f4ea82b85"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2598445
+    },
+    {
+      "posting_id": "7ba20994-4219-47b4-99bb-3f4b3c6eaf61",
+      "posting_text": "Produkttyp\tNintendo Switch Schutzfolie\r\nFarbe (laut Hersteller)\tTransparent",
+      "price": "6.00",
+      "price_old": "14.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 60,
+      "name": "BIGBEN BB359404 Nintendo Switch Schutzfolie, Transparent",
+      "brand": {
+        "id": 5712,
+        "name": "BIGBEN"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/87827a8d0f0f426eaad2b41cfb5c2542"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2371821
+    },
+    {
+      "posting_id": "2fd275de-2282-4399-9917-944509894d80",
+      "posting_text": "Produkttyp\tZubehörset\r\nPassend für\tNintendo Switch\r\nMaterial\t16% PVC, 20% Cotton, 21% EVA (Ethylene-vinyl acetate), 29% PE (polyester), 13% Nylon\r\nGewicht (laut Hersteller)\t22 g\r\nGewicht\t22 g\r\nBreite\t132 mm\r\nHöhe\t36 mm\r\nTiefe\t275 mm\r\nFarbe (laut Hersteller)\tMehrfarbig\r\nLieferumfang\t1x Schutztasche, 1x Schutzfolie",
+      "price": "15.00",
+      "price_old": "24.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "NINTENDO Switch-Tasche (Animal Crossing: New Horizons-Edition) & -Schutzfolie Zubehörset, Mehrfarbig",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/cd3050e30e70458fb6dc8ef1c9fe889e",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3fc0bc98fad944d4913e0a465bc8f65f"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2633121
+    },
+    {
+      "posting_id": "50e6105a-1ad5-47f3-ba3f-112817788561",
+      "posting_text": "Eine spontane Gaming-Session mit Freunden? Kein Problem für das Gaming Notebook ACER Nitro 5 (AN515-56-50HK)! Dieses Produkt macht alles mit. ----- neu + unbenutzt -----  Verpackung wurde für Ansichtszwecke geöffnet ------  EAN 4710886550976",
+      "price": "690.00",
+      "price_old": "1099.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 37,
+      "name": "ACER Nitro 5 (AN515-56-50HK), Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 8 GB RAM, 512 GB SSD, GeForce RTX 3050, Schwarz",
+      "brand": {
+        "id": 845,
+        "name": "ACER"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/b22fff6bb3aa4258b0b97f71ad2e0c08"
+      ],
+      "outlet": {
+        "id": 217,
+        "name": "Berlin Reinickendorf"
+      },
+      "pim_id": 2746367
+    },
+    {
+      "posting_id": "657cf918-9120-415c-94e7-1affc3b0bc79",
+      "posting_text": "Kundenrücknahme. Von Fachwerkstatt repariert und aufbereitet",
+      "price": "499.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "HTC Vive Cosmos VR Brille + 2xController",
+      "brand": {
+        "id": 1372,
+        "name": "HTC"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9527ad69697040c88db6adc27b479dc3",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/95482629c1e04ecd8025b5b331333526"
+      ],
+      "outlet": {
+        "id": 210,
+        "name": "Berlin Marzahn"
+      },
+      "pim_id": 2660873
+    },
+    {
+      "posting_id": "c42e5bac-73d7-4a14-82cf-ba3d188082cf",
+      "posting_text": "SONY HD-Kamera, PS5 Zubehör, Schwarz\r\n\r\n\r\nTechnische Merkmale\t\r\nProdukttyp\tPS5 Zubehör\r\nUnterstützte Plattformen\tPlayStation 5\r\nAllgemeine Merkmale\t\r\nFarbe (laut Hersteller)\tSchwarz\r\nLieferumfang\tHD-Kamera, Bedienungsanleitung\r\nHersteller Artikelnummer\t9321200",
+      "price": "29.00",
+      "price_old": "",
+      "shipping_cost": 2.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "SONY PS5 HD-Kamera Schwarz",
+      "brand": {
+        "id": 157,
+        "name": "SONY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e4c148f780e2410582a2dbe603788788"
+      ],
+      "outlet": {
+        "id": 73,
+        "name": "Moers"
+      },
+      "pim_id": 2681394
+    },
+    {
+      "posting_id": "23bc3858-e0b2-424b-8c1e-f75061fe3137",
+      "posting_text": "Einzelstück , Vorführgerät",
+      "price": "897.00",
+      "price_old": "1399.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 36,
+      "name": "DELL Alienware AW3821DW 37,5 Zoll UWQHD Gaming Monitor (4 ms Reaktionszeit, 144 Hz)",
+      "brand": {
+        "id": 2407,
+        "name": "DELL"
+      },
+      "eek": {
+        "classRange": null,
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "G",
+        "colorCode": "rgb(227 6 19)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_93265362",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_93265342",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/b6c6d15989d14e55b955f7a84ea222ea"
+      ],
+      "outlet": {
+        "id": 51,
+        "name": "Isernhagen"
+      },
+      "pim_id": 2797870
+    },
+    {
+      "posting_id": "5b54a4ee-e2f5-4d74-b11d-0e3c52bdb1b3",
+      "posting_text": "+++original verpackt+++\r\n\r\n\r\nProduktbeschreibung\r\nKabelloses Premium-Gaming-Headset\r\nDas kabellose geschlossene Akustik-Headset GSP 670 wurde für den Gamer entwickelt, der keine Kompromisse eingeht, und liefert das ultimative High-Fidelity-Audio im Spiel. Hochmoderne kabellose Technologie gewährleistet eine verzögerungsfreieÜbertragung mit geringer Latenz, was im Spiel schnelles Reagieren erleichtert. Die Bluetooth®-Konnektivität wiederum erlaubt Gaming auf kompatiblen Geräten und eröffnet die Möglichkeit, einen Anruf entgegenzunehmen und dann nahtlos zum Spiel zurückzukehren.\r\n\r\nDie EPOS Gaming Suite bietet anpassbare digitale 7.1 Surround Sound-Verarbeitung mit Geräuschunterdrückung. In Kombination mit unabhängigen Reglern für Chat- und Gaming-Audio, die direkt in das Headset eingebaut sind, bietet das GSP 670 die ultimative Audiokontrolle.\r\n\r\nEingebautes intelligentes Akku-Management erkennt, wenn das Headset nicht verwendet wird, und sichert die Akkulaufzeit für 16 Stunden bei kabelloser Übertragung mit geringer Latenz / für 20 Stunden mit Bluetooth-Verbindung.",
+      "price": "216.19",
+      "price_old": "249.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 13,
+      "name": "EPOS SENNHEISER GSP 670 , Over-ear Gaming Headset Bluetooth Schwarz",
+      "brand": {
+        "id": 11874,
+        "name": "EPOS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/fcfbb63c770e4fb7883b93b0cc21d628",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/eec7f00ce7e64e00ba3f441c6f1c06f1",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e179941c1a614b8cbf8dcf322811b9f8"
+      ],
+      "outlet": {
+        "id": 30,
+        "name": "Ludwigsburg"
+      },
+      "pim_id": 2663653
+    },
+    {
+      "posting_id": "d96e43d4-81c4-4f7c-af15-bed9710cc125",
+      "posting_text": "+++original verpackt+++\r\nIm Zentrum des Geschehens\r\nEines der Highlights ist mit Sicherheit die einzigartige JBL QuantumSPHERE 360™ Technologie mit Head-Tracking. Sie ermöglicht eine 3D Klangortung im virtuellen Raum, durch die eine ganz neue Dimension intuitiven Spielens ermöglicht wird.+++\r\n\r\nTechnik, die verbindet\r\nDas abnehmbare Boom-Mikrofon ermöglicht kristallklare Multiplayer-Interaktionen mit Rauschunterdrückung, Mute-Funktionen und einer DISCORD-zertifizierten Game-/Chat-Balanceregelung und lässt dich auch im Eifer des Gefechts niemals im Stich.+++\r\n\r\nAlles auf einen Blick\r\nAlles auf einen Blick\r\n• QuantumSPHERE 360™ Sound mit integriertem HeadTracking-Sensor und DTS\r\n\r\n• Leichtes Gewicht und strapazierfähig dank Leder-Ohrpolster mit Memory-Foam\r\n\r\n• Kompatibel mit allen Gaming-Plattformen (JBL QuantumSPHERE 360™ und QuantumSURROUND ist nur am PC verfügbar)\r\n\r\n• Sprachfokussiertes, direktionales, abnehmbares Boom-Mikrofon",
+      "price": "174.79",
+      "price_old": "249.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 30,
+      "name": "JBL Quantum One Gaming Headset, Over-ear Gaming Headset Schwarz",
+      "brand": {
+        "id": 223,
+        "name": "JBL"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/27c29c4846b14f3481d385eaf1d506da",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9c43fc784ebf40de99462a7794806bda",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/52d92e1ce222429bb3aa6a47cbeed2b2"
+      ],
+      "outlet": {
+        "id": 30,
+        "name": "Ludwigsburg"
+      },
+      "pim_id": 2649424
+    },
+    {
+      "posting_id": "843836d4-3de0-4fc5-8a04-9775b94f9050",
+      "posting_text": "+++original verpackt+++\r\n\r\n\r\nProduktbeschreibung\r\nDreikapsel-Technologie\r\nLegendärer Blue Broadcast Sound mit größerer Schärfe und Klarheit als je zuvor für professionelle Streams, Podcasts, YouTube-Videos, Voice-Overs und Zoom-Meetings\r\n\r\nHochauflösende LED-Anzeige\r\nMit der 11-Segment-LED-Anzeige des Yeti X-Mikrofons den Sprachpegel auf einen Blick erkennen und für kräftigen Sound in Broadcast-Qualität nach oben oder unten regeln\r\n\r\nMultifunktions-Smart-Regler\r\nOn-Stream-Sound für Mikrofonverstärkung, Stummschaltung, Kopfhörerlautstärke und Mischung abstimmen / Zwischen den Betriebsarten Niere, Kugel, Acht und Stereo wechseln\r\n\r\nBlue VO!CE Software\r\nStreamings und Aufnahmen mit klarem Broadcasting-Sound erhöhen und das Publikum mit verbesserten Effekten, fortschrittlicher Modulation und HD-Audio-Samples unterhalten\r\n\r\nAnpassbare LED-Beleuchtung\r\nDie Farbe der LED-Leuchten des Yeti X an die On-Stream-Ästhetik anpassen, per USB-Kabel direkt an Computer oder Laptop anschließen und sofort mit der Aufnahme beginnen\r\n\r\nIntegration von Logitech G HUB\r\nDie Mikrofonverstärkung, die Kopfhörerlautstärke, die Monitoreinstellungen und die Auswahl der Mikrofon-Richtcharakteristik direkt vom Computer aus steuern\r\n\r\nVIELSEITIGE PICKUP-MUSTER\r\nUmschalten zwischen Kardioiden für Aufnahme und Streaming, Omni für Konferenzen, bi-direktional für Podcast-Interviews und Stereo für immersive ASMR Erfahrungen\r\n\r\nPLUG 'N PLAY\r\nKeine Zeit mit tragbaren Audio-Setup verschwenden. Mit der Plug-and-Play-Funktion können Sie einfach aufnehmen, mit Bedienung auf Mac und PC ohne Treiber. 2 m USB-Kabel im Lieferumfang",
+      "price": "164.68",
+      "price_old": "179.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 8,
+      "name": "BLUE MICROPHONES Yeti X professionelles USB Mikrofon, Blackout",
+      "brand": {
+        "id": 6785,
+        "name": "BLUE MICROPHONES"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/dd02be42f82b42caa67ffd4686a72e84",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/998eda1187014c879565b8ade9f82b03",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2d1eeea9e3e542ae8e2f39c07303b2bc"
+      ],
+      "outlet": {
+        "id": 30,
+        "name": "Ludwigsburg"
+      },
+      "pim_id": 2646483
+    },
+    {
+      "posting_id": "b237b4ff-9d47-457b-a8c0-f5f836be40fa",
+      "posting_text": "Restposten\r\nOVP Neuware\r\n\r\nBildschirmauflösung\t1.920 x 1.080 Pixel\r\nTouchscreen\tNein\r\nBildqualität\tFull-HD\r\nBildschirmdiagonale (cm)\t39.62 cm\r\nBildschirmdiagonale (Zoll)\t15.6 Zoll\r\nBildverhältnis\t16:9\r\nPaneltyp\tIPS (In-Plane Switching)\r\nBildschirmmerkmale\tAcer ComfyView Full HD IPS Display 144 Hz mit LED-Backlight (matt)\r\nArbeitsspeicher\t\r\nArbeitsspeicher-Typ\tDDR4\r\nArbeitsspeicher-Größe\t8 GB\r\nArbeitsspeicher-Konfiguration\t1x 8 GB\r\nProzessor\t\r\nProzessor\tIntel® Core™ i5-10300H Prozessor (bis zu 4,50 GHz mit Intel® Turbo-Boost-Technik 2.0, 8 MB Intel® Cache)\r\nProzessor-Marke\tIntel®\r\nProzessor-Modell\tCore™ i5\r\nProzessor-Nummer\ti5-10300H\r\nProzessor-Taktfrequenz\t2.50 GHz\r\nAnzahl Prozessorkerne\t4\r\nAnzahl Threads\t8\r\nProzessor-Taktfrequenz mit Turbo\t4.5 GHz\r\nGrafikkarte\t\r\nGrafikkarte\tNVIDIA GeForce RTX 3050\r\nGrafikkarte Hersteller\tNVIDIA\r\nGrafikspeicher-Typ\tGDDR6\r\nGrafikspeicher dediziert\t4 GB\r\nFestplatte\t\r\nSSD-Speicher\tJa\r\nAnzahl installierter Festplatten\t1\r\nGesamter Speicherplatz in GB\t512 GB\r\nFestplatte 1\tSSD , 512 GB\r\nFestplattentyp 1.Festplatte\tSSD\r\nFestplattenkapazität 1. Festplatte\t512 GB\r\nOptisches Laufwerk\t\r\nLaufwerkstyp\tNein\r\nKonnektivität\t\r\nAnschlüsse\t1x HDMI, 4x USB 3.2 (davon 1x Typ-A Gen 2 mit Power-Off Charging, 2x Typ-A Gen 1, 1x Typ-C Gen 2), 1x RJ-45, Audio Anschluss: 1x 3.5 mm Klinke\r\nWLAN\tJa\r\nWLAN (Standards)\tIntel Dual Band Wireless-Gigabit-AX, Wi-Fi 6 (802.11 ax/ac/a/b/g/n)\r\nBluetooth\tJa\r\nBluetooth-Version\tBluetooth 5.0\r\nAusstattung\t\r\nBetriebssystem\tWindows 10 Home\r\nTouchpad\tMulti-Gesture Touchpad (Microsoft Precision Touchpad Certification)\r\nLautsprecher\tZwei eingebaute Stereo-Lautsprecher\r\nKartenleser\tNein\r\nIntegriertes Mikrofon\tJa\r\nAnzahl Lautsprecher\tZwei eingebaute Stereo-Lautsprecher\r\nSoundmodus\tAcer TrueHarmony Technology\r\nFingerprintsensor\tNein\r\nTastatur\tAcer FineTip Tastatur mit Numpad (103-/104-/107-Tasten)\r\nKensington Lock Vorrichtung\tJa\r\nBeleuchtete Tasten\tJa\r\nNum-Pad integriert\tJa\r\nKamera\t\r\nintegrierte Webcam\tJa\r\nEnergieversorgung\t\r\nAkku-Laufzeit\tBis zu 9 Std.\r\nAkku Anzahl\t1\r\nLeistung Netzteil\t180 Watt\r\nAllgemeine Merkmale\t\r\nProdukttyp\tNotebook\r\nAnwendungsbereich\tEinsteiger, Gaming, Home, Multimedia\r\nFarbe (laut Hersteller)\tSchwarz / Rot\r\nFarbe (normiert)\tMehrfarbig\r\nGehäuse\tSchwarz / Rot\r\nBreite\t363.4 mm\r\nHöhe\t23.9 mm\r\nTiefe\t255 mm\r\nGewicht\t2.3 kg\r\nLieferumfang\tAN515-55-547K, Netzteil, Kurzanleitung, Wechselrahmen für zusätzliche HDD inklusive",
+      "price": "677.00",
+      "price_old": "1099.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 38,
+      "name": "ACER Nitro 5 (AN515-55-547K), Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 8 GB RAM, 512 GB SSD, NVIDIA GeForce RTX 3050, Schwarz / Rot",
+      "brand": {
+        "id": 845,
+        "name": "ACER"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9d962d07474c4d49910bf6fa7774334b"
+      ],
+      "outlet": {
+        "id": 66,
+        "name": "Wolfsburg"
+      },
+      "pim_id": 2746366
+    },
+    {
+      "posting_id": "44cd9385-8a55-43ff-89ac-2bd2ce0c5f7a",
+      "posting_text": "Einzelstück.\r\nAusstellungsstück mit original Verpackung.\r\nEinwandfreier Zustand.\r\n\r\nBildschirmauflösung\t1.920 x 1.080 Pixel\r\nTouchscreen\tNein\r\nHelligkeit\t250 cd/m²\r\nBildqualität\tFull-HD\r\nBildschirmdiagonale (cm)\t39.6 cm\r\nBildschirmdiagonale (Zoll)\t15.6 Zoll\r\nPaneltyp\tIPS (In-Plane Switching)\r\nBildschirmtyp\tIPS\r\nBildschirmkontrast\t1000:1\r\nArbeitsspeicher\t\r\nArbeitsspeicher-Typ\tDDR4\r\nArbeitsspeicher-Größe\t8 GB\r\nSpeichergeschwindigkeit\t3200 MHz\r\nProzessor\t\r\nProzessor\tIntel® Core™ i5-11400H Prozessor (12M Cache, bis zu 4,50 GHz)\r\nProzessor-Marke\tIntel®\r\nProzessor-Modell\tCore™ i5\r\nProzessor-Nummer\ti5-11400H\r\nProzessor-Taktfrequenz\t2.2 GHz\r\nAnzahl Prozessorkerne\t6\r\nProzessor-Taktfrequenz mit Turbo\t4.5 GHz\r\nCachegröße\t12 MB\r\nChipsatz\tIntel HM570 Express\r\nGrafikkarte\t\r\nGrafikkarte\tGeForce RTX 3050\r\nGrafikkarte Hersteller\tNVIDIA\r\nGrafikspeicher dediziert\t4 GB\r\nFestplatte\t\r\nSSD-Speicher\tJa\r\nFestplatte 1\tSSD , 512 GB\r\nFestplattentyp 1.Festplatte\tSSD\r\nFestplattenkapazität 1. Festplatte\t512 GB\r\nKonnektivität\t\r\nAnschlüsse\t1x HDMI 2.0b, 1x 3.5 mm Klinke, 1x USB 3.2 Gen 2 (3.1 Gen 2) Typ-C, 3x USB 3.2 Gen 1 (3.1 Gen 1) Typ-A, 1x RJ-45\r\nWLAN\tJa\r\nWLAN (Standards)\tWi-Fi 6 (802.11ax)\r\nBluetooth\tJa\r\nBluetooth-Version\t5.2\r\nEthernet Übertragungsrate\t10,100,1000 Mbit/s\r\nAusstattung\t\r\nBetriebssystem\tWindows 11 Home\r\nTouchpad\tTouchpad\r\nIntegriertes Mikrofon\tJa\r\nKensington Lock Vorrichtung\tJa\r\nBeleuchtete Tasten\tJa\r\nNum-Pad integriert\tJa\r\nKamera\t\r\nintegrierte Webcam\tJa\r\nFront-Kamera\tJa\r\nEnergieversorgung\t\r\nBatterie-/ Akkutyp\tLi-Ion\r\nAkku-Kapazität\t48 Wh\r\nAkku Anzahl\t1\r\nAnzahl Akkuzellen\t3\r\nLeistung Netzteil\t180 Watt\r\nAllgemeine Merkmale\t\r\nProdukttyp\tNotebook\r\nAnwendungsbereich\tGaming\r\nFarbe (laut Hersteller)\tSchwarz, Grau\r\nFarbe (normiert)\tMehrfarbig\r\nBreite\t359 mm\r\nHöhe\t24.3 mm\r\nMinimale Höhe\t22.8 mm\r\nMaximale Höhe\t24.3 mm\r\nTiefe\t256 mm\r\nGewicht (laut Hersteller)\t2.3 kg\r\nGewicht\t2.3 kg\r\nLieferumfang\tTUF Gaming (FX506HCB-HN1138W), Bedienungsanleitung, Netzteil",
+      "price": "767.00",
+      "price_old": "1099.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 30,
+      "name": "ASUS TUF Gaming (FX506HCB-HN1138W), Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 8 GB RAM, 512 GB SSD, GeForce RTX 3050, Schwarz, Grau",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4acdaf8aaadd4c0896ca41fa630e5ac1"
+      ],
+      "outlet": {
+        "id": 66,
+        "name": "Wolfsburg"
+      },
+      "pim_id": 2774225
+    },
+    {
+      "posting_id": "3adf2f52-97f7-4be6-8fa0-60d7fad720e4",
+      "posting_text": "Restposten, original verpackter Artikel.\r\n\r\nProzessor\tAMD Ryzen™ 5 5600X Mobile-Prozessor\r\nProzessor-Taktfrequenz\t3.70 GHz\r\nCache-Speicher Typ\tL3-Cache\r\nProzessor-Taktfrequenz mit Turbo\t4.60 GHz\r\nProzessor-Marke\tAMD\r\nProzessor-Nummer\t5600X\r\nProzessor-Modell\tRyzen™ 5\r\nAnzahl Prozessorkerne\t6\r\nAnzahl Threads\t12\r\nCachegröße\t32 MB\r\nArbeitsspeicher\t\r\nArbeitsspeicher-Typ\tDDR4\r\nArbeitsspeicher-Größe\t16 GB\r\nArbeitsspeicher-Konfiguration\t2 x 8 GB\r\nGrafikkarte\t\r\nGrafikkarte Hersteller\tNVIDIA®\r\nGrafikkarte\tGeForce RTX™ 3060 Ti LHR\r\nGrafikspeicher dediziert\t8 GB\r\nGrafikspeicher-Typ\tGDDR6\r\nFestplatte\t\r\nFestplatte 1\tSSD , 1 TB , M.2 via PCIe\r\nFestplattentyp 1.Festplatte\tSSD\r\nFestplattenkapazität 1. Festplatte\t1 TB\r\nSchnittstelle 1. Festplatte\tM.2 via PCIe\r\nSSD-Speicher\tJa\r\nMainboard\t\r\nChipsatz\tB550\r\nKonnektivität\t\r\nBluetooth\tJa\r\nAnschlüsse\tFront: 2 x USB 3.2 Gen1, 1 x 3.5 mm Klinke, Rückseite: 1 x USB 3.1 Gen2 Typ-A, 1 x USB 3.1 Gen2 Typ-C, 2 x USB 2.0, 4 x USB 3.0, 1 x RJ-45, 1 x HDMI 2.0, 3 x DisplayPort 1.4a, Audio: 1 x Front Line Out, 1 x Mic In/ Center /Subwoofer Line Out, 1 x Line In/Rear Line Out\r\nWLAN\tJa\r\nAusstattung\t\r\nBetriebssystem\tWindows 11 Home\r\nBesondere Merkmale\tLED Beleuchtung\r\nKühlart\tLuftkühlung aktiv\r\nAllgemeine Merkmale\t\r\nProdukttyp\tGaming PC\r\nAbmessungen (B/H/T)\t209 mm x 390 mm x 381 mm\r\nAnwendungsbereich\tGaming\r\nFarbe (normiert)\tSchwarz\r\nFarbe (laut Hersteller)\tSchwarz\r\nGehäuse\tIn Win 301\r\nBesondere Gehäuseeigenschaften/Design\tBeleuchtetes Gaming Gehäuse von In Win\r\nBreite\t209 mm\r\nHöhe\t390 mm\r\nTiefe\t381 mm\r\nGewicht (laut Hersteller)\t12 Kg\r\nGewicht\t12 kg\r\nLieferumfang\tMEDION® ERAZER® Engineer P15 (MD35159), Netzkabel, Kabelgebundene Maus",
+      "price": "1077.00",
+      "price_old": "1399.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 23,
+      "name": "MEDION ERAZER® Engineer P15 (MD35159) , Gaming PC mit AMD Ryzen™ 5 Prozessor, 16 GB RAM, 1 TB SSD, GeForce RTX™ 3060 Ti LHR, 8 GB",
+      "brand": {
+        "id": 1318,
+        "name": "MEDION"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/0a95991b3e894446a43b49d52793b471"
+      ],
+      "outlet": {
+        "id": 66,
+        "name": "Wolfsburg"
+      },
+      "pim_id": 2766733
+    },
+    {
+      "posting_id": "5b0a61df-fca8-4d2b-af90-89321ff2f80d",
+      "posting_text": "Art Nr.: 2681394 - EAN.: 0711719321200\r\n\r\nDer Artikel kommt in OVP und ist  geöffnet. \r\nDer Zustand ist sehr gut.\r\n\r\nAngebot Nr.: 492",
+      "price": "27.99",
+      "price_old": "64.99",
+      "shipping_cost": 1.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "SONY HD-Kamera, PS5 Zubehör, Schwarz",
+      "brand": {
+        "id": 157,
+        "name": "SONY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/9a94abe50f2547c4a52a236ea7f46f0f"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2681394
+    },
+    {
+      "posting_id": "ceb15ff6-f992-4519-8205-95db0bf9d9ac",
+      "posting_text": "Art Nr.: 2681394 - EAN.: 0711719321200\r\n\r\nDer Artikel kommt in OVP und ist  geöffnet. \r\nDer Zustand ist sehr gut.\r\n\r\nAngebot Nr.: 494",
+      "price": "27.99",
+      "price_old": "64.99",
+      "shipping_cost": 1.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "SONY HD-Kamera, PS5 Zubehör, Schwarz",
+      "brand": {
+        "id": 157,
+        "name": "SONY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/d9632648bf1f489a98e92c33368939b7"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2681394
+    },
+    {
+      "posting_id": "322c9385-15ea-425f-8890-b07adc0e4767",
+      "posting_text": "Art Nr.: 2626259 - EAN.: 0840006618638\r\n\r\nDer Artikel kommt in OVP und ist geöffnet. \r\nDer Zustand ist sehr gut.\r\n\r\nAngebot Nr.: 466",
+      "price": "89.00",
+      "price_old": "129.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 32,
+      "name": "ELGATO Key Light Air Studiobeleuchtung",
+      "brand": {
+        "id": 7564,
+        "name": "ELGATO"
+      },
+      "eek": {
+        "classRange": null,
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_87414100",
+          "mimetype": "image/jpeg"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_87414099",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/a30f846cbd344017a927c5bc6f988dd9"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2626259
+    },
+    {
+      "posting_id": "20bfda8d-0e4b-40ea-960f-35aa68a89b6c",
+      "posting_text": "Art Nr.: 2672542 - EAN.: 4017218704954\r\n\r\nDer Artikel kommt in OVP und ist Neu. \r\n\r\nAngebot Nr.: 679",
+      "price": "73.99",
+      "price_old": "229.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 68,
+      "name": "MAGIX Video Pro X 12 - [PC]",
+      "brand": {
+        "id": 7444,
+        "name": "MAGIX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f6ce511b2ef640ad9b787c15d2136eb5"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2672542
+    },
+    {
+      "posting_id": "5e267d47-5297-4f73-8a2f-218e2de67115",
+      "posting_text": "Art Nr.: 2672546 - EAN.: 4017218648838\r\n\r\nDer Artikel kommt in OVP und ist geöffnet. \r\nDer Zustand ist ohne Mängel. \r\n\r\nBundle bestehend aus: \r\n\r\nMagix Video Deluxe 2021 Plus\r\nGreenscreen 100 cm x 160 cm\r\nMagix Music Maker Plus Edition\r\nRazer Seiren X USB-Mikrofon\r\n\r\nAngebot Nr.: 706",
+      "price": "68.99",
+      "price_old": "199.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 66,
+      "name": "Influencer Bundle 2 - [PC]",
+      "brand": {
+        "id": 7444,
+        "name": "MAGIX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f0bf88d885864d07ae3fe92cdc2f103b"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2672546
+    },
+    {
+      "posting_id": "6a8311a5-9f06-4bf9-b879-e260fc4e2d0e",
+      "posting_text": "Art Nr.: 2774086 - EAN.: 0196188489727\r\n\r\nDer Artikel kommt in OVP und ist geöffnet. \r\nDer Zustand ist sehr gut. \r\n\r\nAngebot Nr.: 703",
+      "price": "74.99",
+      "price_old": "139.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 46,
+      "name": "HYPERX Cloud Flight, On-ear Gaming Headset Schwarz",
+      "brand": {
+        "id": 6802,
+        "name": "HYPERX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/50bb49f04d234c1ba3408ef35b9b20a8",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/3b0bd727a06c408691345896bf6f90ab"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2774086
+    },
+    {
+      "posting_id": "d746685d-0091-420f-8c4d-1c8c71fbb7b9",
+      "posting_text": "Art Nr.: 2626259 - EAN.: 0840006618638\r\n\r\nDer Artikel kommt in OVP und ist Neu. \r\n\r\nAngebot Nr.: 467",
+      "price": "95.99",
+      "price_old": "149.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 36,
+      "name": "ELGATO Key Light Air Studiobeleuchtung",
+      "brand": {
+        "id": 7564,
+        "name": "ELGATO"
+      },
+      "eek": {
+        "classRange": null,
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_87414100",
+          "mimetype": "image/jpeg"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_87414099",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e398955d49be4977b2ae33c7df00724f"
+      ],
+      "outlet": {
+        "id": 396,
+        "name": "Chemnitz Roter Turm"
+      },
+      "pim_id": 2626259
+    },
+    {
+      "posting_id": "014d0fff-6933-4e71-8b3b-9d97efa718dc",
+      "posting_text": "alte Version ! \r\nEs handelt sich um einen neuen, unbenutzten Artikel in Originalverpackung. Zwischenverkauf vorbehalten",
+      "price": "444.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "HP Reverb G2 Controllers VR Headset mit Controller",
+      "brand": {
+        "id": 653,
+        "name": "HP"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/7fe43d20fd1f4e1aac2297dc335be242",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/d99b8e47102246afadc72a92ae54810e"
+      ],
+      "outlet": {
+        "id": 210,
+        "name": "Berlin Marzahn"
+      },
+      "pim_id": 2692813
+    },
+    {
+      "posting_id": "1f3b7580-f748-4946-a701-3c1803881f21",
+      "posting_text": "Neu",
+      "price": "4.99",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "collect",
+      "discount_in_percent": 0,
+      "name": "Destruction AllStars - [PlayStation 5]",
+      "brand": {
+        "id": 10188,
+        "name": "SONY"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05955aae1fa8480598dea15a8ff2f8b5"
+      ],
+      "outlet": {
+        "id": 35,
+        "name": "Mülheim Rhein Ruhr Zentrum"
+      },
+      "pim_id": 2727129
+    },
+    {
+      "posting_id": "96a071e4-260f-4686-b3d7-5e9366126810",
+      "posting_text": "Gerät kann ein Vorführgerät sein, eventuell ist die Verpackung geöffnet oder nicht mehr vorhanden - volle Garantie! Kann gerne gegen Aufpreis bis auf 5 Jahre verlängert werden.",
+      "price": "397.00",
+      "price_old": "579.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 31,
+      "name": "GIGABYTE M27Q X 27 Zoll QHD Gaming Monitor (1 ms Reaktionszeit, bis zu 240 Hz)",
+      "brand": {
+        "id": 2257,
+        "name": "GIGABYTE"
+      },
+      "eek": {
+        "classRange": null,
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_90754985",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_90754986",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/0b57100e1b8f4e26ac3b6b3490d08b1c"
+      ],
+      "outlet": {
+        "id": 310,
+        "name": "Köln City"
+      },
+      "pim_id": 2785107
+    },
+    {
+      "posting_id": "71ee587a-c0b8-46a8-ad1a-0a595bfd3e12",
+      "posting_text": "Gerät kann ein Vorführgerät sein, eventuell ist die Verpackung geöffnet oder nicht mehr vorhanden - volle Garantie! Kann gerne gegen Aufpreis bis auf 5 Jahre verlängert werden.",
+      "price": "157.00",
+      "price_old": "199.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 21,
+      "name": "MSI Optix G24C4 23,6 Zoll Full-HD Gaming Monitor (1 ms Reaktionszeit, 144 Hz)",
+      "brand": {
+        "id": 3045,
+        "name": "MSI"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88450976",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88450975",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/da26c42a120647fa878068f94b5ce176"
+      ],
+      "outlet": {
+        "id": 310,
+        "name": "Köln City"
+      },
+      "pim_id": 2642079
+    },
+    {
+      "posting_id": "b8883785-71cb-4bed-9aa7-b02d968cc971",
+      "posting_text": "Technische Merkmale\t\r\nProdukttyp\tPS5 Zubehör\r\nUnterstützte Plattformen\tPlayStation 5\r\nAllgemeine Merkmale\t\r\nBreite\t240 mm\r\nHöhe\t241 mm\r\nTiefe\t40 mm\r\nFarbe (laut Hersteller)\tSchwarz\r\nGewicht (laut Hersteller)\t600 g\r\nGewicht\t600 g\r\nLieferumfang\t1 Cool&Charge Station, Konsole; Controller und Games sind nicht im Lieferumfang enthalten.",
+      "price": "15.00",
+      "price_old": "34.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "KONIX PS5 Cooling & Charging Station Spaceship, PS5 Zubehör, Schwarz",
+      "brand": {
+        "id": 6900,
+        "name": "KONIX"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/283bfdd470d74e70b38ac6559b624c39"
+      ],
+      "outlet": {
+        "id": 222,
+        "name": "Neckarsulm"
+      },
+      "pim_id": 2737787
+    },
+    {
+      "posting_id": "ad0395d0-8348-4bab-93f6-68567abe0d5a",
+      "posting_text": "Hierbei handelt es sich um Neuware, Verpackung mit Gebrauchsspuren.",
+      "price": "79.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "NACON Revolution X Controller Schwarz",
+      "brand": {
+        "id": 6298,
+        "name": "NACON"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/757c68dd949945d2952d7fc323f2d5c3"
+      ],
+      "outlet": {
+        "id": 1196,
+        "name": "Wiesbaden Luisen Forum"
+      },
+      "pim_id": 2703173
+    },
+    {
+      "posting_id": "dbbef002-1bec-47bf-b659-f8457e16f169",
+      "posting_text": "Ob alleine Zocken oder eine Gaming-Session mit Freunden: Das Gaming NoteBook ASUS ROG Flow X13 GV301QH-K6034T begleitet Sie durch jede Quest und jeden Task!\r\n\r\nEinfach anschließen, hochfahren und starten: Dank des vorinstallierten Betriebssystems Windows 10 Home ist das kein Problem. Sie müssen anschließend nur noch die Software aufspielen, mit der Sie arbeiten wollen.\r\n\r\nWie viel Platz bietet die Festplatte?\r\n\r\nAls Festplatte hat sich der Hersteller für eine schnelle und robuste SSD -Platte entschieden. Die Kapazität dieser Festplatte beträgt 512 GB und bietet damit viel Speicherplatz für zahlreiche Dateien wie Dokumente, Bilder oder Videos.\r\n\r\nWelcher Prozessor ist verbaut?\r\n\r\nVerlässliche Qualität und Technik wurden für das \"Gehirn\" dieses Produkts ausgewählt: In seinem Inneren koordiniert ein leistungsfähiger AMD -Prozessor mit acht Prozessorkernen die angeforderten Rechenprozesse. Noch mehr Prozessorgeschwindigkeit dank Turbo-Boost: Damit erhöht das Gerät seine Taktfrequenz auf bis zu 4.3 GHz.\r\n\r\nGanze 16 GB Arbeitsspeicher stehen Ihnen mit dem Produkt von ASUS zur Verfügung.\r\n\r\nÜber welche Anschlüsse und Verbindungsmöglichkeiten verfügt das Gerät?\r\n\r\nDer Hersteller hat sein Produkt mit verschiedenen Anschlüssen versehen, damit Sie weitere Ein- und Ausgabegeräte ganz einfach anschließen können. Dazu gehören 1x 3.5mm Klinke, 1x HDMI 2.0b und 1x USB 3.2 Gen 2 Typ-A.\r\n\r\nBluetooth wird von dem Gerät natürlich unterstützt. So können Sie es kabellos mit weiteren Bluetooth-fähigen Geräten verbinden.\r\n\r\nWelches Display ist verbaut?\r\n\r\nArbeiten oder Filme schauen ist auf dem Display mit der Bildschirmdiagonale von 13,4 Zoll (34,04 cm) problemlos möglich. Dank einer Bildschirmauflösung von 1.920 x 1.200 Pixel behalten Sie Ihre Anwendung im Blick.\r\n\r\nDas Bildverhältnis von 16:10 bietet Ihnen ideale Voraussetzungen zum Arbeiten oder beim Gaming. Dank WUXGA gibt das Produkt Bilder, Grafiken und Co. in einer für den Breitbildschirm abgestimmten Bildqualität wieder. ASUS erlaubt bei seinem Produkt außerdem die Steuerung per Touchscreen.\r\n\r\nDer eingebaute Akku hat eine durchschnittliche Kapazität von 62 Wh.\r\n\r\nWie kann man Videos und Bilder aufnehmen?\r\n\r\nBitte lächeln! Eine Webcam ist bei diesem Gerät bereits integriert.\r\n\r\nBereit für die nächste Konferenz? Der Hersteller hat außerdem an ein Mikrofon gedacht. Die beiden Lautsprecher des Geräts sorgen für ein solides Sounderlebnis beim Streamen von Videos oder beim Musikhören.\r\n\r\nZusätzliche Sicherheit dank Fingerabdruck-Sensor: ASUS ermöglicht Ihnen dadurch eine sichere Identifizierung des Nutzers.\r\n\r\nDas ROG Flow X13 GV301QH-K6034T von ASUS: Verschaffen Sie sich selbst einen Eindruck vom tollen Gesamtpaket!",
+      "price": "927.00",
+      "price_old": "1699.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 45,
+      "name": "ASUS ROG Flow X13 (GV301QH-K6034T), Gaming NoteBook mit 13,4 Zoll Display Touchscreen, AMD Ryzen™ 7 Prozessor, 16 GB RAM, 512 GB SSD, GeForce® GTX 1650, Off Black",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/683dccd6dcfe41a8a1033a603dad62e0"
+      ],
+      "outlet": {
+        "id": 1390,
+        "name": "Mönchengladbach Minto"
+      },
+      "pim_id": 2706715
+    },
+    {
+      "posting_id": "26c6a731-3628-49e9-9c90-e55dbe296c0f",
+      "posting_text": "Unterwegs oder bequem zuhause auf dem Sofa: Gaming-Notebooks sind eine super Alternative zu Spiele-PCs. Falls Sie auf der Suche nach genau so einem mobilen Zocker-Laptop sind, dann sollten Sie sich das Gaming Notebook MSI PULSE GL76 11UEK-083 unbedingt einmal genauer ansehen.\r\n\r\nEinfach anschließen, hochfahren und starten: Dank des vorinstallierten Betriebssystems Windows 10 Home ist das kein Problem. Sie müssen anschließend nur noch die Software aufspielen, mit der Sie arbeiten wollen.\r\n\r\nWelche Festplatte ist verbaut?\r\n\r\nAls Festplatte hat sich der Hersteller für eine schnelle und robuste SSD -Platte entschieden. Die Kapazität dieser Festplatte beträgt 512 GB und bietet damit viel Speicherplatz für zahlreiche Dateien wie Dokumente, Bilder oder Videos.\r\n\r\nWas leistet der Prozessor?\r\n\r\nIn Sachen Taktfrequenz setzt das Gerät von MSI noch eins drauf: Der integrierte Turbo-Boost sorgt für eine Frequenzerhöhung des Prozessors auf bis zu 4.6 GHz.\r\n\r\nDer verbaute Arbeitsspeicher vom Typ DDR4 kommt mit geringer Betriebsspannung aus und sichert den reibungslosen Prozessablauf. Dank des Arbeitsspeichers mit einer Größe von 16 GB bietet Ihnen das Gaming Notebook zuverlässige und schnelle Arbeitsprozesse.\r\n\r\nWie können Sie das Gerät mit anderen verbinden?\r\n\r\nZu den Anschlüssen des Gaming Notebooks gehören unter anderem 1x HDMI, 1x Kopfhörer, 1x Mikrofon, 1x USB 2.0 und 1x USB Typ-C 3.2 Gen 1.\r\n\r\nSie wollen weitere Geräte mit dem Gaming Notebook verbinden, aber dabei kabellos arbeiten? Kein Problem, denn das Produkt unterstützt selbstverständlich auch die Bluetooth-Technologie.\r\n\r\nWelches Display ist verbaut?\r\n\r\nDas große Display mit einer Bildschirmdiagonale von 43,9 cm ermöglicht Ihnen komfortables Arbeiten, da Sie so Ihre Anwendung immer optimal im Blick haben. Mit der Bildschirmauflösung von 1.920 x 1.080 Pixel haben Sie alle Spiele, Tabellen oder Filme bestens im Blick.",
+      "price": "1047.00",
+      "price_old": "1699.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 38,
+      "name": "MSI PULSE GL76 11UEK-083, Gaming Notebook mit 17,3 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 512 GB SSD, Nvidia® GeForce RTX™ 3060 Laptop GPU, Titangrau/Schwarz",
+      "brand": {
+        "id": 3045,
+        "name": "MSI"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/df28cf4095004d9dab66d623689e5d63"
+      ],
+      "outlet": {
+        "id": 1390,
+        "name": "Mönchengladbach Minto"
+      },
+      "pim_id": 2741684
+    },
+    {
+      "posting_id": "7ba51417-06bb-4ce6-a8b3-4cb09d78f0e1",
+      "posting_text": "Aussteller, inkl Netzteil & HDMI Kabel\r\nStandfuß fehlt, nur für Wand-/Monitor-Halterung geeignet",
+      "price": "247.00",
+      "price_old": "579.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 57,
+      "name": "SAMSUNG S27AG500NU Odyssey Gaming G5A 27 Zoll WQHD Gaming Monitor (1 ms Reaktionszeit, bis zu 165 Hz)",
+      "brand": {
+        "id": 143,
+        "name": "SAMSUNG"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "G",
+        "colorCode": "rgb(227 6 19)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88909244",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88909243",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/d600f22ce545445082baec7b178364de",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/6ff5892572a74f18b17010502bb98375"
+      ],
+      "outlet": {
+        "id": 9,
+        "name": "Lüdenscheid"
+      },
+      "pim_id": 2771725
+    },
+    {
+      "posting_id": "005b18ef-6af0-4ff3-ad2b-5bd96785926b",
+      "posting_text": "Gebraucht in einem guten Zustand",
+      "price": "79.00",
+      "price_old": "109.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 28,
+      "name": "NACON REVOLUTION PRO CONTROLLER 3 Controller Schwarz",
+      "brand": {
+        "id": 6298,
+        "name": "NACON"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e793e7ef4a74433da800c97c8f2b61d9"
+      ],
+      "outlet": {
+        "id": 328,
+        "name": "Hamburg Bergedorf"
+      },
+      "pim_id": 2598857
+    },
+    {
+      "posting_id": "eda4dea6-3488-4236-b2ac-67a91812655f",
+      "posting_text": "Der Monitor ist ein Aussteller und ist in einem sehr guten Zustand.\r\nDas Zubehör ist komplett.",
+      "price": "550.00",
+      "price_old": "919.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 40,
+      "name": "ASUS ROG Swift PG329Q 32 Zoll WQHD Gaming-Monitor (1 ms Reaktionszeit, 175 Hz)",
+      "brand": {
+        "id": 2383,
+        "name": "ASUS"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "G",
+        "colorCode": "rgb(227 6 19)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_82433287",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_85989493",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/29927edcfd2942258d529ced479ad3bf"
+      ],
+      "outlet": {
+        "id": 91,
+        "name": "Dortmund Eving"
+      },
+      "pim_id": 2692730
+    },
+    {
+      "posting_id": "5f832955-d8f8-4fd1-9474-c55a8b57e699",
+      "posting_text": "Der Monitor ist ein Ausstellungsstück und in einem sehr guten Zustand.\r\nDas Zubehör ist Komplett.",
+      "price": "317.00",
+      "price_old": "399.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 21,
+      "name": "MSI OPTIX MAG322CQPDE 31,5 Zoll WQHD Monitor (1 ms Reaktionszeit, 165 Hz)",
+      "brand": {
+        "id": 3045,
+        "name": "MSI"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "G",
+        "colorCode": "rgb(227 6 19)",
+        "label": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88450819",
+          "mimetype": "image/pdf"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_88450816",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/bc38103805084b1ab4fe650295a77225"
+      ],
+      "outlet": {
+        "id": 91,
+        "name": "Dortmund Eving"
+      },
+      "pim_id": 2697965
+    },
+    {
+      "posting_id": "a7e5168f-9e01-4005-babb-e9aa5bcb4d44",
+      "posting_text": "Der Monitor ist OVP.",
+      "price": "247.00",
+      "price_old": "279.00",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 11,
+      "name": "ACER RX271P 27 Zoll Full-HD Gaming Monitor (1 ms Reaktionszeit, bis zu 165 Hz)",
+      "brand": {
+        "id": 845,
+        "name": "ACER"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_87487800",
+          "mimetype": "image/jpeg"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_87487791",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/102b3f0decc947d19a98b84ba9d93a81"
+      ],
+      "outlet": {
+        "id": 91,
+        "name": "Dortmund Eving"
+      },
+      "pim_id": 2764459
+    },
+    {
+      "posting_id": "cc68914d-95b0-4185-82b1-8e55f3ff197b",
+      "posting_text": "Der Monitor ist ein Ausstellungsstück und in einem sehr guten Zustand.\r\nDas Zubehör ist Komplett.",
+      "price": "197.00",
+      "price_old": "269.00",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 27,
+      "name": "HP OMEN 25i 24,5 Zoll Full-HD Gaming Monitor (1 ms Reaktionszeit, 165 Hz)",
+      "brand": {
+        "id": 653,
+        "name": "HP"
+      },
+      "eek": {
+        "classRange": {
+          "from": "A",
+          "to": "G"
+        },
+        "energyEfficiencyLabelEu2017_1369": true,
+        "efficiencyClass": "F",
+        "colorCode": "rgb(236 102 8)",
+        "label": {
+          "url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_86324879",
+          "mimetype": "image/png"
+        },
+        "datasheet": {
+          "url": "https://assets.mmsrg.com/ada/166325/c1/-/-/ASSET_MMS_86324883",
+          "mimetype": "image/pdf"
+        }
+      },
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8edace9b5dbb4470a2240ab65b1c7d09"
+      ],
+      "outlet": {
+        "id": 91,
+        "name": "Dortmund Eving"
+      },
+      "pim_id": 2739820
+    },
+    {
+      "posting_id": "99d868e8-3952-4602-96a2-87cc39de2679",
+      "posting_text": "Aus unserer Ausstellung",
+      "price": "28.00",
+      "price_old": "59.99",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 53,
+      "name": "CORSAIR HS50 PRO, Over-ear Gaming Headset Schwarz",
+      "brand": {
+        "id": 5834,
+        "name": "CORSAIR"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/6d290462c799470f9f373148176a1791"
+      ],
+      "outlet": {
+        "id": 1175,
+        "name": "Celle"
+      },
+      "pim_id": 2605488
+    },
+    {
+      "posting_id": "0bb56ecc-0583-4f6a-9ee8-d2baddb4635b",
+      "posting_text": "Gebraucht",
+      "price": "19.99",
+      "price_old": "53.99",
+      "shipping_cost": 0,
+      "shipping_type": "collect",
+      "discount_in_percent": 63,
+      "name": "FIFA 22 - [PlayStation 4]",
+      "brand": {
+        "id": 10234,
+        "name": "ELECTRONIC ARTS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/16798c97df13434f8db97a250f566db4"
+      ],
+      "outlet": {
+        "id": 47,
+        "name": "Freiburg"
+      },
+      "pim_id": 2750640
+    },
+    {
+      "posting_id": "48173961-2e9b-452f-8ffa-9656821f2588",
+      "posting_text": "aus der Ausstellung, zur Ansicht geöffnet",
+      "price": "370.00",
+      "price_old": "",
+      "shipping_cost": 4.99,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "HTC Vive Cosmos VR Brille + 2xController",
+      "brand": {
+        "id": 1372,
+        "name": "HTC"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/1120dfab47d84be79849fac0bef315d4"
+      ],
+      "outlet": {
+        "id": 4,
+        "name": "Dortmund City"
+      },
+      "pim_id": 2660873
+    },
+    {
+      "posting_id": "0739b6e0-ba55-41ae-b767-a5e7dd7b505f",
+      "posting_text": "Kundenrücknahme. Von Fachwerkstatt gecleart, gelöscht und aufbereitet.",
+      "price": "250.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "NINTENDO Switch Neon-Rot/Neon-Blau (neue Edition)",
+      "brand": {
+        "id": 682,
+        "name": "NINTENDO"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/5aa037aff6be483c90e4c800da6eeda7",
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8d016bcc689a42ba9adb769642c2ffe0"
+      ],
+      "outlet": {
+        "id": 210,
+        "name": "Berlin Marzahn"
+      },
+      "pim_id": 2584585
+    },
+    {
+      "posting_id": "76f7f076-57f9-4281-ad27-5749dfe9bac5",
+      "posting_text": "Bei dem Artikel handelt es sich um eine Kundenrücksendung oder ein Vorführgerät, welches nur minimal im Einsatz war. Es können leichte Gebrauchsspuren (z.B. nicht mehr original aufgewickelte Stromkabel, entfernte Schutzfolien, Fingerabdrücke) und/oder geringfügige Lagerspuren (z.B. verschmutzter, beschädigter oder ausgetauschter Umkarton, leichte Kratzer) vorliegen, die die Funktionalität des Artikels aber nicht beeinträchtigen.",
+      "price": "1347.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "CAPTIVA I63-874, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/55b8a2255a814e39ae13b15351d4121c"
+      ],
+      "outlet": {
+        "id": 79,
+        "name": "Kleve"
+      },
+      "pim_id": 2776163
+    },
+    {
+      "posting_id": "849a44fb-68d4-4857-932b-786bee931270",
+      "posting_text": "Bei dem Artikel handelt es sich um eine Kundenrücksendung oder ein Vorführgerät, welches nur minimal im Einsatz war. Es können leichte Gebrauchsspuren (z.B. nicht mehr original aufgewickelte Stromkabel, entfernte Schutzfolien, Fingerabdrücke) und/oder geringfügige Lagerspuren (z.B. verschmutzter, beschädigter oder ausgetauschter Umkarton, leichte Kratzer) vorliegen, die die Funktionalität des Artikels aber nicht beeinträchtigen.",
+      "price": "1327.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "CAPTIVA I65-635, Gaming Notebook mit 17,3 Zoll Display, Intel® Core™ i7 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/625ca6868e27474cad2f0b2b02cfe366"
+      ],
+      "outlet": {
+        "id": 79,
+        "name": "Kleve"
+      },
+      "pim_id": 2776170
+    },
+    {
+      "posting_id": "98eca9dc-a182-4782-9267-72e9b143c040",
+      "posting_text": "Bei dem Artikel handelt es sich um eine Kundenrücksendung oder ein Vorführgerät, welches nur minimal im Einsatz war. Es können leichte Gebrauchsspuren (z.B. nicht mehr original aufgewickelte Stromkabel, entfernte Schutzfolien, Fingerabdrücke) und/oder geringfügige Lagerspuren (z.B. verschmutzter, beschädigter oder ausgetauschter Umkarton, leichte Kratzer) vorliegen, die die Funktionalität des Artikels aber nicht beeinträchtigen.",
+      "price": "1277.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "CAPTIVA I65-634, Gaming Notebook mit 17,3 Zoll Display, Intel® Core™ i5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/a62d15bc18434751b87a8794e6c4018a"
+      ],
+      "outlet": {
+        "id": 79,
+        "name": "Kleve"
+      },
+      "pim_id": 2776169
+    },
+    {
+      "posting_id": "3fb7d7af-dfb9-4cec-b8cc-4c52ab37543b",
+      "posting_text": "Bei dem Artikel handelt es sich um eine Kundenrücksendung oder ein Vorführgerät, welches nur minimal im Einsatz war. Es können leichte Gebrauchsspuren (z.B. nicht mehr original aufgewickelte Stromkabel, entfernte Schutzfolien, Fingerabdrücke) und/oder geringfügige Lagerspuren (z.B. verschmutzter, beschädigter oder ausgetauschter Umkarton, leichte Kratzer) vorliegen, die die Funktionalität des Artikels aber nicht beeinträchtigen.",
+      "price": "1237.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "shipping",
+      "discount_in_percent": 0,
+      "name": "CAPTIVA I63-851, Gaming Notebook mit 15,6 Zoll Display, Intel® Core™ i5 Prozessor, 16 GB RAM, 500 GB SSD, Nvidia GeForce RTX 3060, Grau",
+      "brand": {
+        "id": 1394,
+        "name": "CAPTIVA"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/8aaaeae5126049cab0fa6a95d4c96947"
+      ],
+      "outlet": {
+        "id": 79,
+        "name": "Kleve"
+      },
+      "pim_id": 2776171
+    },
+    {
+      "posting_id": "5ffeb2cf-82ff-43a6-bc3e-8f4ab0afb7c7",
+      "posting_text": "Neu",
+      "price": "10.00",
+      "price_old": "",
+      "shipping_cost": 0,
+      "shipping_type": "collect",
+      "discount_in_percent": 0,
+      "name": "Landwirtschafts-Simulator 22 - [PC]",
+      "brand": {
+        "id": 9564,
+        "name": "ASTRAGON/GIANTS"
+      },
+      "eek": {},
+      "top_level_catalog_id": "CAT_DE_SAT_786",
+      "original_url": [
+        "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/f4b07c6a02f14b53b336f8866e289b0e"
+      ],
+      "outlet": {
+        "id": 35,
+        "name": "Mülheim Rhein Ruhr Zentrum"
+      },
+      "pim_id": 2745988
+    }
+  ],
+  "morePostingsAvailable": true
+}
