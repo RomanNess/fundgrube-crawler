@@ -3,6 +3,8 @@ package crawler
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"log"
+	"os"
 	"testing"
 )
 
@@ -12,6 +14,10 @@ type PersistenceSuite struct {
 
 func (suite *PersistenceSuite) SetupTest() {
 	clearAll()
+	err := os.Setenv("MONGODB_DB", "fundgrube_test")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func TestRunSuite(t *testing.T) {

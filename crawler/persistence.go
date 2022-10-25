@@ -6,6 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
+	"os"
 )
 
 func findOne(postingId string) *posting {
@@ -63,12 +64,12 @@ func _saveOne(collection *mongo.Collection, posting posting) *mongo.SingleResult
 
 func connect() *mongo.Collection {
 	credential := options.Credential{
-		Username: "root",
-		Password: "example",
+		Username: env("MONGODB_USERNAME", "root"),
+		Password: env("MONGODB_PASSWORD", "example"),
 	}
 
 	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017").
+	clientOptions := options.Client().ApplyURI(env("MONGODB_URI", "mongodb://localhost:27017")).
 		SetAuth(credential)
 
 	// Connect to MongoDB
@@ -85,5 +86,13 @@ func connect() *mongo.Collection {
 		log.Fatal(err)
 	}
 
-	return client.Database("fundgrube").Collection("postings")
+	return client.Database(env("MONGODB_DB", "fundgrube")).Collection(env("MONGODB_COLLECTION", "postings"))
+}
+
+func env(key string, defaultValue string) string {
+	value, present := os.LookupEnv(key)
+	if present {
+		return value
+	}
+	return defaultValue
 }
