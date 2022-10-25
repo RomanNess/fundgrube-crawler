@@ -9,31 +9,50 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
 func fetchPostings(mockedPostings bool) (ret []posting, err error) {
-	// TODO: api always returns same page if size >= 100 is requested
-	size := 90
-	offset := 0
-	for true {
-		postingsResponse, e := fetchSinglePageOfPostings(size, offset, mockedPostings)
-		if e != nil {
-			return nil, e
-		}
-		ret = append(ret, postingsResponse.Postings...)
+	outlets, err := fetchOutlets(mockedPostings)
+	if err != nil {
+		return nil, err
+	}
 
-		// TODO: api cannot request offset > 990; iterate over outlets or brands
-		offset = offset + size
-		if !postingsResponse.HasMorePages || offset > 990 {
-			return
+	for _, outlet := range outlets {
+		// api always returns same page if limit >= 100 is requested
+		limit := 90
+		offset := 0
+		for true {
+			postingsResponse, e := fetchSinglePageOfPostings(&outlet, limit, offset, mockedPostings)
+			if e != nil {
+				return nil, e
+			}
+			ret = append(ret, postingsResponse.Postings...)
+
+			// api cannot request offset > 990; iterate over outlets or brands
+			offset = offset + limit
+			if !postingsResponse.HasMorePages || offset > 990 {
+				break
+			}
 		}
 	}
+	log.Printf("Found %d Postings overall in %d outlets.", len(ret), len(outlets))
 	return
 }
 
-func fetchSinglePageOfPostings(limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
-	responseBodyReader, err := getResponseBody(limit, offset, mockedPostings)
+func fetchOutlets(mockedPostings bool) ([]outlet, error) {
+	postingsResponse, err := fetchSinglePageOfPostings(nil, 1, 0, mockedPostings)
+	if err != nil {
+		return nil, err
+	}
+	return postingsResponse.Outlets, err
+}
+
+func fetchSinglePageOfPostings(outlet *outlet, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
+	url := buildUrl(outlet, limit, offset)
+
+	responseBodyReader, err := getResponseBody(url, mockedPostings)
 	if err != nil {
 		return nil, err
 	}
@@ -54,20 +73,20 @@ func fetchSinglePageOfPostings(limit int, offset int, mockedPostings bool) (*pos
 		return nil, err
 	}
 
-	log.Printf("Found %d postings.", len(postingResponse.Postings))
+	if outlet != nil {
+		log.Printf("Found %d postings in %s.", len(postingResponse.Postings), outlet.Name)
+	}
 	return &postingResponse, nil
 }
 
-func getResponseBody(limit int, offset int, mockedResponse bool) (io.ReadCloser, error) {
+func getResponseBody(url string, mockedResponse bool) (io.ReadCloser, error) {
 	if mockedResponse {
 		return getResponseBodyFromMock()
 	}
-	return getResponseBodyFromServer(limit, offset)
+	return getResponseBodyFromServer(url)
 }
 
-func getResponseBodyFromServer(size int, offset int) (io.ReadCloser, error) {
-	url := fmt.Sprintf("https://www.saturn.de/de/data/fundgrube/api/postings?limit=%d&offset=%d&categorieIds=CAT_DE_SAT_786&recentFilter=categories", size, offset)
-
+func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	client := http.Client{Timeout: 5 * time.Second}
 
 	request, err := http.NewRequest(http.MethodGet, url, nil)
@@ -83,6 +102,14 @@ func getResponseBodyFromServer(size int, offset int) (io.ReadCloser, error) {
 	}
 	responseBody := response.Body
 	return responseBody, err
+}
+
+func buildUrl(outlet *outlet, size int, offset int) string {
+	url := fmt.Sprintf("https://www.saturn.de/de/data/fundgrube/api/postings?limit=%d&offset=%d&categorieIds=CAT_DE_SAT_786&recentFilter=categories", size, offset)
+	if outlet == nil {
+		return url
+	}
+	return url + "&outletIds=" + strconv.Itoa(outlet.OutletId)
 }
 
 func getResponseBodyFromMock() (io.ReadCloser, error) {
