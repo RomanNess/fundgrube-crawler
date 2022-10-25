@@ -6,7 +6,7 @@ import (
 )
 
 func Crawl(mockedPostings bool) error {
-	postings, err := fetchPostings(500, mockedPostings)
+	postings, err := fetchPostings(mockedPostings)
 	if err != nil {
 		return err
 	}
@@ -20,6 +20,7 @@ func Crawl(mockedPostings bool) error {
 }
 
 func presentDeals(deals []posting) {
+	log.Printf("Found %d deals.", len(deals))
 	for _, deal := range deals {
 		log.Println(deal)
 	}

@@ -2,8 +2,8 @@ package crawler
 
 import "strings"
 
-func findDeals(postings *postings, query query) (deals []posting) {
-	for _, posting := range postings.Postings {
+func findDeals(postings []posting, query query) (deals []posting) {
+	for _, posting := range postings {
 		if isDeal(posting, query) {
 			deals = append(deals, posting)
 		}

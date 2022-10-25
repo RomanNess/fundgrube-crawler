@@ -6,8 +6,10 @@ type query struct {
 	Keyword string
 }
 
-type postings struct {
-	Postings []posting `json:"postings"`
+type postingsResponse struct {
+	Postings     []posting `json:"postings"`
+	Outlets      []outlet  `json:"outlets"`
+	HasMorePages bool      `json:"morePostingsAvailable"`
 }
 
 /* Example json
@@ -46,6 +48,20 @@ type posting struct {
 		Id   int    `json:"id"`
 		Name string `json:"name"`
 	} `json:"outlet"`
+}
+
+/*
+   {
+     "id": 67,
+     "nameFull": "Saturn Neu-Isenburg",
+     "name": "Neu-Isenburg",
+     "isActive": true,
+     "count": 76
+   }
+*/
+type outlet struct {
+	OutletId int    `json:"id"`
+	Name     string `json:"name"`
 }
 
 func (p posting) String() string {
