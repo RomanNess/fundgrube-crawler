@@ -5,20 +5,23 @@ import (
 	"os"
 )
 
-func Crawl(mockedPostings bool) error {
+func CrawlPostings(mockedPostings bool) error {
 	postings, err := fetchPostings(mockedPostings)
 	if err != nil {
 		return err
 	}
 
 	saveAll(postings)
+	return nil
+}
+
+func SearchDeals() {
+	postings := findAll()
 
 	query := getQuery()
 	deals := findDeals(postings, query)
 
 	presentDeals(deals)
-
-	return nil
 }
 
 func presentDeals(deals []posting) {

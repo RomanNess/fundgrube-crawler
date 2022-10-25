@@ -46,6 +46,7 @@ func fetchOutlets(mockedPostings bool) ([]outlet, error) {
 	if err != nil {
 		return nil, err
 	}
+	log.Printf("Found %d Outlets", len(postingsResponse.Outlets))
 	return postingsResponse.Outlets, err
 }
 
