@@ -41,7 +41,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 }
 
 func (suite *PersistenceSuite) Test_findAll_empty() {
-	postings := findAll()
+	postings := findAll(100, 0)
 	assert.Equal(suite.T(), []posting{}, postings)
 }
 
@@ -51,9 +51,24 @@ func (suite *PersistenceSuite) Test_findAll() {
 	bar := getExamplePosting("bar")
 	saveOne(bar)
 
-	postings := findAll()
+	postings := findAll(100, 0)
 	assert.Equal(suite.T(), 2, len(postings))
 	assert.Contains(suite.T(), postings, foo)
+	assert.Contains(suite.T(), postings, bar)
+}
+
+func (suite *PersistenceSuite) Test_findAll_offset() {
+	foo := getExamplePosting("foo")
+	saveOne(foo)
+	bar := getExamplePosting("bar")
+	saveOne(bar)
+
+	postings := findAll(1, 0)
+	assert.Equal(suite.T(), 1, len(postings))
+	assert.Contains(suite.T(), postings, foo)
+
+	postings = findAll(1, 1)
+	assert.Equal(suite.T(), 1, len(postings))
 	assert.Contains(suite.T(), postings, bar)
 }
 
@@ -81,7 +96,7 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 	saveAll([]posting{alreadySaved, notSavedYet})
 
-	all := findAll()
+	all := findAll(100, 0)
 	assert.Contains(suite.T(), all, alreadySaved)
 	assert.Contains(suite.T(), all, notSavedYet)
 }

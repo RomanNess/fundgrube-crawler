@@ -16,11 +16,20 @@ func CrawlPostings(mockedPostings bool) error {
 }
 
 func SearchDeals() {
-	postings := findAll()
-
 	query := getQuery()
-	deals := findDeals(postings, query)
+	var limit int64 = 100
+	var offset int64 = 0
+	deals := []posting{}
+	for true {
+		postings := findAll(limit, offset)
+		log.Printf("Loaded %d postings from DB.", len(postings))
 
+		offset = offset + limit
+		if len(postings) == 0 {
+			break
+		}
+		deals = append(deals, findDeals(postings, query)...)
+	}
 	presentDeals(deals)
 }
 

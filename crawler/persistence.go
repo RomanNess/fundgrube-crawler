@@ -29,10 +29,10 @@ func saveAll(postings []posting) {
 	}
 }
 
-func findAll() []posting {
-	cur, err := connect().Find(context.TODO(), bson.M{})
+func findAll(limit int64, offset int64) []posting {
+	cur, err := connect().Find(context.TODO(), bson.D{}, options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1}))
 	if err != nil {
-		return nil // TODO
+		log.Fatal(err)
 	}
 	postings := []posting{}
 	for cur.Next(context.TODO()) {
