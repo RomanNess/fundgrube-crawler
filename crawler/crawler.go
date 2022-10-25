@@ -11,6 +11,8 @@ func Crawl(mockedPostings bool) error {
 		return err
 	}
 
+	saveAll(postings)
+
 	query := getQuery()
 	deals := findDeals(postings, query)
 

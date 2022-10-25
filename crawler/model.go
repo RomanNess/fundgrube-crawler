@@ -39,15 +39,12 @@ type postingsResponse struct {
    }
 */
 type posting struct {
-	PostingId string   `json:"posting_id"`
+	PostingId string   `json:"posting_id" bson:"_id"`
 	Price     string   `json:"price"`
 	Name      string   `json:"name"`
 	Url       []string `json:"original_url"`
 	Text      string   `json:"posting_text"`
-	Outlet    struct {
-		Id   int    `json:"id"`
-		Name string `json:"name"`
-	} `json:"outlet"`
+	Outlet    outlet   `json:"outlet"`
 }
 
 /*
