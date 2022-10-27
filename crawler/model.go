@@ -2,7 +2,6 @@ package crawler
 
 import (
 	"fmt"
-	"net/url"
 )
 
 type query struct {
@@ -49,6 +48,8 @@ type posting struct {
 	Text      string   `json:"posting_text"`
 	Outlet    outlet   `json:"outlet"`
 	Brand     brand    `json:"brand"`
+	Shop      Shop     `bson:"shop"`
+	ShopUrl   string   `bson:"shop_url"`
 }
 
 /*
@@ -71,7 +72,5 @@ type brand struct {
 }
 
 func (p posting) String() string {
-	imageUrl := fmt.Sprintf("%s?strip=yes&quality=75&backgroundsize=cover&x=640&y=640", p.Url[0])
-	shopUrl := fmt.Sprintf("https://www.saturn.de/de/data/fundgrube?outletIds=%d&brands=%s&categorieIds=CAT_DE_SAT_786", p.Outlet.OutletId, url.QueryEscape(p.Brand.Name))
-	return fmt.Sprintf("%s€ - %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.Name, p.Outlet.Name, imageUrl, shopUrl)
+	return fmt.Sprintf("%s€ - %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
 }

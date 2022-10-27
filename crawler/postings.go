@@ -8,15 +8,32 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"time"
 )
 
-func fetchPostings(mockedPostings bool) (ret []posting, err error) {
-	outlets, err := fetchOutlets(mockedPostings)
+type Shop string
+
+const (
+	SATURN Shop = "SATURN"
+	MM          = "MM"
+)
+
+type pageRequest struct {
+	limit  int
+	offset int
+}
+
+func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
+	outlets, err := fetchOutlets(shop, mockedPostings)
 	if err != nil {
 		return nil, err
+	}
+
+	if envBool("LIMIT_OUTLETS") {
+		outlets = outlets[0:5]
 	}
 
 	for _, outlet := range outlets {
@@ -24,7 +41,7 @@ func fetchPostings(mockedPostings bool) (ret []posting, err error) {
 		limit := 90
 		offset := 0
 		for true {
-			postingsResponse, e := fetchSinglePageOfPostings(&outlet, limit, offset, mockedPostings)
+			postingsResponse, e := fetchSinglePageOfPostings(shop, &outlet, nil, limit, offset, mockedPostings)
 			if e != nil {
 				return nil, e
 			}
@@ -38,11 +55,27 @@ func fetchPostings(mockedPostings bool) (ret []posting, err error) {
 		}
 	}
 	log.Printf("Found %d Postings overall in %d outlets.", len(ret), len(outlets))
+	return preparePostings(shop, ret), err
+}
+
+func preparePostings(shop Shop, postings []posting) (ret []posting) {
+	for _, p := range postings {
+		ret = append(ret, preparePosting(shop, p))
+	}
 	return
 }
 
-func fetchOutlets(mockedPostings bool) ([]outlet, error) {
-	postingsResponse, err := fetchSinglePageOfPostings(nil, 1, 0, mockedPostings)
+func preparePosting(shop Shop, posting posting) posting {
+	posting.Shop = shop
+	posting.ShopUrl = buildUrl(shop, &posting.Outlet, &posting.Brand, nil)
+	for i := range posting.Url {
+		posting.Url[i] = fmt.Sprintf("%s?strip=yes&quality=75&backgroundsize=cover&x=640&y=640", posting.Url[i])
+	}
+	return posting
+}
+
+func fetchOutlets(shop Shop, mockedPostings bool) ([]outlet, error) {
+	postingsResponse, err := fetchSinglePageOfPostings(shop, nil, nil, 1, 0, mockedPostings)
 	if err != nil {
 		return nil, err
 	}
@@ -50,10 +83,9 @@ func fetchOutlets(mockedPostings bool) ([]outlet, error) {
 	return postingsResponse.Outlets, err
 }
 
-func fetchSinglePageOfPostings(outlet *outlet, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
-	url := buildUrl(outlet, limit, offset)
-
-	responseBodyReader, err := getResponseBody(url, mockedPostings)
+func fetchSinglePageOfPostings(shop Shop, outlet *outlet, brand *brand, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
+	urlString := buildUrl(shop, outlet, brand, &pageRequest{limit, offset})
+	responseBodyReader, err := getResponseBody(urlString, mockedPostings)
 	if err != nil {
 		return nil, err
 	}
@@ -105,12 +137,44 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	return responseBody, err
 }
 
-func buildUrl(outlet *outlet, size int, offset int) string {
-	url := fmt.Sprintf("https://www.saturn.de/de/data/fundgrube/api/postings?limit=%d&offset=%d&categorieIds=CAT_DE_SAT_786&recentFilter=categories", size, offset)
-	if outlet == nil {
-		return url
+func buildUrl(shop Shop, outlet *outlet, brand *brand, pageRequest *pageRequest) string {
+	isApiRequest := pageRequest != nil
+	u, err := url.Parse(buildBaseUrl(shop, isApiRequest))
+	if err != nil {
+		log.Fatal(err)
 	}
-	return url + "&outletIds=" + strconv.Itoa(outlet.OutletId)
+
+	q := u.Query()
+	if isApiRequest {
+		q.Set("limit", strconv.Itoa(pageRequest.limit))
+		q.Set("offset", strconv.Itoa(pageRequest.offset))
+	}
+	if outlet != nil {
+		q.Set("outletIds", strconv.Itoa(outlet.OutletId))
+	}
+	if brand != nil {
+		q.Set("brands", url.QueryEscape(brand.Name))
+	}
+
+	u.RawQuery = q.Encode()
+	return u.String()
+}
+
+func buildBaseUrl(shop Shop, isApiRequest bool) string {
+	if shop == SATURN {
+		if isApiRequest {
+			return "https://www.saturn.de/de/data/fundgrube/api/postings?categorieIds=CAT_DE_SAT_786"
+		}
+		return "https://www.saturn.de/de/data/fundgrube?categorieIds=CAT_DE_SAT_786"
+	}
+	if shop == MM {
+		if isApiRequest {
+			return "https://www.mediamarkt.de/de/data/fundgrube/api/postings?categorieIds=CAT_DE_MM_626"
+		}
+		return "https://www.mediamarkt.de/de/data/fundgrube?categorieIds=CAT_DE_MM_626"
+	}
+
+	panic(fmt.Sprintf("Unkown Shop %s", shop))
 }
 
 func getResponseBodyFromMock() (io.ReadCloser, error) {
@@ -120,4 +184,8 @@ func getResponseBodyFromMock() (io.ReadCloser, error) {
 	}
 
 	return io.NopCloser(file), nil
+}
+
+func envBool(key string) bool {
+	return os.Getenv(key) == "true"
 }

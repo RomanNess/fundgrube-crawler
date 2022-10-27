@@ -6,12 +6,13 @@ import (
 )
 
 func CrawlPostings(mockedPostings bool) error {
-	postings, err := fetchPostings(mockedPostings)
-	if err != nil {
-		return err
+	for _, shop := range []Shop{SATURN, MM} {
+		postings, err := fetchPostings(shop, mockedPostings)
+		if err != nil {
+			return err
+		}
+		saveAll(postings)
 	}
-
-	saveAll(postings)
 	return nil
 }
 
