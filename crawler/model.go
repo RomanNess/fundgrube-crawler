@@ -2,6 +2,7 @@ package crawler
 
 import (
 	"fmt"
+	"time"
 )
 
 type query struct {
@@ -41,16 +42,18 @@ type postingsResponse struct {
    }
 */
 type posting struct {
-	PostingId   string   `json:"posting_id" bson:"_id"`
-	PriceString string   `json:"price" bson:"-"`
-	Price       float64  `json:"-" bson:"price"`
-	Name        string   `json:"name"`
-	Url         []string `json:"original_url"`
-	Text        string   `json:"posting_text"`
-	Outlet      outlet   `json:"outlet"`
-	Brand       brand    `json:"brand"`
-	Shop        Shop     `bson:"shop"`
-	ShopUrl     string   `bson:"shop_url"`
+	PostingId   string     `json:"posting_id" bson:"_id"`
+	PriceString string     `json:"price" bson:"-"`
+	Price       float64    `json:"-" bson:"price"`
+	Name        string     `json:"name"`
+	Url         []string   `json:"original_url"`
+	Text        string     `json:"posting_text"`
+	Outlet      outlet     `json:"outlet"`
+	Brand       brand      `json:"brand"`
+	Shop        Shop       `bson:"shop"`
+	ShopUrl     string     `bson:"shop_url"`
+	CreDat      *time.Time `bson:"cre_dat"`
+	ModDat      *time.Time `bson:"mod_dat"`
 }
 
 /*

@@ -3,15 +3,22 @@ package crawler
 import (
 	"context"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"os"
+	"reflect"
+	"time"
 )
 
 func findOne(postingId string) *posting {
+	return _findOne(connect(), postingId)
+}
+
+func _findOne(collection *mongo.Collection, postingId string) *posting {
 	posting := posting{}
-	err := connect().FindOne(context.TODO(), bson.M{"_id": postingId}).Decode(&posting)
+	err := collection.FindOne(context.TODO(), bson.M{"_id": postingId}).Decode(&posting)
 	if err != nil {
 		return nil
 	}
@@ -29,8 +36,10 @@ func saveAll(postings []posting) {
 	}
 }
 
-func findAll(limit int64, offset int64) []posting {
-	cur, err := connect().Find(context.TODO(), bson.D{}, options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1}))
+func findAll(afterTime time.Time, limit int64, offset int64) []posting {
+	filter := bson.M{"mod_dat": bson.M{"$gte": primitive.NewDateTimeFromTime(afterTime)}}
+	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
+	cur, err := connect().Find(context.TODO(), filter, findOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,6 +63,29 @@ func clearAll() {
 }
 
 func _saveOne(collection *mongo.Collection, posting posting) *mongo.SingleResult {
+	existing := _findOne(collection, posting.PostingId)
+	now := time.Now()
+
+	if existing == nil {
+		posting.CreDat = &now
+		posting.ModDat = &now
+
+		return _save(collection, posting)
+	}
+
+	// set cre_dat & mod_dat so we can use equals
+	posting.CreDat = existing.CreDat
+	posting.ModDat = existing.ModDat
+
+	if !reflect.DeepEqual(*existing, posting) {
+		posting.ModDat = &now
+
+		return _save(collection, posting)
+	}
+	return nil // no update
+}
+
+func _save(collection *mongo.Collection, posting posting) *mongo.SingleResult {
 	return collection.FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": posting.PostingId},

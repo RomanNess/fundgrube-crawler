@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"testing"
+	"time"
 )
 
 type PersistenceSuite struct {
@@ -37,11 +38,11 @@ func (suite *PersistenceSuite) Test_findOne() {
 	posting := getExamplePosting("foo")
 	saveOne(posting)
 
-	assert.Equal(suite.T(), posting, *findOne("foo-id"))
+	assertEqualPostingIgnoringDates(suite.T(), posting, *findOne("foo-id"))
 }
 
 func (suite *PersistenceSuite) Test_findAll_empty() {
-	postings := findAll(100, 0)
+	postings := findAll(getTime(), 100, 0)
 	assert.Equal(suite.T(), []posting{}, postings)
 }
 
@@ -51,10 +52,10 @@ func (suite *PersistenceSuite) Test_findAll() {
 	bar := getExamplePosting("bar")
 	saveOne(bar)
 
-	postings := findAll(100, 0)
+	postings := findAll(getTime(), 100, 0)
 	assert.Equal(suite.T(), 2, len(postings))
-	assert.Contains(suite.T(), postings, foo)
-	assert.Contains(suite.T(), postings, bar)
+	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
+	assertPostingsContainIgnoringDates(suite.T(), postings, bar)
 }
 
 func (suite *PersistenceSuite) Test_findAll_offset() {
@@ -63,19 +64,19 @@ func (suite *PersistenceSuite) Test_findAll_offset() {
 	bar := getExamplePosting("bar")
 	saveOne(bar)
 
-	postings := findAll(1, 0)
+	postings := findAll(getTime(), 1, 0)
 	assert.Equal(suite.T(), 1, len(postings))
-	assert.Contains(suite.T(), postings, foo)
+	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
 
-	postings = findAll(1, 1)
+	postings = findAll(getTime(), 1, 1)
 	assert.Equal(suite.T(), 1, len(postings))
-	assert.Contains(suite.T(), postings, bar)
+	assertPostingsContainIgnoringDates(suite.T(), postings, bar)
 }
 
 func (suite *PersistenceSuite) Test_saveOne() {
 	posting := getExamplePosting("foo")
 	saveOne(posting)
-	assert.Equal(suite.T(), posting, *findOne(posting.PostingId))
+	assertEqualPostingIgnoringDates(suite.T(), posting, *findOne(posting.PostingId))
 }
 
 func (suite *PersistenceSuite) Test_saveOne_updateName() {
@@ -96,9 +97,28 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 	saveAll([]posting{alreadySaved, notSavedYet})
 
-	all := findAll(100, 0)
-	assert.Contains(suite.T(), all, alreadySaved)
-	assert.Contains(suite.T(), all, notSavedYet)
+	all := findAll(getTime(), 100, 0)
+	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
+	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
+}
+
+func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
+	actual.CreDat = expected.CreDat
+	actual.ModDat = expected.ModDat
+	assert.Equal(t, expected, actual)
+}
+
+func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contained posting) bool {
+	for i, p := range postings {
+		p.CreDat = nil
+		p.ModDat = nil
+		postings[i] = p
+	}
+	return assert.Contains(t, postings, contained)
+}
+
+func getTime() time.Time {
+	return time.Now().AddDate(0, 0, -1)
 }
 
 func getExamplePosting(prefix string) posting {
