@@ -1,9 +1,12 @@
 package crawler
 
 import (
+	"bytes"
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
+	"fundgrube-crawler/alert"
 	"log"
 	"os"
 	"time"
@@ -34,7 +37,11 @@ func SearchDeals() {
 		}
 		deals = append(deals, findDeals(postings, query)...)
 	}
-	presentDeals(deals)
+	message := fmtDealsMessage(deals)
+	err := alert.SendAlertMail(fmt.Sprintf("Found %d new deals.", len(deals)), message)
+	if err != nil {
+		log.Fatal(err)
+	}
 	updateSearchOperation(hashQuery(query), now())
 }
 
@@ -49,11 +56,11 @@ func getLastSearchTime(q query) *time.Time {
 }
 
 func hashQuery(q query) string {
-	bytes, err := json.Marshal(q)
+	jsonBytes, err := json.Marshal(q)
 	if err != nil {
 		log.Fatal(err)
 	}
-	md5Bytes := md5.Sum(bytes)
+	md5Bytes := md5.Sum(jsonBytes)
 	return hex.EncodeToString(md5Bytes[:])
 }
 
@@ -62,11 +69,17 @@ func now() *time.Time {
 	return &now
 }
 
-func presentDeals(deals []posting) {
-	log.Printf("Found %d deals.", len(deals))
+func fmtDealsMessage(deals []posting) string {
+	var buffer bytes.Buffer
+
+	buffer.WriteString(fmt.Sprintf("Found %d deals.\n", len(deals)))
 	for _, deal := range deals {
-		log.Println(deal)
+		buffer.WriteString(deal.String() + "\n\n")
 	}
+
+	message := buffer.String()
+	log.Println(message)
+	return message
 }
 
 func getQuery() query {
