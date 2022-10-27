@@ -107,7 +107,7 @@ func getExamplePosting(prefix string) posting {
 		Name:      prefix,
 		Text:      prefix + " text",
 		Url:       []string{"http://" + prefix},
-		Price:     "42.00",
+		Price:     42.00,
 		Outlet:    outlet{1337, "outlet"},
 	}
 }
