@@ -1,6 +1,9 @@
 package crawler
 
 import (
+	"crypto/md5"
+	"encoding/hex"
+	"encoding/json"
 	"log"
 	"os"
 	"time"
@@ -19,11 +22,10 @@ func CrawlPostings(mockedPostings bool) error {
 
 func SearchDeals() {
 	query := getQuery()
-	var limit int64 = 100
-	var offset int64 = 0
+	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
-		postings := findAll(getLastSearchTime(), limit, offset)
+		postings := findAll(getLastSearchTime(query), limit, offset)
 		log.Printf("Loaded %d postings from DB.", len(postings))
 
 		offset = offset + limit
@@ -33,15 +35,26 @@ func SearchDeals() {
 		deals = append(deals, findDeals(postings, query)...)
 	}
 	presentDeals(deals)
-	UpdateSearchOperation(now())
+	updateSearchOperation(hashQuery(query), now())
 }
 
-func getLastSearchTime() *time.Time {
-	op := findSearchOperation()
+func getLastSearchTime(q query) *time.Time {
+	md5Hex := hashQuery(q)
+
+	op := findSearchOperation(md5Hex)
 	if op == nil {
 		return &time.Time{}
 	}
 	return op.Timestamp
+}
+
+func hashQuery(q query) string {
+	bytes, err := json.Marshal(q)
+	if err != nil {
+		log.Fatal(err)
+	}
+	md5Bytes := md5.Sum(bytes)
+	return hex.EncodeToString(md5Bytes[:])
 }
 
 func now() *time.Time {

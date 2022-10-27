@@ -104,20 +104,20 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 func (suite *PersistenceSuite) Test_saveOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
-	result := UpdateSearchOperation(&now)
+	result := updateSearchOperation("fefe", &now)
 	assert.Nil(suite.T(), result.Err())
 
-	assert.Equal(suite.T(), operation{OP_SEARCH, &now}, *findSearchOperation())
+	assert.Equal(suite.T(), operation{"fefe", &now}, *findSearchOperation("fefe"))
 }
 
 func (suite *PersistenceSuite) Test_updateOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
-	UpdateSearchOperation(&now)
-	assert.Equal(suite.T(), operation{OP_SEARCH, &now}, *findSearchOperation())
+	updateSearchOperation("fefe", &now)
+	assert.Equal(suite.T(), operation{"fefe", &now}, *findSearchOperation("fefe"))
 
 	now2 := now.AddDate(0, 0, 1)
-	UpdateSearchOperation(&now2)
-	assert.Equal(suite.T(), operation{OP_SEARCH, &now2}, *findSearchOperation())
+	updateSearchOperation("fefe", &now2)
+	assert.Equal(suite.T(), operation{"fefe", &now2}, *findSearchOperation("fefe"))
 }
 
 func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {

@@ -12,10 +12,6 @@ import (
 	"time"
 )
 
-const (
-	OP_SEARCH string = "SEARCH"
-)
-
 func findOne(postingId string) *posting {
 	return _findOne(connectPostings(), postingId)
 }
@@ -98,19 +94,19 @@ func _save(collection *mongo.Collection, posting posting) *mongo.SingleResult {
 	)
 }
 
-func UpdateSearchOperation(now *time.Time) *mongo.SingleResult {
-	op := operation{OP_SEARCH, now}
+func updateSearchOperation(md5Hex string, now *time.Time) *mongo.SingleResult {
+	op := operation{md5Hex, now}
 	return connectOperations().FindOneAndReplace(
 		context.TODO(),
-		bson.M{"_id": OP_SEARCH},
+		bson.M{"_id": md5Hex},
 		op,
 		options.FindOneAndReplace().SetUpsert(true),
 	)
 }
 
-func findSearchOperation() *operation {
+func findSearchOperation(id string) *operation {
 	op := operation{}
-	err := connectOperations().FindOne(context.TODO(), bson.M{"_id": OP_SEARCH}).Decode(&op)
+	err := connectOperations().FindOne(context.TODO(), bson.M{"_id": id}).Decode(&op)
 	if err != nil {
 		return nil
 	}
