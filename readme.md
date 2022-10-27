@@ -5,13 +5,14 @@ Quick and dirty Crawler to find deals in Fundgrube by MediaMarkt and Saturn beca
 Implemented in Golang and using MongoDB as persistence since I usually don't use these. :)
 
 # Environmental Variables
-| name                 | desc                             | default                     |
-|----------------------|----------------------------------|-----------------------------|
-| `MONGODB_URI`        | -                                | `mongodb://localhost:27017` |
-| `MONGODB_USERNAME`   | -                                | `root`                      |
-| `MONGODB_PASSWORD`   | -                                | `example`                   |
-| `MONGODB_DB`         | -                                | `fundgrube`                 |
-| `MONGODB_COLLECTION` | -                                | `postings`                  |
-| `SKIP_CRAWLING`      | skip fetching postings from api  | `false`                     |
-| `MOCKED_POSTINGS`    | mock response from api           | `false`                     |
-| `SEARCH_KEYWORD`     | keyword used to search for deals | `example`                   |
+| name                            | desc                             | default                     |
+|---------------------------------|----------------------------------|-----------------------------|
+| `MONGODB_URI`                   | -                                | `mongodb://localhost:27017` |
+| `MONGODB_USERNAME`              | -                                | `root`                      |
+| `MONGODB_PASSWORD`              | -                                | `example`                   |
+| `MONGODB_DB`                    | -                                | `fundgrube`                 |
+| `MONGODB_COLLECTION_POSTINGS`   | -                                | `postings`                  |
+| `MONGODB_COLLECTION_OPERATIONS` | -                                | `operations`                |
+| `SKIP_CRAWLING`                 | skip fetching postings from api  | `false`                     |
+| `MOCKED_POSTINGS`               | mock response from api           | `false`                     |
+| `SEARCH_KEYWORD`                | keyword used to search for deals | `example`                   |

@@ -26,7 +26,7 @@ func TestRunSuite(t *testing.T) {
 }
 
 func (suite *PersistenceSuite) Test_connect() {
-	connect()
+	connectPostings()
 }
 
 func (suite *PersistenceSuite) Test_findOne_nonexistent() {
@@ -102,6 +102,24 @@ func (suite *PersistenceSuite) Test_saveAll() {
 	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
 }
 
+func (suite *PersistenceSuite) Test_saveOperation() {
+	now := time.Now().UTC().Round(time.Millisecond)
+	result := UpdateSearchOperation(&now)
+	assert.Nil(suite.T(), result.Err())
+
+	assert.Equal(suite.T(), operation{OP_SEARCH, &now}, *findSearchOperation())
+}
+
+func (suite *PersistenceSuite) Test_updateOperation() {
+	now := time.Now().UTC().Round(time.Millisecond)
+	UpdateSearchOperation(&now)
+	assert.Equal(suite.T(), operation{OP_SEARCH, &now}, *findSearchOperation())
+
+	now2 := now.AddDate(0, 0, 1)
+	UpdateSearchOperation(&now2)
+	assert.Equal(suite.T(), operation{OP_SEARCH, &now2}, *findSearchOperation())
+}
+
 func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
 	actual.CreDat = expected.CreDat
 	actual.ModDat = expected.ModDat
@@ -117,8 +135,9 @@ func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contai
 	return assert.Contains(t, postings, contained)
 }
 
-func getTime() time.Time {
-	return time.Now().AddDate(0, 0, -1)
+func getTime() *time.Time {
+	yesterday := time.Now().AddDate(0, 0, -1)
+	return &yesterday
 }
 
 func getExamplePosting(prefix string) posting {

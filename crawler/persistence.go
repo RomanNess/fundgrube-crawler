@@ -12,8 +12,12 @@ import (
 	"time"
 )
 
+const (
+	OP_SEARCH string = "SEARCH"
+)
+
 func findOne(postingId string) *posting {
-	return _findOne(connect(), postingId)
+	return _findOne(connectPostings(), postingId)
 }
 
 func _findOne(collection *mongo.Collection, postingId string) *posting {
@@ -25,21 +29,10 @@ func _findOne(collection *mongo.Collection, postingId string) *posting {
 	return &posting
 }
 
-func saveOne(posting posting) {
-	_saveOne(connect(), posting)
-}
-
-func saveAll(postings []posting) {
-	collection := connect()
-	for _, posting := range postings {
-		_saveOne(collection, posting)
-	}
-}
-
-func findAll(afterTime time.Time, limit int64, offset int64) []posting {
-	filter := bson.M{"mod_dat": bson.M{"$gte": primitive.NewDateTimeFromTime(afterTime)}}
+func findAll(afterTime *time.Time, limit int64, offset int64) []posting {
+	filter := bson.M{"mod_dat": bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}}
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
-	cur, err := connect().Find(context.TODO(), filter, findOptions)
+	cur, err := connectPostings().Find(context.TODO(), filter, findOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -55,8 +48,19 @@ func findAll(afterTime time.Time, limit int64, offset int64) []posting {
 	return postings
 }
 
+func saveOne(posting posting) {
+	_saveOne(connectPostings(), posting)
+}
+
+func saveAll(postings []posting) {
+	collection := connectPostings()
+	for _, posting := range postings {
+		_saveOne(collection, posting)
+	}
+}
+
 func clearAll() {
-	_, err := connect().DeleteMany(context.TODO(), bson.M{})
+	_, err := connectPostings().DeleteMany(context.TODO(), bson.M{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -94,7 +98,34 @@ func _save(collection *mongo.Collection, posting posting) *mongo.SingleResult {
 	)
 }
 
-func connect() *mongo.Collection {
+func UpdateSearchOperation(now *time.Time) *mongo.SingleResult {
+	op := operation{OP_SEARCH, now}
+	return connectOperations().FindOneAndReplace(
+		context.TODO(),
+		bson.M{"_id": OP_SEARCH},
+		op,
+		options.FindOneAndReplace().SetUpsert(true),
+	)
+}
+
+func findSearchOperation() *operation {
+	op := operation{}
+	err := connectOperations().FindOne(context.TODO(), bson.M{"_id": OP_SEARCH}).Decode(&op)
+	if err != nil {
+		return nil
+	}
+	return &op
+}
+
+func connectPostings() *mongo.Collection {
+	return connect(env("MONGODB_COLLECTION_POSTINGS", "postings"))
+}
+
+func connectOperations() *mongo.Collection {
+	return connect(env("MONGODB_COLLECTION_OPERATIONS", "operations"))
+}
+
+func connect(collectionName string) *mongo.Collection {
 	credential := options.Credential{
 		Username: env("MONGODB_USERNAME", "root"),
 		Password: env("MONGODB_PASSWORD", "example"),
@@ -118,7 +149,7 @@ func connect() *mongo.Collection {
 		log.Fatal(err)
 	}
 
-	return client.Database(env("MONGODB_DB", "fundgrube")).Collection(env("MONGODB_COLLECTION", "postings"))
+	return client.Database(env("MONGODB_DB", "fundgrube")).Collection(collectionName)
 }
 
 func env(key string, defaultValue string) string {

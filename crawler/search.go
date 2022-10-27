@@ -1,6 +1,8 @@
 package crawler
 
-import "strings"
+import (
+	"strings"
+)
 
 func findDeals(postings []posting, query query) (deals []posting) {
 	for _, posting := range postings {

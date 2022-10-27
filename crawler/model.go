@@ -56,6 +56,10 @@ type posting struct {
 	ModDat      *time.Time `bson:"mod_dat"`
 }
 
+func (p posting) String() string {
+	return fmt.Sprintf("%.2f€ - %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
+}
+
 /*
    {
      "id": 67,
@@ -75,6 +79,7 @@ type brand struct {
 	Name    string `json:"name"`
 }
 
-func (p posting) String() string {
-	return fmt.Sprintf("%.2f€ - %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
+type operation struct {
+	Id        string     `bson:"_id"`
+	Timestamp *time.Time `bson:"timestamp"`
 }

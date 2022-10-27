@@ -19,12 +19,11 @@ func CrawlPostings(mockedPostings bool) error {
 
 func SearchDeals() {
 	query := getQuery()
-	searchTime := getLastSearchTime()
 	var limit int64 = 100
 	var offset int64 = 0
 	deals := []posting{}
 	for true {
-		postings := findAll(searchTime, limit, offset)
+		postings := findAll(getLastSearchTime(), limit, offset)
 		log.Printf("Loaded %d postings from DB.", len(postings))
 
 		offset = offset + limit
@@ -34,10 +33,20 @@ func SearchDeals() {
 		deals = append(deals, findDeals(postings, query)...)
 	}
 	presentDeals(deals)
+	UpdateSearchOperation(now())
 }
 
-func getLastSearchTime() time.Time {
-	return time.Now().AddDate(0, 0, -1) // TODO: find things added since last search
+func getLastSearchTime() *time.Time {
+	op := findSearchOperation()
+	if op == nil {
+		return &time.Time{}
+	}
+	return op.Timestamp
+}
+
+func now() *time.Time {
+	now := time.Now().UTC().Round(time.Millisecond)
+	return &now
 }
 
 func presentDeals(deals []posting) {
