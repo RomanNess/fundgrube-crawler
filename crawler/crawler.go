@@ -72,7 +72,7 @@ func now() *time.Time {
 func fmtDealsMessage(deals []posting) string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Found %d deals.\n", len(deals)))
+	buffer.WriteString(fmt.Sprintf("Found %d deals.\n\n", len(deals)))
 	for _, deal := range deals {
 		buffer.WriteString(deal.String() + "\n\n")
 	}

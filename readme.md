@@ -1,10 +1,16 @@
 # fundgrube-crawler [WIP]
-
 Quick and dirty Crawler to find deals in Fundgrube by MediaMarkt and Saturn because their shop systems are so horrible.
 
 Implemented in Golang and using MongoDB as persistence since I usually don't use these. :)
 
-# Environmental Variables
+## Use Case
+- Cross compiled and deployed on a raspberry pi.
+- MongoDB Atlas free tier used for persistence.
+- Is currently started as a script that's configured with env vars. 
+  Will fetch all Postings in a Category and search for matching Deals.
+- Alerts via email when new Deals are found.
+
+## Environmental Variables
 | name                            | desc                                         | default                     |
 |---------------------------------|----------------------------------------------|-----------------------------|
 | `MONGODB_URI`                   | -                                            | `mongodb://localhost:27017` |
