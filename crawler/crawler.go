@@ -37,10 +37,12 @@ func SearchDeals() {
 		}
 		deals = append(deals, findDeals(postings, query)...)
 	}
-	message := fmtDealsMessage(deals)
-	err := alert.SendAlertMail(fmt.Sprintf("Found %d new deals.", len(deals)), message)
-	if err != nil {
-		log.Fatal(err)
+	if len(deals) > 0 {
+		message := fmtDealsMessage(deals)
+		err := alert.SendAlertMail(fmt.Sprintf("Found %d new deals.", len(deals)), message)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 	updateSearchOperation(hashQuery(query), now())
 }
