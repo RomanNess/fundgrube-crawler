@@ -20,16 +20,24 @@ func Test_preparePosting(t *testing.T) {
 			args{
 				MM,
 				posting{
-					Brand:  brand{10, "Sony"},
-					Outlet: outlet{100, "Outlet"},
-					Url:    []string{"https://foo.bar", "https://the.back"},
+					Brand:             brand{10, "Sony"},
+					Outlet:            outlet{100, "Outlet"},
+					PriceString:       "12.34",
+					PriceOldString:    "24.68",
+					DiscountInPercent: 50,
+					Url:               []string{"https://foo.bar", "https://the.back"},
 				},
 			},
 			posting{
-				Brand:   brand{10, "Sony"},
-				Outlet:  outlet{100, "Outlet"},
-				Shop:    MM,
-				ShopUrl: "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
+				Brand:             brand{10, "Sony"},
+				Outlet:            outlet{100, "Outlet"},
+				Price:             12.34,
+				PriceString:       "",
+				PriceOld:          24.68,
+				PriceOldString:    "",
+				DiscountInPercent: 50,
+				Shop:              MM,
+				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
 				Url: []string{
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
@@ -67,19 +75,24 @@ func Test_preparePostings(t *testing.T) {
 			args{
 				MM,
 				[]posting{posting{
-					Brand:       brand{10, "Sony"},
-					Outlet:      outlet{100, "Outlet"},
-					PriceString: "12.34",
-					Url:         []string{"https://foo.bar", "https://the.back"},
+					Brand:             brand{10, "Sony"},
+					Outlet:            outlet{100, "Outlet"},
+					PriceString:       "12.34",
+					PriceOldString:    "24.68",
+					DiscountInPercent: 50,
+					Url:               []string{"https://foo.bar", "https://the.back"},
 				}},
 			},
 			[]posting{posting{
-				Brand:       brand{10, "Sony"},
-				Outlet:      outlet{100, "Outlet"},
-				PriceString: "12.34",
-				Price:       12.34,
-				Shop:        MM,
-				ShopUrl:     "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
+				Brand:             brand{10, "Sony"},
+				Outlet:            outlet{100, "Outlet"},
+				Price:             12.34,
+				PriceString:       "",
+				PriceOld:          24.68,
+				PriceOldString:    "",
+				DiscountInPercent: 50,
+				Shop:              MM,
+				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
 				Url: []string{
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
@@ -89,7 +102,8 @@ func Test_preparePostings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			preparePostings(tt.args.shop, tt.args.postings)
+			postings := preparePostings(tt.args.shop, tt.args.postings)
+			assert.Equal(t, tt.want, postings)
 		})
 	}
 }

@@ -42,22 +42,25 @@ type postingsResponse struct {
    }
 */
 type posting struct {
-	PostingId   string     `json:"posting_id" bson:"_id"`
-	PriceString string     `json:"price" bson:"-"`
-	Price       float64    `json:"-" bson:"price"`
-	Name        string     `json:"name"`
-	Url         []string   `json:"original_url"`
-	Text        string     `json:"posting_text"`
-	Outlet      outlet     `json:"outlet"`
-	Brand       brand      `json:"brand"`
-	Shop        Shop       `bson:"shop"`
-	ShopUrl     string     `bson:"shop_url"`
-	CreDat      *time.Time `bson:"cre_dat"`
-	ModDat      *time.Time `bson:"mod_dat"`
+	PostingId         string     `json:"posting_id" bson:"_id"`
+	PriceString       string     `json:"price" bson:"-"`
+	PriceOldString    string     `json:"price_old" bson:"-"`
+	Price             float64    `json:"-" bson:"price"`
+	PriceOld          float64    `json:"-" bson:"price_old"`
+	DiscountInPercent int        `json:"discount_in_percent" bson:"discount_in_percent"`
+	Name              string     `json:"name"`
+	Url               []string   `json:"original_url"`
+	Text              string     `json:"posting_text"`
+	Outlet            outlet     `json:"outlet"`
+	Brand             brand      `json:"brand"`
+	Shop              Shop       `bson:"shop"`
+	ShopUrl           string     `bson:"shop_url"`
+	CreDat            *time.Time `bson:"cre_dat"`
+	ModDat            *time.Time `bson:"mod_dat"`
 }
 
 func (p posting) String() string {
-	return fmt.Sprintf("%.2f€ - %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
+	return fmt.Sprintf("%.2f€ (%.2f€ -%d%%) %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.PriceOld, p.DiscountInPercent, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
 }
 
 /*

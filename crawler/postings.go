@@ -58,18 +58,20 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 	return preparePostings(shop, ret), err
 }
 
-func preparePostings(shop Shop, postings []posting) (ret []posting) {
-	for _, p := range postings {
-		ret = append(ret, preparePosting(shop, p))
+func preparePostings(shop Shop, postings []posting) []posting {
+	for i, p := range postings {
+		postings[i] = preparePosting(shop, p)
 	}
-	return
+	return postings
 }
 
 func preparePosting(shop Shop, posting posting) posting {
 	posting.Shop = shop
 	posting.ShopUrl = buildUrl(shop, &posting.Outlet, &posting.Brand, nil)
 	posting.Price, _ = strconv.ParseFloat(posting.PriceString, 64)
+	posting.PriceOld, _ = strconv.ParseFloat(posting.PriceOldString, 64)
 	posting.PriceString = ""
+	posting.PriceOldString = ""
 	for i := range posting.Url {
 		posting.Url[i] = fmt.Sprintf("%s?strip=yes&quality=75&backgroundsize=cover&x=640&y=640", posting.Url[i])
 	}
