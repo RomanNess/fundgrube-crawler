@@ -24,3 +24,8 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 | `LIMIT_OUTLETS`                 | only fetch 5 first outlets (for development) | `false`                     |
 | `LOG_TO_FILE`                   | log to /tmp/fundgrube.txt instead of stdout  | `false`                     |
 | `SEARCH_KEYWORD`                | keyword used to search for deals             | `example`                   |
+
+## API peculiarities
+- There is only a `/api/postings` endpoint known to me, but it also returns a list of `outlets` and `brands` in the response.
+- Requests with a `limit >= 100` always return the first page.
+- Requests with an `offset > 990` return `422 Unprocessable Entity`, so you need to iterate over `brands` or `outlets` to see all `postings`.
