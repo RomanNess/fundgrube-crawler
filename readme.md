@@ -29,3 +29,8 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 - There is only a `/api/postings` endpoint known to me, but it also returns a list of `outlets` and `brands` in the response.
 - Requests with a `limit >= 100` always return the first page.
 - Requests with an `offset > 990` return `422 Unprocessable Entity`, so you need to iterate over `brands` or `outlets` to see all `postings`.
+
+## Shell script
+https://github.com/RomanNess/fundgrube-crawler/issues/1 inspired me to quickly hack my initial idea that solves the same use case with a `bash` script.
+Simply run `SEARCH_REGEX="sony walkman" ./.sh/fundgrube-crawler.sh` to search for matching postings. 
+The script creates a TSV file with previous results in `/tmp` and will therefore only discover new postings.
