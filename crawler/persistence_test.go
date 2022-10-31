@@ -1,9 +1,10 @@
 package crawler
 
 import (
+	"context"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"log"
+	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"testing"
 	"time"
@@ -13,12 +14,31 @@ type PersistenceSuite struct {
 	suite.Suite
 }
 
+const POSTING_ID = "ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a"
+
 func (suite *PersistenceSuite) SetupTest() {
 	err := os.Setenv("MONGODB_DB", "fundgrube_test")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	clearAll()
+	insertPostingsFromJson(err)
+}
+
+func insertPostingsFromJson(err error) {
+	var postings []interface{}
+	bytes, err := os.ReadFile("../_test/postings.json")
+	if err != nil {
+		panic(err)
+	}
+
+	if err = bson.UnmarshalExtJSON(bytes, true, &postings); err != nil {
+		panic(err)
+	}
+	_, err = connectPostings().InsertMany(context.TODO(), postings)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func TestRunSuite(t *testing.T) {
@@ -35,42 +55,41 @@ func (suite *PersistenceSuite) Test_findOne_nonexistent() {
 }
 
 func (suite *PersistenceSuite) Test_findOne() {
-	posting := getExamplePosting("foo")
-	saveOne(posting)
+	expectedPosting := posting{
+		PostingId:         POSTING_ID,
+		PriceString:       "",
+		PriceOldString:    "",
+		Price:             10.0,
+		PriceOld:          27.99,
+		DiscountInPercent: 64,
+		Name:              "Instant Chef Party - [Nintendo Switch]",
+		Url:               []string{"https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"},
+		Text:              "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
+		Outlet:            outlet{475, "Lübeck"},
+		Brand:             brand{10312, "WILD RIVER"},
+		Shop:              MM,
+		ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
+		CreDat:            parseDate("2022-10-27T18:10:00.796Z"),
+		ModDat:            parseDate("2022-10-31T21:47:16.898Z"),
+	}
 
-	assertEqualPostingIgnoringDates(suite.T(), posting, *findOne("foo-id"))
-}
-
-func (suite *PersistenceSuite) Test_findAll_empty() {
-	postings := findAll(getTime(), 100, 0)
-	assert.Equal(suite.T(), []posting{}, postings)
+	assert.Equal(suite.T(), expectedPosting, *findOne(POSTING_ID))
 }
 
 func (suite *PersistenceSuite) Test_findAll() {
-	foo := getExamplePosting("foo")
-	saveOne(foo)
-	bar := getExamplePosting("bar")
-	saveOne(bar)
-
-	postings := findAll(getTime(), 100, 0)
-	assert.Equal(suite.T(), 2, len(postings))
-	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
-	assertPostingsContainIgnoringDates(suite.T(), postings, bar)
+	// TODO parameterized test
+	assert.Equal(suite.T(), 3, len(findAll(&time.Time{}, 100, 0)))
+	assert.Equal(suite.T(), 2, len(findAll(&time.Time{}, 100, 1)))
+	assert.Equal(suite.T(), 1, len(findAll(&time.Time{}, 1, 1)))
 }
 
-func (suite *PersistenceSuite) Test_findAll_offset() {
+func (suite *PersistenceSuite) Test_findAll_findNew() {
 	foo := getExamplePosting("foo")
 	saveOne(foo)
-	bar := getExamplePosting("bar")
-	saveOne(bar)
 
-	postings := findAll(getTime(), 1, 0)
+	postings := findAll(getTime(), 100, 3)
 	assert.Equal(suite.T(), 1, len(postings))
 	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
-
-	postings = findAll(getTime(), 1, 1)
-	assert.Equal(suite.T(), 1, len(postings))
-	assertPostingsContainIgnoringDates(suite.T(), postings, bar)
 }
 
 func (suite *PersistenceSuite) Test_saveOne() {
@@ -80,11 +99,10 @@ func (suite *PersistenceSuite) Test_saveOne() {
 }
 
 func (suite *PersistenceSuite) Test_saveOne_updateName() {
-	posting := getExamplePosting("foo")
-	saveOne(posting)
+	posting := findOne(POSTING_ID)
 
 	posting.Name = "New Name"
-	saveOne(posting)
+	saveOne(*posting)
 
 	assert.Equal(suite.T(), "New Name", findOne(posting.PostingId).Name)
 }
@@ -137,18 +155,27 @@ func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contai
 }
 
 func getTime() *time.Time {
-	yesterday := time.Now().AddDate(0, 0, -1)
-	return &yesterday
+	return &time.Time{}
+}
+
+func parseDate(dateString string) *time.Time {
+	parse, err := time.Parse(time.RFC3339, dateString)
+	if err != nil {
+		panic(err)
+	}
+	return &parse
 }
 
 func getExamplePosting(prefix string) posting {
 	return posting{
-		PostingId: prefix + "-id",
-		Name:      prefix,
-		Text:      prefix + " text",
-		Url:       []string{"http://" + prefix},
-		Price:     42.00,
-		Outlet:    outlet{1337, "outlet"},
+		PostingId:         prefix + "-id",
+		Name:              prefix,
+		Text:              prefix + " text",
+		Url:               []string{"http://" + prefix},
+		Price:             1337.00,
+		PriceOld:          1338.00,
+		DiscountInPercent: 1,
+		Outlet:            outlet{42, "outlet"},
 	}
 }
 

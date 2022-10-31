@@ -1,0 +1,120 @@
+[
+  {
+    "_id": "ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a",
+    "price": {
+      "$numberDouble": "10.0"
+    },
+    "price_old": {
+      "$numberDouble": "27.99"
+    },
+    "discount_in_percent": {
+      "$numberInt": "64"
+    },
+    "name": "Instant Chef Party - [Nintendo Switch]",
+    "url": [
+      "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
+    ],
+    "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
+    "outlet": {
+      "outletid": {
+        "$numberInt": "475"
+      },
+      "name": "Lübeck"
+    },
+    "brand": {
+      "brandid": {
+        "$numberInt": "10312"
+      },
+      "name": "WILD RIVER"
+    },
+    "shop": "MM",
+    "shop_url": "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
+    "cre_dat": {
+      "$date": {
+        "$numberLong": "1666894200796"
+      }
+    },
+    "mod_dat": {
+      "$date": {
+        "$numberLong": "1667252836898"
+      }
+    }
+  },
+  {
+    "_id": "ffd23648-6353-4c18-93d5-78e0ac838da1",
+    "price": {
+      "$numberDouble": "20.0"
+    },
+    "price_old": {
+      "$numberDouble": "39.99"
+    },
+    "discount_in_percent": {
+      "$numberInt": "50"
+    },
+    "name": "SW CADENCE OF HYRULE-CRYPT OF THE NECRODANCER - [Nintendo Switch]",
+    "url": [
+      "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2efed7db9d164a7c8a10ca5820a9e4ee?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
+    ],
+    "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
+    "outlet": {
+      "outletid": {
+        "$numberInt": "475"
+      },
+      "name": "Lübeck"
+    },
+    "brand": {
+      "brandid": {
+        "$numberInt": "10313"
+      },
+      "name": "NINTENDO OF EUROPE (PL)"
+    },
+    "shop": "MM",
+    "shop_url": "https://www.mediamarkt.de/de/data/fundgrube?brands=NINTENDO%2BOF%2BEUROPE%2B%2528PL%2529&categorieIds=CAT_DE_MM_626&outletIds=475",
+    "cre_dat": {
+      "$date": {
+        "$numberLong": "1666894200853"
+      }
+    },
+    "mod_dat": {
+      "$date": {
+        "$numberLong": "1667252836944"
+      }
+    }
+  },
+  {
+    "_id": "ffba6620-c96e-43f3-9e1e-05f1bb3f0981",
+    "price": {
+      "$numberDouble": "970.0"
+    },
+    "name": "ASUS ROG Flow X13 (GV301QH-K6034T), Gaming NoteBook mit 13,4 Zoll Display Touchscreen, AMD Ryzen™ 7 Prozessor, 16 GB RAM, 512 GB SSD, GeForce® GTX 1650, Off Black",
+    "url": [
+      "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2150fbf9c95d44e68d69b8c0d07cdb24?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
+      "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/4290630c866e44a6b70ddd775c08eceb?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
+    ],
+    "text": "Ausstellungsstück",
+    "outlet": {
+      "outletid": {
+        "$numberInt": "136"
+      },
+      "name": "Marl"
+    },
+    "brand": {
+      "brandid": {
+        "$numberInt": "2383"
+      },
+      "name": "ASUS"
+    },
+    "shop": "SATURN",
+    "shop_url": "https://www.saturn.de/de/data/fundgrube?brands=ASUS&categorieIds=CAT_DE_SAT_786&outletIds=136",
+    "cre_dat": {
+      "$date": {
+        "$numberLong": "1666894147674"
+      }
+    },
+    "mod_dat": {
+      "$date": {
+        "$numberLong": "1667227127053"
+      }
+    }
+  }
+]

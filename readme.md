@@ -32,5 +32,5 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 
 ## Shell script
 https://github.com/RomanNess/fundgrube-crawler/issues/1 inspired me to quickly hack my initial idea that solves the same use case with a `bash` script.
-Simply run `SEARCH_REGEX="sony walkman" ./.sh/fundgrube-crawler.sh` to search for matching postings. 
+Simply run `SEARCH_REGEX="sony walkman" ./_sh/fundgrube-crawler.sh` to search for matching postings. 
 The script creates a TSV file with previous results in `/tmp` and will therefore only discover new postings.
