@@ -77,17 +77,57 @@ func (suite *PersistenceSuite) Test_findOne() {
 }
 
 func (suite *PersistenceSuite) Test_findAll() {
-	// TODO parameterized test
-	assert.Equal(suite.T(), 3, len(findAll(&time.Time{}, 100, 0)))
-	assert.Equal(suite.T(), 2, len(findAll(&time.Time{}, 100, 1)))
-	assert.Equal(suite.T(), 1, len(findAll(&time.Time{}, 1, 1)))
+	type args struct {
+		regex     *string
+		afterTime *time.Time
+		limit     int64
+		offset    int64
+	}
+	tests := []struct {
+		name        string
+		args        args
+		expectedIds []string
+	}{
+		{
+			"find all",
+			args{nil, nil, 100, 0},
+			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+		}, {
+			"offset 1",
+			args{nil, nil, 100, 1},
+			[]string{"ffd23648-6353-4c18-93d5-78e0ac838da1", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+		}, {
+			"limit 2",
+			args{nil, nil, 2, 0},
+			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1"},
+		}, {
+			"regex search",
+			args{ptr("^.*nintendo.*$"), nil, 100, 0},
+			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1"},
+		}, {
+			"after time",
+			args{nil, parseDate("2022-10-30T00:00:00Z"), 100, 0},
+			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+		},
+	}
+
+	for _, tt := range tests {
+		suite.Run(tt.name, func() {
+			postings := findAll(tt.args.regex, tt.args.afterTime, tt.args.limit, tt.args.offset)
+			var postingIds []string
+			for _, p := range postings {
+				postingIds = append(postingIds, p.PostingId)
+			}
+			assert.Equal(suite.T(), tt.expectedIds, postingIds)
+		})
+	}
 }
 
 func (suite *PersistenceSuite) Test_findAll_findNew() {
 	foo := getExamplePosting("foo")
 	saveOne(foo)
 
-	postings := findAll(getTime(), 100, 3)
+	postings := findAll(nil, nil, 100, 3)
 	assert.Equal(suite.T(), 1, len(postings))
 	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
 }
@@ -115,7 +155,7 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 	saveAll([]posting{alreadySaved, notSavedYet})
 
-	all := findAll(getTime(), 100, 0)
+	all := findAll(nil, nil, 100, 0)
 	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
 	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
 }
@@ -154,16 +194,16 @@ func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contai
 	return assert.Contains(t, postings, contained)
 }
 
-func getTime() *time.Time {
-	return &time.Time{}
-}
-
 func parseDate(dateString string) *time.Time {
 	parse, err := time.Parse(time.RFC3339, dateString)
 	if err != nil {
 		panic(err)
 	}
 	return &parse
+}
+
+func ptr(s string) *string {
+	return &s
 }
 
 func getExamplePosting(prefix string) posting {

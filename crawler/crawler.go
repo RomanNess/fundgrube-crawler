@@ -28,14 +28,14 @@ func SearchDeals() {
 	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
-		postings := findAll(getLastSearchTime(query), limit, offset)
+		postings := findAll(&query.Keyword, getLastSearchTime(query), limit, offset)
 		log.Printf("Loaded %d postings from DB.", len(postings))
 
 		offset = offset + limit
 		if len(postings) == 0 {
 			break
 		}
-		deals = append(deals, findDeals(postings, query)...)
+		deals = append(deals, postings...)
 	}
 	if len(deals) > 0 {
 		message := fmtDealsMessage(deals)
@@ -48,6 +48,10 @@ func SearchDeals() {
 }
 
 func getLastSearchTime(q query) *time.Time {
+	if envBool("FIND_ALL") {
+		return nil
+	}
+
 	md5Hex := hashQuery(q)
 
 	op := findSearchOperation(md5Hex)

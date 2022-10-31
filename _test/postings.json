@@ -72,12 +72,12 @@
     "shop_url": "https://www.mediamarkt.de/de/data/fundgrube?brands=NINTENDO%2BOF%2BEUROPE%2B%2528PL%2529&categorieIds=CAT_DE_MM_626&outletIds=475",
     "cre_dat": {
       "$date": {
-        "$numberLong": "1666894200853"
+        "$numberLong": "1666913081000"
       }
     },
     "mod_dat": {
       "$date": {
-        "$numberLong": "1667252836944"
+        "$numberLong": "1666913081000"
       }
     }
   },

@@ -25,8 +25,14 @@ func _findOne(collection *mongo.Collection, postingId string) *posting {
 	return &posting
 }
 
-func findAll(afterTime *time.Time, limit int64, offset int64) []posting {
-	filter := bson.M{"mod_dat": bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}}
+func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []posting {
+	filter := bson.M{}
+	if afterTime != nil {
+		filter["mod_dat"] = bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}
+	}
+	if regex != nil {
+		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *regex, Options: "i"}}
+	}
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
 	cur, err := connectPostings().Find(context.TODO(), filter, findOptions)
 	if err != nil {
