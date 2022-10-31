@@ -6,7 +6,7 @@ import (
 )
 
 type query struct {
-	Keyword string
+	Regex string
 }
 
 type postingsResponse struct {

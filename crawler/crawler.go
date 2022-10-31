@@ -28,7 +28,7 @@ func SearchDeals() {
 	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
-		postings := findAll(&query.Keyword, getLastSearchTime(query), limit, offset)
+		postings := findAll(&query.Regex, getLastSearchTime(query), limit, offset)
 		log.Printf("Loaded %d postings from DB.", len(postings))
 
 		offset = offset + limit
@@ -97,10 +97,10 @@ func fmtDealsMessage(deals []posting) string {
 }
 
 func getQuery() query {
-	keyword := os.Getenv("SEARCH_KEYWORD")
-	if keyword == "" {
-		log.Println("SEARCH_KEYWORD not set! Default to 'example'.")
-		keyword = "example"
+	regex := os.Getenv("QUERY_REGEX")
+	if regex == "" {
+		log.Println("QUERY_REGEX not set! Default to 'example'.")
+		regex = "example"
 	}
-	return query{keyword}
+	return query{regex}
 }

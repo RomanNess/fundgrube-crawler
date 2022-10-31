@@ -19,7 +19,7 @@ func Test_hashQuery(t *testing.T) {
 			args{
 				query{"foobar"},
 			},
-			"9e62a75c0ffa816345574265e3641a43",
+			"82916e4f1ff6c73dd1564660c85b7332",
 		},
 	}
 	for _, tt := range tests {
