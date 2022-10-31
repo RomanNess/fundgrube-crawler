@@ -94,8 +94,9 @@ func _save(collection *mongo.Collection, posting posting) *mongo.SingleResult {
 	)
 }
 
-func updateSearchOperation(md5Hex string, now *time.Time) *mongo.SingleResult {
-	op := operation{md5Hex, now}
+func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
+	md5Hex := hashQuery(query)
+	op := operation{md5Hex, query.Keyword, now}
 	return connectOperations().FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": md5Hex},

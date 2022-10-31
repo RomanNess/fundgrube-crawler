@@ -60,7 +60,7 @@ type posting struct {
 }
 
 func (p posting) String() string {
-	return fmt.Sprintf("%.2f€ (%.2f€ -%d%%) %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.PriceOld, p.DiscountInPercent, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
+	return fmt.Sprintf("%.2f€ (UVP %.2f€ -%d%%) %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.PriceOld, p.DiscountInPercent, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
 }
 
 /*
@@ -83,6 +83,7 @@ type brand struct {
 }
 
 type operation struct {
-	Id        string     `bson:"_id"`
-	Timestamp *time.Time `bson:"timestamp"`
+	Id          string     `bson:"_id"`
+	Description string     `bson:"description"`
+	Timestamp   *time.Time `bson:"timestamp"`
 }

@@ -104,20 +104,21 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 func (suite *PersistenceSuite) Test_saveOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
-	result := updateSearchOperation("fefe", &now)
-	assert.Nil(suite.T(), result.Err())
+	hash := getExampleHash()
 
-	assert.Equal(suite.T(), operation{"fefe", &now}, *findSearchOperation("fefe"))
+	updateSearchOperation(getExampleQuery(), &now)
+	assert.Equal(suite.T(), operation{hash, "keyword", &now}, *findSearchOperation(hash))
 }
 
 func (suite *PersistenceSuite) Test_updateOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
-	updateSearchOperation("fefe", &now)
-	assert.Equal(suite.T(), operation{"fefe", &now}, *findSearchOperation("fefe"))
+	hash := getExampleHash()
+	updateSearchOperation(getExampleQuery(), &now)
+	assert.Equal(suite.T(), operation{hash, "keyword", &now}, *findSearchOperation(hash))
 
 	now2 := now.AddDate(0, 0, 1)
-	updateSearchOperation("fefe", &now2)
-	assert.Equal(suite.T(), operation{"fefe", &now2}, *findSearchOperation("fefe"))
+	updateSearchOperation(getExampleQuery(), &now2)
+	assert.Equal(suite.T(), operation{hash, "keyword", &now2}, *findSearchOperation(hash))
 }
 
 func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
@@ -149,4 +150,12 @@ func getExamplePosting(prefix string) posting {
 		Price:     42.00,
 		Outlet:    outlet{1337, "outlet"},
 	}
+}
+
+func getExampleHash() string {
+	return hashQuery(getExampleQuery())
+}
+
+func getExampleQuery() query {
+	return query{"keyword"}
 }

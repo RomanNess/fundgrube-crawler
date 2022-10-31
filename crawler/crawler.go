@@ -44,7 +44,7 @@ func SearchDeals() {
 			log.Fatal(err)
 		}
 	}
-	updateSearchOperation(hashQuery(query), now())
+	updateSearchOperation(query, now())
 }
 
 func getLastSearchTime(q query) *time.Time {
