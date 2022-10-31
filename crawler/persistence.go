@@ -136,18 +136,17 @@ func connect(collectionName string) *mongo.Collection {
 
 	// Set client options
 	clientOptions := options.Client().ApplyURI(env("MONGODB_URI", "mongodb://localhost:27017")).
-		SetAuth(credential)
+		SetAuth(credential).
+		SetTimeout(5 * time.Second)
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
-
 	if err != nil {
 		log.Fatal(err) // TODO: ugly
 	}
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
-
 	if err != nil {
 		log.Fatal(err)
 	}
