@@ -39,12 +39,20 @@ func SearchDeals() {
 	}
 	if len(deals) > 0 {
 		message := fmtDealsMessage(deals)
-		err := alert.SendAlertMail(fmt.Sprintf("Found %d new deals.", len(deals)), message)
+		err := alert.SendAlertMail(formatSubject(deals), message)
 		if err != nil {
 			log.Fatal(err)
 		}
 	}
 	updateSearchOperation(query, now())
+}
+
+func formatSubject(deals []posting) string {
+	if len(deals) == 0 {
+		return "Found no deals. 😿"
+	}
+	deal := deals[0]
+	return fmt.Sprintf("Found %s for %.2f€ in %s (%d deal(s) overall)", deal.Name, deal.Price, deal.Outlet.Name, len(deals))
 }
 
 func getLastSearchTime(q query) *time.Time {
