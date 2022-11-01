@@ -14,20 +14,21 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 
 ## Environmental Variables
 
-| name                            | desc                                         | default                     |
-|---------------------------------|----------------------------------------------|-----------------------------|
-| `MONGODB_URI`                   | -                                            | `mongodb://localhost:27017` |
-| `MONGODB_USERNAME`              | -                                            | `root`                      |
-| `MONGODB_PASSWORD`              | -                                            | `example`                   |
-| `MONGODB_DB`                    | -                                            | `fundgrube`                 |
-| `MONGODB_COLLECTION_POSTINGS`   | -                                            | `postings`                  |
-| `MONGODB_COLLECTION_OPERATIONS` | -                                            | `operations`                |
-| `FIND_ALL`                      | ignore last run and search in all postings   | `false`                     |
-| `LIMIT_OUTLETS`                 | only fetch 5 first outlets (for development) | `false`                     |
-| `LOG_TO_FILE`                   | log to /tmp/fundgrube.txt instead of stdout  | `false`                     |
-| `MOCKED_POSTINGS`               | mock response from api                       | `false`                     |
-| `SKIP_CRAWLING`                 | skip fetching postings from api              | `false`                     |
-| `SEARCH_KEYWORD`                | keyword used to search for deals             | `example`                   |
+| name                            | desc                                                  | default                     |
+|---------------------------------|-------------------------------------------------------|-----------------------------|
+| `MONGODB_URI`                   | -                                                     | `mongodb://localhost:27017` |
+| `MONGODB_USERNAME`              | -                                                     | `root`                      |
+| `MONGODB_PASSWORD`              | -                                                     | `example`                   |
+| `MONGODB_DB`                    | -                                                     | `fundgrube`                 |
+| `MONGODB_COLLECTION_POSTINGS`   | -                                                     | `postings`                  |
+| `MONGODB_COLLECTION_OPERATIONS` | -                                                     | `operations`                |
+| `FIND_ALL`                      | ignore last run and search in all postings            | `false`                     |
+| `LIMIT_OUTLETS`                 | only fetch 5 first outlets (for development)          | `false`                     |
+| `LOG_TO_FILE`                   | log to /tmp/fundgrube.txt instead of stdout           | `false`                     |
+| `MOCKED_POSTINGS`               | mock response from api                                | `false`                     |
+| `SKIP_CRAWLING`                 | skip fetching postings from api                       | `false`                     |
+| `LOG_LEVEL`                     | levels: trace, debug, info, warn, error, fatal, panic | `info`                      |
+| `SEARCH_KEYWORD`                | keyword used to search for deals                      | `example`                   |
 
 ## API peculiarities
 

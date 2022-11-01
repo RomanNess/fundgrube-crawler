@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"fundgrube-crawler/alert"
 	"fundgrube-crawler/crawler"
-	"log"
+	log "github.com/sirupsen/logrus"
+	easy "github.com/t-tomalak/logrus-easy-formatter"
 	"os"
 	"time"
 )
@@ -12,29 +13,40 @@ import (
 var LOG_FILE = fmt.Sprintf("/tmp/fundgrube-%s.txt", time.Now().Format("2006-01-02T15-04-05"))
 
 func main() {
-	if envBool("LOG_TO_FILE") {
-		logToFile()
-		defer mailAlertOnPanic()
-	}
+	configureLogger()
+	defer mailAlertOnPanic()
 
 	if !envBool("SKIP_CRAWLING") {
 		err := crawler.CrawlPostings(envBool("MOCKED_POSTINGS"))
 		if err != nil {
-			log.Fatal(err)
+			panic(err)
 		}
 	}
 
 	crawler.SearchDeals()
 }
 
-func logToFile() {
-	file, err := os.OpenFile(LOG_FILE, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
+func configureLogger() {
+	log.SetFormatter(&easy.Formatter{
+		TimestampFormat: "2006-01-02T15:04:05Z07",
+		LogFormat:       "%time% [%lvl%] %msg%\n",
+	})
 
-	log.Printf("Logging into '%s'", LOG_FILE)
-	log.SetOutput(file)
+	level, err := log.ParseLevel(env("LOG_LEVEL", "info"))
+	if err != nil {
+		panic(err)
+	}
+	log.SetLevel(level)
+
+	if envBool("LOG_TO_FILE") {
+		file, err := os.OpenFile(LOG_FILE, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+		if err != nil {
+			panic(err)
+		}
+
+		log.Infof("Logging into '%s'", LOG_FILE)
+		log.SetOutput(file)
+	}
 }
 
 func mailAlertOnPanic() {
@@ -45,7 +57,7 @@ func mailAlertOnPanic() {
 		if err != nil {
 			panic(err)
 		}
-		log.Println("💥Panic occurred. Send alert mail.", r)
+		log.Errorln("💥Panic occurred. Send alert mail.", r)
 	}
 }
 
@@ -63,4 +75,12 @@ func getContentBytes() []byte {
 
 func envBool(key string) bool {
 	return os.Getenv(key) == "true"
+}
+
+func env(key string, defaultValue string) string {
+	value, present := os.LookupEnv(key)
+	if present {
+		return value
+	}
+	return defaultValue
 }

@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"fundgrube-crawler/alert"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"time"
 )
@@ -19,6 +19,7 @@ func CrawlPostings(mockedPostings bool) error {
 			return err
 		}
 		saveAll(postings)
+		log.Infof("Updated %d Postings for %s.", len(postings), shop)
 	}
 	return nil
 }
@@ -29,7 +30,7 @@ func SearchDeals() {
 	deals := []posting{}
 	for true {
 		postings := findAll(&query.Regex, getLastSearchTime(query), limit, offset)
-		log.Printf("Loaded %d postings from DB.", len(postings))
+		log.Infof("Found %d deals in DB.", len(postings))
 
 		offset = offset + limit
 		if len(postings) == 0 {
@@ -92,14 +93,14 @@ func fmtDealsMessage(deals []posting) string {
 	}
 
 	message := buffer.String()
-	log.Println(message)
+	log.Infoln(message)
 	return message
 }
 
 func getQuery() query {
 	regex := os.Getenv("QUERY_REGEX")
 	if regex == "" {
-		log.Println("QUERY_REGEX not set! Default to 'example'.")
+		log.Warnln("QUERY_REGEX not set! Default to 'example'.")
 		regex = "example"
 	}
 	return query{regex}

@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -54,7 +54,6 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 			}
 		}
 	}
-	log.Printf("Found %d Postings overall in %d outlets.", len(ret), len(outlets))
 	return preparePostings(shop, ret), err
 }
 
@@ -83,7 +82,7 @@ func fetchOutlets(shop Shop, mockedPostings bool) ([]outlet, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("Found %d Outlets", len(postingsResponse.Outlets))
+	log.Infof("Discovered %d Outlets for %s", len(postingsResponse.Outlets), shop)
 	return postingsResponse.Outlets, err
 }
 
@@ -111,7 +110,7 @@ func fetchSinglePageOfPostings(shop Shop, outlet *outlet, brand *brand, limit in
 	}
 
 	if outlet != nil {
-		log.Printf("Found %d postings in %s.", len(postingResponse.Postings), outlet.Name)
+		log.Infof("Fetched %d postings in %s.", len(postingResponse.Postings), outlet.Name)
 	}
 	return &postingResponse, nil
 }
@@ -132,7 +131,7 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	}
 	request.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36")
 
-	log.Printf("Querying: %s", url)
+	log.Debugf("Querying: %s", url)
 	response, err := client.Do(request)
 	if err != nil {
 		return nil, err
