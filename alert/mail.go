@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func SendAlertMail(subject string, content string) error {
+func SendAlertMailBytes(subject string, content []byte) error {
 	smtpHost := env("SMTP_SERVER", "smtp.gmail.com")
 	smtpPort := env("SMTP_PORT", "587")
 	username := env("SMTP_USERNAME", "n/a")
@@ -14,8 +14,12 @@ func SendAlertMail(subject string, content string) error {
 	recipients := []string{env("SMTP_RECIPIENT", "n/a")}
 
 	auth := smtp.PlainAuth("", username, password, smtpHost)
-	messageBytes := []byte(fmt.Sprintf("Subject: %s\n\n%s", subject, content))
+	messageBytes := append([]byte(fmt.Sprintf("Subject: %s\n\n", subject)), content...)
 	return smtp.SendMail(smtpHost+":"+smtpPort, auth, username, recipients, messageBytes)
+}
+
+func SendAlertMail(subject string, content string) error {
+	return SendAlertMailBytes(subject, []byte(content))
 }
 
 func env(key string, defaultValue string) string {

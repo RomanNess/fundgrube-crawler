@@ -6,7 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
 	"os"
 	"reflect"
 	"time"
@@ -36,14 +35,14 @@ func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []p
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
 	cur, err := connectPostings().Find(context.TODO(), filter, findOptions)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	postings := []posting{}
 	for cur.Next(context.TODO()) {
 		var elem posting
 		err := cur.Decode(&elem)
 		if err != nil {
-			log.Fatal(err)
+			panic(err)
 		}
 		postings = append(postings, elem)
 	}
@@ -64,7 +63,7 @@ func saveAll(postings []posting) {
 func clearAll() {
 	_, err := connectPostings().DeleteMany(context.TODO(), bson.M{})
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }
 
@@ -142,13 +141,13 @@ func connect(collectionName string) *mongo.Collection {
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
-		log.Fatal(err) // TODO: ugly
+		panic(err)
 	}
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	return client.Database(env("MONGODB_DB", "fundgrube")).Collection(collectionName)

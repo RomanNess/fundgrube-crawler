@@ -41,7 +41,7 @@ func SearchDeals() {
 		message := fmtDealsMessage(deals)
 		err := alert.SendAlertMail(formatSubject(deals), message)
 		if err != nil {
-			log.Fatal(err)
+			panic(err)
 		}
 	}
 	updateSearchOperation(query, now())
@@ -72,7 +72,7 @@ func getLastSearchTime(q query) *time.Time {
 func hashQuery(q query) string {
 	jsonBytes, err := json.Marshal(q)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	md5Bytes := md5.Sum(jsonBytes)
 	return hex.EncodeToString(md5Bytes[:])

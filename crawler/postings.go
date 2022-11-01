@@ -145,7 +145,7 @@ func buildUrl(shop Shop, outlet *outlet, brand *brand, pageRequest *pageRequest)
 	isApiRequest := pageRequest != nil
 	u, err := url.Parse(buildBaseUrl(shop, isApiRequest))
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	q := u.Query()
