@@ -19,7 +19,7 @@ build:
 	go build -o bin/fundgrube-crawler cmd/fundgrube-crawler/main.go
 
 build-pi:
-	GOOS=linux GOARCH=arm GOARM=5 go build -o bin/$(PI_BINARY) cmd/fundgrube-crawler/main.go
+	GOOS=linux GOARCH=arm GOARM=6 go build -o bin/$(PI_BINARY) cmd/fundgrube-crawler/main.go
 
 deploy-pi: build-pi
 	scp bin/$(PI_BINARY) $(PI_SSH_USER_AND_HOST):$(PI_DEPLOYMENT_PATH)
