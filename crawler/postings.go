@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -36,12 +37,12 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 		outlets = outlets[0:5]
 	}
 
-	for _, outlet := range outlets {
+	for _, outlets := range sliceOutlets(outlets) {
 		// api always returns same page if limit >= 100 is requested
 		limit := 90
 		offset := 0
 		for true {
-			postingsResponse, e := fetchSinglePageOfPostings(shop, &outlet, nil, limit, offset, mockedPostings)
+			postingsResponse, e := fetchSinglePageOfPostings(shop, outlets, nil, limit, offset, mockedPostings)
 			if e != nil {
 				return nil, e
 			}
@@ -57,6 +58,26 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 	return preparePostings(shop, ret), err
 }
 
+func sliceOutlets(outlets []outlet) [][]outlet {
+	ret := [][]outlet{}
+
+	var numberOfPostings = 0
+	var outletSlice []outlet
+	for i, o := range outlets {
+		outletSlice = append(outletSlice, o)
+		numberOfPostings = numberOfPostings + o.Count
+		if i+1 < len(outlets) && numberOfPostings+outlets[i+1].Count > 990 {
+			ret = append(ret, outletSlice)
+			outletSlice = []outlet{}
+			numberOfPostings = 0
+		}
+	}
+	if len(outletSlice) > 0 {
+		ret = append(ret, outletSlice)
+	}
+	return ret
+}
+
 func preparePostings(shop Shop, postings []posting) []posting {
 	for i, p := range postings {
 		postings[i] = preparePosting(shop, p)
@@ -66,7 +87,7 @@ func preparePostings(shop Shop, postings []posting) []posting {
 
 func preparePosting(shop Shop, posting posting) posting {
 	posting.Shop = shop
-	posting.ShopUrl = buildUrl(shop, &posting.Outlet, &posting.Brand, nil)
+	posting.ShopUrl = buildUrl(shop, []outlet{{OutletId: posting.Outlet.OutletId}}, &posting.Brand, nil)
 	posting.Price, _ = strconv.ParseFloat(posting.PriceString, 64)
 	posting.PriceOld, _ = strconv.ParseFloat(posting.PriceOldString, 64)
 	posting.PriceString = ""
@@ -86,8 +107,8 @@ func fetchOutlets(shop Shop, mockedPostings bool) ([]outlet, error) {
 	return postingsResponse.Outlets, err
 }
 
-func fetchSinglePageOfPostings(shop Shop, outlet *outlet, brand *brand, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
-	urlString := buildUrl(shop, outlet, brand, &pageRequest{limit, offset})
+func fetchSinglePageOfPostings(shop Shop, outlets []outlet, brand *brand, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
+	urlString := buildUrl(shop, outlets, brand, &pageRequest{limit, offset})
 	responseBodyReader, err := getResponseBody(urlString, mockedPostings)
 	if err != nil {
 		return nil, err
@@ -109,8 +130,8 @@ func fetchSinglePageOfPostings(shop Shop, outlet *outlet, brand *brand, limit in
 		return nil, err
 	}
 
-	if outlet != nil {
-		log.Infof("Fetched %d postings in %s.", len(postingResponse.Postings), outlet.Name)
+	if outlets != nil {
+		log.Infof("Fetched %d postings in %d outlets with offset %d.", len(postingResponse.Postings), len(outlets), offset)
 	}
 	return &postingResponse, nil
 }
@@ -140,7 +161,7 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	return responseBody, err
 }
 
-func buildUrl(shop Shop, outlet *outlet, brand *brand, pageRequest *pageRequest) string {
+func buildUrl(shop Shop, outlets []outlet, brand *brand, pageRequest *pageRequest) string {
 	isApiRequest := pageRequest != nil
 	u, err := url.Parse(buildBaseUrl(shop, isApiRequest))
 	if err != nil {
@@ -152,8 +173,8 @@ func buildUrl(shop Shop, outlet *outlet, brand *brand, pageRequest *pageRequest)
 		q.Set("limit", strconv.Itoa(pageRequest.limit))
 		q.Set("offset", strconv.Itoa(pageRequest.offset))
 	}
-	if outlet != nil {
-		q.Set("outletIds", strconv.Itoa(outlet.OutletId))
+	if outlets != nil {
+		q.Set("outletIds", commaSeparatedOutletIds(outlets))
 	}
 	if brand != nil {
 		q.Set("brands", url.QueryEscape(brand.Name))
@@ -161,6 +182,14 @@ func buildUrl(shop Shop, outlet *outlet, brand *brand, pageRequest *pageRequest)
 
 	u.RawQuery = q.Encode()
 	return u.String()
+}
+
+func commaSeparatedOutletIds(outlets []outlet) string {
+	outletIds := []string{}
+	for _, o := range outlets {
+		outletIds = append(outletIds, strconv.Itoa(o.OutletId))
+	}
+	return strings.Join(outletIds, ",")
 }
 
 func buildBaseUrl(shop Shop, isApiRequest bool) string {

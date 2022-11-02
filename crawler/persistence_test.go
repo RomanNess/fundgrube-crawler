@@ -65,7 +65,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		Name:              "Instant Chef Party - [Nintendo Switch]",
 		Url:               []string{"https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"},
 		Text:              "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
-		Outlet:            outlet{475, "Lübeck"},
+		Outlet:            postingOutlet{475, "Lübeck"},
 		Brand:             brand{10312, "WILD RIVER"},
 		Shop:              MM,
 		ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
@@ -222,7 +222,7 @@ func getExamplePosting(prefix string) posting {
 		Price:             1337.00,
 		PriceOld:          1338.00,
 		DiscountInPercent: 1,
-		Outlet:            outlet{42, "outlet"},
+		Outlet:            postingOutlet{42, "outlet"},
 	}
 }
 

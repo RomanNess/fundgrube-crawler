@@ -42,21 +42,21 @@ type postingsResponse struct {
    }
 */
 type posting struct {
-	PostingId         string     `json:"posting_id" bson:"_id"`
-	PriceString       string     `json:"price" bson:"-"`
-	PriceOldString    string     `json:"price_old" bson:"-"`
-	Price             float64    `json:"-" bson:"price"`
-	PriceOld          float64    `json:"-" bson:"price_old"`
-	DiscountInPercent int        `json:"discount_in_percent" bson:"discount_in_percent"`
-	Name              string     `json:"name"`
-	Url               []string   `json:"original_url"`
-	Text              string     `json:"posting_text"`
-	Outlet            outlet     `json:"outlet"`
-	Brand             brand      `json:"brand"`
-	Shop              Shop       `bson:"shop"`
-	ShopUrl           string     `bson:"shop_url"`
-	CreDat            *time.Time `bson:"cre_dat"`
-	ModDat            *time.Time `bson:"mod_dat"`
+	PostingId         string        `json:"posting_id" bson:"_id"`
+	PriceString       string        `json:"price" bson:"-"`
+	PriceOldString    string        `json:"price_old" bson:"-"`
+	Price             float64       `json:"-" bson:"price"`
+	PriceOld          float64       `json:"-" bson:"price_old"`
+	DiscountInPercent int           `json:"discount_in_percent" bson:"discount_in_percent"`
+	Name              string        `json:"name" bson:"name"`
+	Url               []string      `json:"original_url" bson:"url"`
+	Text              string        `json:"posting_text" bson:"text"`
+	Outlet            postingOutlet `json:"outlet" bson:"outlet"`
+	Brand             brand         `json:"brand" bson:"brand"`
+	Shop              Shop          `json:"-" bson:"shop"`
+	ShopUrl           string        `json:"-" bson:"shop_url"`
+	CreDat            *time.Time    `json:"-" bson:"cre_dat" `
+	ModDat            *time.Time    `json:"-" bson:"mod_dat"`
 }
 
 func (p posting) String() string {
@@ -75,11 +75,17 @@ func (p posting) String() string {
 type outlet struct {
 	OutletId int    `json:"id"`
 	Name     string `json:"name"`
+	Count    int    `json:"count"`
+}
+
+type postingOutlet struct {
+	OutletId int    `json:"id" bson:"id"`
+	Name     string `json:"name" bson:"name"`
 }
 
 type brand struct {
-	BrandId int    `json:"id"`
-	Name    string `json:"name"`
+	BrandId int    `json:"id" bson:"id"`
+	Name    string `json:"name" bson:"name"`
 }
 
 type operation struct {

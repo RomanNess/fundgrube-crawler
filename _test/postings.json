@@ -16,13 +16,13 @@
     ],
     "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
     "outlet": {
-      "outletid": {
+      "id": {
         "$numberInt": "475"
       },
       "name": "Lübeck"
     },
     "brand": {
-      "brandid": {
+      "id": {
         "$numberInt": "10312"
       },
       "name": "WILD RIVER"
@@ -57,13 +57,13 @@
     ],
     "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
     "outlet": {
-      "outletid": {
+      "id": {
         "$numberInt": "475"
       },
       "name": "Lübeck"
     },
     "brand": {
-      "brandid": {
+      "id": {
         "$numberInt": "10313"
       },
       "name": "NINTENDO OF EUROPE (PL)"
@@ -93,13 +93,13 @@
     ],
     "text": "Ausstellungsstück",
     "outlet": {
-      "outletid": {
+      "id": {
         "$numberInt": "136"
       },
       "name": "Marl"
     },
     "brand": {
-      "brandid": {
+      "id": {
         "$numberInt": "2383"
       },
       "name": "ASUS"

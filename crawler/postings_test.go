@@ -21,7 +21,7 @@ func Test_preparePosting(t *testing.T) {
 				MM,
 				posting{
 					Brand:             brand{10, "Sony"},
-					Outlet:            outlet{100, "Outlet"},
+					Outlet:            postingOutlet{100, "Outlet"},
 					PriceString:       "12.34",
 					PriceOldString:    "24.68",
 					DiscountInPercent: 50,
@@ -30,7 +30,7 @@ func Test_preparePosting(t *testing.T) {
 			},
 			posting{
 				Brand:             brand{10, "Sony"},
-				Outlet:            outlet{100, "Outlet"},
+				Outlet:            postingOutlet{100, "Outlet"},
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
@@ -74,18 +74,18 @@ func Test_preparePostings(t *testing.T) {
 			"initialize fields",
 			args{
 				MM,
-				[]posting{posting{
+				[]posting{{
 					Brand:             brand{10, "Sony"},
-					Outlet:            outlet{100, "Outlet"},
+					Outlet:            postingOutlet{100, "Outlet"},
 					PriceString:       "12.34",
 					PriceOldString:    "24.68",
 					DiscountInPercent: 50,
 					Url:               []string{"https://foo.bar", "https://the.back"},
 				}},
 			},
-			[]posting{posting{
+			[]posting{{
 				Brand:             brand{10, "Sony"},
-				Outlet:            outlet{100, "Outlet"},
+				Outlet:            postingOutlet{100, "Outlet"},
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
@@ -104,6 +104,58 @@ func Test_preparePostings(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			postings := preparePostings(tt.args.shop, tt.args.postings)
 			assert.Equal(t, tt.want, postings)
+		})
+	}
+}
+
+func Test_sliceOutlets(t *testing.T) {
+	tests := []struct {
+		name    string
+		outlets []outlet
+		wantRet [][]outlet
+	}{
+		{
+			"three outlets",
+			[]outlet{
+				{1, "1", 500},
+				{2, "2", 400},
+				{3, "3", 300},
+				{4, "4", 300},
+				{5, "5", 400},
+			},
+			[][]outlet{
+				{
+					{1, "1", 500},
+					{2, "2", 400},
+				}, {
+					{3, "3", 300},
+					{4, "4", 300},
+				}, {
+					{5, "5", 400},
+				},
+			},
+		}, {
+			"huge outlet",
+			[]outlet{
+				{1, "1", 991},
+				{2, "2", 400},
+			},
+			[][]outlet{
+				{
+					{1, "1", 991},
+				}, {
+					{2, "2", 400},
+				},
+			},
+		}, {
+			"no outlets",
+			[]outlet{},
+			[][]outlet{},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.wantRet, sliceOutlets(tt.outlets), "sliceOutlets(%v)", tt.outlets)
 		})
 	}
 }
