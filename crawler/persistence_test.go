@@ -14,7 +14,9 @@ type PersistenceSuite struct {
 	suite.Suite
 }
 
-const POSTING_ID = "ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a"
+const PID_CHEF_PARTY = "ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a"
+const PID_NECRODANCER = "ffd23648-6353-4c18-93d5-78e0ac838da1"
+const PID_ASUS = "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"
 
 func (suite *PersistenceSuite) SetupTest() {
 	err := os.Setenv("MONGODB_DB", "fundgrube_test")
@@ -56,7 +58,7 @@ func (suite *PersistenceSuite) Test_findOne_nonexistent() {
 
 func (suite *PersistenceSuite) Test_findOne() {
 	expectedPosting := posting{
-		PostingId:         POSTING_ID,
+		PostingId:         PID_CHEF_PARTY,
 		PriceString:       "",
 		PriceOldString:    "",
 		Price:             10.0,
@@ -73,12 +75,12 @@ func (suite *PersistenceSuite) Test_findOne() {
 		ModDat:            parseDate("2022-10-31T21:47:16.898Z"),
 	}
 
-	assert.Equal(suite.T(), expectedPosting, *findOne(POSTING_ID))
+	assert.Equal(suite.T(), expectedPosting, *findOne(PID_CHEF_PARTY))
 }
 
 func (suite *PersistenceSuite) Test_findAll() {
 	type args struct {
-		regex     *string
+		q         query
 		afterTime *time.Time
 		limit     int64
 		offset    int64
@@ -90,30 +92,42 @@ func (suite *PersistenceSuite) Test_findAll() {
 	}{
 		{
 			"find all",
-			args{nil, nil, 100, 0},
-			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+			args{query{}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER, PID_ASUS},
 		}, {
 			"offset 1",
-			args{nil, nil, 100, 1},
-			[]string{"ffd23648-6353-4c18-93d5-78e0ac838da1", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+			args{query{}, nil, 100, 1},
+			[]string{PID_NECRODANCER, PID_ASUS},
 		}, {
 			"limit 2",
-			args{nil, nil, 2, 0},
-			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1"},
+			args{query{}, nil, 2, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"regex search",
-			args{ptr("^.*nintendo.*$"), nil, 100, 0},
-			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffd23648-6353-4c18-93d5-78e0ac838da1"},
+			args{query{Regex: sPtr("^.*nintendo.*$")}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
+		}, {
+			"price min/max",
+			args{query{PriceMin: fPtr(15), PriceMax: fPtr(30)}, nil, 100, 0},
+			[]string{PID_NECRODANCER},
+		}, {
+			"brand regex",
+			args{query{BrandRegex: sPtr("nin.*o")}, nil, 100, 0},
+			[]string{PID_NECRODANCER},
+		}, {
+			"outletId",
+			args{query{OutletId: iPtr(475)}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"after time",
-			args{nil, parseDate("2022-10-30T00:00:00Z"), 100, 0},
-			[]string{"ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a", "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"},
+			args{query{}, parseDate("2022-10-30T00:00:00Z"), 100, 0},
+			[]string{PID_CHEF_PARTY, PID_ASUS},
 		},
 	}
 
 	for _, tt := range tests {
 		suite.Run(tt.name, func() {
-			postings := findAll(tt.args.regex, tt.args.afterTime, tt.args.limit, tt.args.offset)
+			postings := findAll(tt.args.q, tt.args.afterTime, tt.args.limit, tt.args.offset)
 			var postingIds []string
 			for _, p := range postings {
 				postingIds = append(postingIds, p.PostingId)
@@ -127,7 +141,7 @@ func (suite *PersistenceSuite) Test_findAll_findNew() {
 	foo := getExamplePosting("foo")
 	saveOne(foo)
 
-	postings := findAll(nil, nil, 100, 3)
+	postings := findAll(query{}, nil, 100, 3)
 	assert.Equal(suite.T(), 1, len(postings))
 	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
 }
@@ -141,7 +155,7 @@ func (suite *PersistenceSuite) Test_saveOne() {
 }
 
 func (suite *PersistenceSuite) Test_saveOne_updateName() {
-	posting := findOne(POSTING_ID)
+	posting := findOne(PID_CHEF_PARTY)
 
 	posting.Name = "New Name"
 	inserted, updated := saveOne(*posting)
@@ -159,7 +173,7 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 	inserted, updated := saveAll([]posting{alreadySaved, notSavedYet})
 
-	all := findAll(nil, nil, 100, 0)
+	all := findAll(query{}, nil, 100, 0)
 	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
 	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
 
@@ -172,18 +186,18 @@ func (suite *PersistenceSuite) Test_saveOperation() {
 	hash := getExampleHash()
 
 	updateSearchOperation(getExampleQuery(), &now)
-	assert.Equal(suite.T(), operation{hash, "keyword", &now}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
 }
 
 func (suite *PersistenceSuite) Test_updateOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
 	hash := getExampleHash()
 	updateSearchOperation(getExampleQuery(), &now)
-	assert.Equal(suite.T(), operation{hash, "keyword", &now}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
 
 	now2 := now.AddDate(0, 0, 1)
 	updateSearchOperation(getExampleQuery(), &now2)
-	assert.Equal(suite.T(), operation{hash, "keyword", &now2}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now2}, *findSearchOperation(hash))
 }
 
 func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
@@ -231,5 +245,5 @@ func getExampleHash() string {
 }
 
 func getExampleQuery() query {
-	return query{"keyword"}
+	return query{Regex: sPtr("keyword")}
 }

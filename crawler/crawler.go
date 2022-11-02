@@ -36,8 +36,8 @@ func searchDealsForSingleQuery(query query) {
 	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
-		postings := findAll(&query.Regex, getLastSearchTime(query), limit, offset)
-		log.Infof("Found %d deals for query '%s'.", len(postings), query.Regex)
+		postings := findAll(query, getLastSearchTime(query), limit, offset)
+		log.Infof("Found %d deals for query '%s'.", len(postings), query)
 
 		offset = offset + limit
 		if len(postings) == 0 {
@@ -108,11 +108,13 @@ func getQueries() (ret []query) {
 	searchRegexes := os.Getenv("QUERY_REGEX")
 	if searchRegexes == "" {
 		log.Warnln("QUERY_REGEX not set! Default to 'example'.")
-		return []query{{"example"}}
+		regex := "example"
+		return []query{{Regex: &regex}}
 	}
 	split := strings.Split(searchRegexes, ";")
 	for _, regex := range split {
-		ret = append(ret, query{regex})
+		regexCopy := regex // don't return a pointer on loop variable :)
+		ret = append(ret, query{Regex: &regexCopy})
 	}
 	return
 }

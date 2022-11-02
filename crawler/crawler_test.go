@@ -18,9 +18,9 @@ func Test_hashQuery(t *testing.T) {
 		{
 			"simple query",
 			args{
-				query{"foobar"},
+				query{Regex: sPtr("foobar")},
 			},
-			"82916e4f1ff6c73dd1564660c85b7332",
+			"297246b4db7859ed8f6c3ebb257b48e1",
 		},
 	}
 	for _, tt := range tests {
@@ -39,15 +39,15 @@ func Test_getQueries(t *testing.T) {
 		{
 			name:    "single query",
 			env:     "sony.*walkman",
-			wantRet: []query{{"sony.*walkman"}},
+			wantRet: []query{{Regex: sPtr("sony.*walkman")}},
 		}, {
 			name:    "default queries",
 			env:     "",
-			wantRet: []query{{"example"}},
+			wantRet: []query{{Regex: sPtr("example")}},
 		}, {
 			name:    "two queries",
 			env:     "sony.*walkman;other[^.]",
-			wantRet: []query{{"sony.*walkman"}, {"other[^.]"}},
+			wantRet: []query{{Regex: sPtr("sony.*walkman")}, {Regex: sPtr("other[^.]")}},
 		},
 	}
 	for _, tt := range tests {
@@ -56,4 +56,16 @@ func Test_getQueries(t *testing.T) {
 			assert.Equalf(t, tt.wantRet, getQueries(), "getQueries()")
 		})
 	}
+}
+
+func sPtr(s string) *string {
+	return &s
+}
+
+func iPtr(i int) *int {
+	return &i
+}
+
+func fPtr(f float64) *float64 {
+	return &f
 }

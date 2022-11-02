@@ -1,12 +1,26 @@
 package crawler
 
 import (
+	"bytes"
 	"fmt"
 	"time"
 )
 
 type query struct {
-	Regex string
+	Regex       *string  `bson:"regex"`
+	BrandRegex  *string  `bson:"brand_regex"`
+	PriceMin    *float64 `bson:"price_min"`
+	PriceMax    *float64 `bson:"price_max"`
+	DiscountMin *int     `bson:"discount_min"`
+	OutletId    *int     `bson:"outlet_id"`
+}
+
+func (q query) String() string {
+	var buffer bytes.Buffer
+	if q.Regex != nil {
+		buffer.WriteString("regex: " + *q.Regex)
+	}
+	return buffer.String()
 }
 
 type postingsResponse struct {
@@ -91,5 +105,6 @@ type brand struct {
 type operation struct {
 	Id          string     `bson:"_id"`
 	Description string     `bson:"description"`
+	Query       query      `bson:"query"`
 	Timestamp   *time.Time `bson:"timestamp"`
 }

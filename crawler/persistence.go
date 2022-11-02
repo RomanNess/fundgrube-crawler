@@ -27,14 +27,27 @@ func _findOne(postingId string) *posting {
 	return &posting
 }
 
-func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []posting {
+func findAll(q query, afterTime *time.Time, limit int64, offset int64) []posting {
 	filter := bson.M{}
 	if afterTime != nil {
 		filter["mod_dat"] = bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}
 	}
-	if regex != nil {
-		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *regex, Options: "i"}}
+	if q.Regex != nil {
+		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.Regex, Options: "i"}}
 	}
+	if q.BrandRegex != nil {
+		filter["brand.name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.BrandRegex, Options: "i"}}
+	}
+	if q.PriceMin != nil || q.PriceMax != nil {
+		filter["price"] = priceFilter(q.PriceMin, q.PriceMax)
+	}
+	if q.DiscountMin != nil {
+		filter["discount"] = bson.M{"$gte": q.DiscountMin}
+	}
+	if q.OutletId != nil {
+		filter["outlet.id"] = bson.M{"$eq": q.OutletId}
+	}
+
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
 	cur, err := postingsCollection().Find(context.TODO(), filter, findOptions)
 	if err != nil {
@@ -50,6 +63,19 @@ func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []p
 		postings = append(postings, elem)
 	}
 	return postings
+}
+
+func priceFilter(priceMin *float64, priceMax *float64) bson.M {
+	if priceMin != nil && priceMax != nil {
+		return bson.M{"$gte": priceMin, "$lte": priceMax}
+	}
+	if priceMin == nil {
+		return bson.M{"$gte": priceMin}
+	}
+	if priceMax == nil {
+		return bson.M{"$lte": priceMax}
+	}
+	panic("priceFilter called without priceMin or priceMax set")
 }
 
 func saveOne(posting posting) (inserted int, updated int) {
@@ -107,7 +133,7 @@ func clearAll() {
 
 func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 	md5Hex := hashQuery(query)
-	op := operation{md5Hex, query.Regex, now}
+	op := operation{md5Hex, *query.Regex, query, now}
 	return operationsCollection().FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": md5Hex},
