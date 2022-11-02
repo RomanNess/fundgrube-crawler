@@ -14,7 +14,9 @@ var LOG_FILE = fmt.Sprintf("/tmp/fundgrube-%s.txt", time.Now().Format("2006-01-0
 
 func main() {
 	configureLogger()
-	defer mailAlertOnPanic()
+	if envBool("LOG_TO_FILE") {
+		defer mailAlertOnPanic()
+	}
 
 	if !envBool("SKIP_CRAWLING") {
 		err := crawler.CrawlPostings(envBool("MOCKED_POSTINGS"))

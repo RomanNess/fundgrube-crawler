@@ -9,6 +9,7 @@ import (
 	"fundgrube-crawler/alert"
 	log "github.com/sirupsen/logrus"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -25,12 +26,18 @@ func CrawlPostings(mockedPostings bool) error {
 }
 
 func SearchDeals() {
-	query := getQuery()
+	queries := getQueries()
+	for _, query := range queries {
+		searchDealsForSingleQuery(query)
+	}
+}
+
+func searchDealsForSingleQuery(query query) {
 	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
 		postings := findAll(&query.Regex, getLastSearchTime(query), limit, offset)
-		log.Infof("Found %d deals in DB.", len(postings))
+		log.Infof("Found %d deals for query '%s'.", len(postings), query.Regex)
 
 		offset = offset + limit
 		if len(postings) == 0 {
@@ -97,11 +104,15 @@ func fmtDealsMessage(deals []posting) string {
 	return message
 }
 
-func getQuery() query {
-	regex := os.Getenv("QUERY_REGEX")
-	if regex == "" {
+func getQueries() (ret []query) {
+	searchRegexes := os.Getenv("QUERY_REGEX")
+	if searchRegexes == "" {
 		log.Warnln("QUERY_REGEX not set! Default to 'example'.")
-		regex = "example"
+		return []query{{"example"}}
 	}
-	return query{regex}
+	split := strings.Split(searchRegexes, ";")
+	for _, regex := range split {
+		ret = append(ret, query{regex})
+	}
+	return
 }
