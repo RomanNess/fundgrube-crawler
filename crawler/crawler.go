@@ -17,10 +17,10 @@ func CrawlPostings(mockedPostings bool) error {
 	for _, shop := range []Shop{SATURN, MM} {
 		postings, err := fetchPostings(shop, mockedPostings)
 		if err != nil {
-			return err
+			return err // TODO: log error and continue?
 		}
-		saveAll(postings)
-		log.Infof("Updated %d Postings for %s.", len(postings), shop)
+		inserted, updated := saveAll(postings)
+		log.Infof("Fetched %d Postings for %s. inserted: %d, updated: %d", len(postings), shop, inserted, updated)
 	}
 	return nil
 }

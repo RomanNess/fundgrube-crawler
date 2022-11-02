@@ -35,7 +35,7 @@ func insertPostingsFromJson(err error) {
 	if err = bson.UnmarshalExtJSON(bytes, true, &postings); err != nil {
 		panic(err)
 	}
-	_, err = connectPostings().InsertMany(context.TODO(), postings)
+	_, err = postingsCollection().InsertMany(context.TODO(), postings)
 	if err != nil {
 		panic(err)
 	}
@@ -46,7 +46,7 @@ func TestRunSuite(t *testing.T) {
 }
 
 func (suite *PersistenceSuite) Test_connect() {
-	connectPostings()
+	postingsCollection()
 }
 
 func (suite *PersistenceSuite) Test_findOne_nonexistent() {
@@ -134,17 +134,21 @@ func (suite *PersistenceSuite) Test_findAll_findNew() {
 
 func (suite *PersistenceSuite) Test_saveOne() {
 	posting := getExamplePosting("foo")
-	saveOne(posting)
+	inserted, updated := saveOne(posting)
 	assertEqualPostingIgnoringDates(suite.T(), posting, *findOne(posting.PostingId))
+	assert.Equal(suite.T(), 1, inserted)
+	assert.Equal(suite.T(), 0, updated)
 }
 
 func (suite *PersistenceSuite) Test_saveOne_updateName() {
 	posting := findOne(POSTING_ID)
 
 	posting.Name = "New Name"
-	saveOne(*posting)
+	inserted, updated := saveOne(*posting)
 
 	assert.Equal(suite.T(), "New Name", findOne(posting.PostingId).Name)
+	assert.Equal(suite.T(), 0, inserted)
+	assert.Equal(suite.T(), 1, updated)
 }
 
 func (suite *PersistenceSuite) Test_saveAll() {
@@ -153,11 +157,14 @@ func (suite *PersistenceSuite) Test_saveAll() {
 	alreadySaved.Name = "New Name"
 	notSavedYet := getExamplePosting("notSavedYet")
 
-	saveAll([]posting{alreadySaved, notSavedYet})
+	inserted, updated := saveAll([]posting{alreadySaved, notSavedYet})
 
 	all := findAll(nil, nil, 100, 0)
 	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
 	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
+
+	assert.Equal(suite.T(), 1, inserted)
+	assert.Equal(suite.T(), 1, updated)
 }
 
 func (suite *PersistenceSuite) Test_saveOperation() {

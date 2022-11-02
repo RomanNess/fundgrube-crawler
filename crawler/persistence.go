@@ -11,13 +11,16 @@ import (
 	"time"
 )
 
+var collectionPostings *mongo.Collection
+var collectionOperations *mongo.Collection
+
 func findOne(postingId string) *posting {
-	return _findOne(connectPostings(), postingId)
+	return _findOne(postingId)
 }
 
-func _findOne(collection *mongo.Collection, postingId string) *posting {
+func _findOne(postingId string) *posting {
 	posting := posting{}
-	err := collection.FindOne(context.TODO(), bson.M{"_id": postingId}).Decode(&posting)
+	err := postingsCollection().FindOne(context.TODO(), bson.M{"_id": postingId}).Decode(&posting)
 	if err != nil {
 		return nil
 	}
@@ -33,7 +36,7 @@ func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []p
 		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *regex, Options: "i"}}
 	}
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
-	cur, err := connectPostings().Find(context.TODO(), filter, findOptions)
+	cur, err := postingsCollection().Find(context.TODO(), filter, findOptions)
 	if err != nil {
 		panic(err)
 	}
@@ -49,33 +52,22 @@ func findAll(regex *string, afterTime *time.Time, limit int64, offset int64) []p
 	return postings
 }
 
-func saveOne(posting posting) {
-	_saveOne(connectPostings(), posting)
-}
-
-func saveAll(postings []posting) {
-	collection := connectPostings()
-	for _, posting := range postings {
-		_saveOne(collection, posting)
-	}
-}
-
-func clearAll() {
-	_, err := connectPostings().DeleteMany(context.TODO(), bson.M{})
-	if err != nil {
-		panic(err)
-	}
-}
-
-func _saveOne(collection *mongo.Collection, posting posting) *mongo.SingleResult {
-	existing := _findOne(collection, posting.PostingId)
+func saveOne(posting posting) (inserted int, updated int) {
+	existing := _findOne(posting.PostingId)
 	now := time.Now()
 
 	if existing == nil {
 		posting.CreDat = &now
 		posting.ModDat = &now
 
-		return _save(collection, posting)
+		_, err := postingsCollection().InsertOne(
+			context.TODO(),
+			posting,
+		)
+		if err != nil {
+			panic(err)
+		}
+		return 1, 0
 	}
 
 	// set cre_dat & mod_dat so we can use equals
@@ -85,24 +77,38 @@ func _saveOne(collection *mongo.Collection, posting posting) *mongo.SingleResult
 	if !reflect.DeepEqual(*existing, posting) {
 		posting.ModDat = &now
 
-		return _save(collection, posting)
+		postingsCollection().FindOneAndReplace(
+			context.TODO(),
+			bson.M{"_id": posting.PostingId},
+			posting,
+			options.FindOneAndReplace().SetUpsert(true),
+		)
+		return 0, 1
 	}
-	return nil // no update
+	return 0, 0
 }
 
-func _save(collection *mongo.Collection, posting posting) *mongo.SingleResult {
-	return collection.FindOneAndReplace(
-		context.TODO(),
-		bson.M{"_id": posting.PostingId},
-		posting,
-		options.FindOneAndReplace().SetUpsert(true),
-	)
+func saveAll(postings []posting) (int, int) {
+	overallInserted, overallUpdated := 0, 0
+	for _, posting := range postings {
+		inserted, updated := saveOne(posting)
+		overallInserted = overallInserted + inserted
+		overallUpdated = overallUpdated + updated
+	}
+	return overallInserted, overallUpdated
+}
+
+func clearAll() {
+	_, err := postingsCollection().DeleteMany(context.TODO(), bson.M{})
+	if err != nil {
+		panic(err)
+	}
 }
 
 func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 	md5Hex := hashQuery(query)
 	op := operation{md5Hex, query.Regex, now}
-	return connectOperations().FindOneAndReplace(
+	return operationsCollection().FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": md5Hex},
 		op,
@@ -112,19 +118,25 @@ func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 
 func findSearchOperation(id string) *operation {
 	op := operation{}
-	err := connectOperations().FindOne(context.TODO(), bson.M{"_id": id}).Decode(&op)
+	err := operationsCollection().FindOne(context.TODO(), bson.M{"_id": id}).Decode(&op)
 	if err != nil {
 		return nil
 	}
 	return &op
 }
 
-func connectPostings() *mongo.Collection {
-	return connect(env("MONGODB_COLLECTION_POSTINGS", "postings"))
+func postingsCollection() *mongo.Collection {
+	if collectionPostings == nil {
+		collectionPostings = connect(env("MONGODB_COLLECTION_POSTINGS", "postings"))
+	}
+	return collectionPostings
 }
 
-func connectOperations() *mongo.Collection {
-	return connect(env("MONGODB_COLLECTION_OPERATIONS", "operations"))
+func operationsCollection() *mongo.Collection {
+	if collectionOperations == nil {
+		collectionOperations = connect(env("MONGODB_COLLECTION_OPERATIONS", "operations"))
+	}
+	return collectionOperations
 }
 
 func connect(collectionName string) *mongo.Collection {
