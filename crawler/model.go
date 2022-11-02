@@ -6,19 +6,24 @@ import (
 	"time"
 )
 
+type queries struct {
+	Queries []query `yaml:"queries"`
+}
+
 type query struct {
-	Regex       *string  `bson:"regex"`
-	BrandRegex  *string  `bson:"brand_regex"`
-	PriceMin    *float64 `bson:"price_min"`
-	PriceMax    *float64 `bson:"price_max"`
-	DiscountMin *int     `bson:"discount_min"`
-	OutletId    *int     `bson:"outlet_id"`
+	Desc        string   `yaml:"desc" bson:"desc"`
+	NameRegex   *string  `yaml:"name_regex" bson:"name_regex"`
+	BrandRegex  *string  `yaml:"brand_regex" bson:"brand_regex"`
+	PriceMin    *float64 `yaml:"price_min" bson:"price_min"`
+	PriceMax    *float64 `yaml:"price_max" bson:"price_max"`
+	DiscountMin *int     `yaml:"discount_min" bson:"discount_min"`
+	OutletId    *int     `yaml:"outlet_id" bson:"outlet_id"`
 }
 
 func (q query) String() string {
 	var buffer bytes.Buffer
-	if q.Regex != nil {
-		buffer.WriteString("regex: " + *q.Regex)
+	if q.NameRegex != nil {
+		buffer.WriteString("regex: " + *q.NameRegex)
 	}
 	return buffer.String()
 }

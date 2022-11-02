@@ -104,7 +104,7 @@ func (suite *PersistenceSuite) Test_findAll() {
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"regex search",
-			args{query{Regex: sPtr("^.*nintendo.*$")}, nil, 100, 0},
+			args{query{NameRegex: sPtr("^.*nintendo.*$")}, nil, 100, 0},
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"price min/max",
@@ -186,18 +186,18 @@ func (suite *PersistenceSuite) Test_saveOperation() {
 	hash := getExampleHash()
 
 	updateSearchOperation(getExampleQuery(), &now)
-	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "regex: keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
 }
 
 func (suite *PersistenceSuite) Test_updateOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
 	hash := getExampleHash()
 	updateSearchOperation(getExampleQuery(), &now)
-	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "regex: keyword", getExampleQuery(), &now}, *findSearchOperation(hash))
 
 	now2 := now.AddDate(0, 0, 1)
 	updateSearchOperation(getExampleQuery(), &now2)
-	assert.Equal(suite.T(), operation{hash, "keyword", getExampleQuery(), &now2}, *findSearchOperation(hash))
+	assert.Equal(suite.T(), operation{hash, "regex: keyword", getExampleQuery(), &now2}, *findSearchOperation(hash))
 }
 
 func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
@@ -245,5 +245,5 @@ func getExampleHash() string {
 }
 
 func getExampleQuery() query {
-	return query{Regex: sPtr("keyword")}
+	return query{NameRegex: sPtr("keyword")}
 }

@@ -32,8 +32,8 @@ func findAll(q query, afterTime *time.Time, limit int64, offset int64) []posting
 	if afterTime != nil {
 		filter["mod_dat"] = bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}
 	}
-	if q.Regex != nil {
-		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.Regex, Options: "i"}}
+	if q.NameRegex != nil {
+		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.NameRegex, Options: "i"}}
 	}
 	if q.BrandRegex != nil {
 		filter["brand.name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.BrandRegex, Options: "i"}}
@@ -133,7 +133,7 @@ func clearAll() {
 
 func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 	md5Hex := hashQuery(query)
-	op := operation{md5Hex, *query.Regex, query, now}
+	op := operation{md5Hex, query.String(), query, now}
 	return operationsCollection().FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": md5Hex},

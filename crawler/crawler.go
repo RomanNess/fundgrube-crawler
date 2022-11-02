@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"fundgrube-crawler/alert"
 	log "github.com/sirupsen/logrus"
+	"gopkg.in/yaml.v3"
 	"os"
 	"strings"
 	"time"
@@ -37,7 +38,7 @@ func searchDealsForSingleQuery(query query) {
 	deals := []posting{}
 	for true {
 		postings := findAll(query, getLastSearchTime(query), limit, offset)
-		log.Infof("Found %d deals for query '%s'.", len(postings), query)
+		log.Infof("Found %d deals for query '%s'.", len(postings), query.Desc)
 
 		offset = offset + limit
 		if len(postings) == 0 {
@@ -46,8 +47,8 @@ func searchDealsForSingleQuery(query query) {
 		deals = append(deals, postings...)
 	}
 	if len(deals) > 0 {
-		message := fmtDealsMessage(deals)
-		err := alert.SendAlertMail(formatSubject(deals), message)
+		message := fmtDealsMessage(query, deals)
+		err := alert.SendAlertMail(formatSubject(query, deals), message)
 		if err != nil {
 			panic(err)
 		}
@@ -55,12 +56,12 @@ func searchDealsForSingleQuery(query query) {
 	updateSearchOperation(query, now())
 }
 
-func formatSubject(deals []posting) string {
+func formatSubject(q query, deals []posting) string {
 	if len(deals) == 0 {
-		return "Found no deals. 😿"
+		return fmt.Sprintf("Found no deals for query '%s'. 😿", q.Desc)
 	}
 	deal := deals[0]
-	return fmt.Sprintf("Found %s for %.2f€ in %s (%d deal(s) overall)", deal.Name, deal.Price, deal.Outlet.Name, len(deals))
+	return fmt.Sprintf("Query '%s' matched by %s for %.2f€ in %s (%d deal(s) overall)", q.Desc, deal.Name, deal.Price, deal.Outlet.Name, len(deals))
 }
 
 func getLastSearchTime(q query) *time.Time {
@@ -91,10 +92,10 @@ func now() *time.Time {
 	return &now
 }
 
-func fmtDealsMessage(deals []posting) string {
+func fmtDealsMessage(q query, deals []posting) string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Found %d deals.\n\n", len(deals)))
+	buffer.WriteString(fmt.Sprintf("Found %d deals for query '%s'.\n\n", len(deals), q.Desc))
 	for _, deal := range deals {
 		buffer.WriteString(deal.String() + "\n\n")
 	}
@@ -105,16 +106,39 @@ func fmtDealsMessage(deals []posting) string {
 }
 
 func getQueries() (ret []query) {
-	searchRegexes := os.Getenv("QUERY_REGEX")
-	if searchRegexes == "" {
-		log.Warnln("QUERY_REGEX not set! Default to 'example'.")
-		regex := "example"
-		return []query{{Regex: &regex}}
+	yamlPath := os.Getenv("SEARCH_REQUEST_YAML")
+	if yamlPath != "" {
+		return getQueriesFromYaml(yamlPath)
 	}
+
+	searchRegexes := os.Getenv("QUERY_REGEX")
+	if searchRegexes != "" {
+		return getQueriesFromEnv(searchRegexes)
+	}
+
+	log.Warnln("QUERY_REGEX not set! Default to 'example'.")
+	regex := "example"
+	return []query{{NameRegex: &regex}}
+}
+
+func getQueriesFromYaml(yamlPath string) []query {
+	yamlBytes, err := os.ReadFile(yamlPath)
+	if err != nil {
+		panic(err)
+	}
+	searchRequest := queries{}
+	err = yaml.Unmarshal(yamlBytes, &searchRequest)
+	if err != nil {
+		panic(err)
+	}
+	return searchRequest.Queries
+}
+
+func getQueriesFromEnv(searchRegexes string) (ret []query) {
 	split := strings.Split(searchRegexes, ";")
 	for _, regex := range split {
 		regexCopy := regex // don't return a pointer on loop variable :)
-		ret = append(ret, query{Regex: &regexCopy})
+		ret = append(ret, query{NameRegex: &regexCopy, Desc: regex})
 	}
 	return
 }

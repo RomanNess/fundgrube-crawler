@@ -18,9 +18,9 @@ func Test_hashQuery(t *testing.T) {
 		{
 			"simple query",
 			args{
-				query{Regex: sPtr("foobar")},
+				query{NameRegex: sPtr("foobar")},
 			},
-			"297246b4db7859ed8f6c3ebb257b48e1",
+			"e5caa39330d2bd667a7d6079e57a8979",
 		},
 	}
 	for _, tt := range tests {
@@ -39,18 +39,22 @@ func Test_getQueries(t *testing.T) {
 		{
 			name:    "single query",
 			env:     "sony.*walkman",
-			wantRet: []query{{Regex: sPtr("sony.*walkman")}},
+			wantRet: []query{{Desc: "sony.*walkman", NameRegex: sPtr("sony.*walkman")}},
 		}, {
 			name:    "default queries",
 			env:     "",
-			wantRet: []query{{Regex: sPtr("example")}},
+			wantRet: []query{{NameRegex: sPtr("example")}},
 		}, {
-			name:    "two queries",
-			env:     "sony.*walkman;other[^.]",
-			wantRet: []query{{Regex: sPtr("sony.*walkman")}, {Regex: sPtr("other[^.]")}},
+			name: "two queries",
+			env:  "sony.*walkman;other[^.]",
+			wantRet: []query{
+				{Desc: "sony.*walkman", NameRegex: sPtr("sony.*walkman")},
+				{Desc: "other[^.]", NameRegex: sPtr("other[^.]")},
+			},
 		},
 	}
 	for _, tt := range tests {
+		_ = os.Unsetenv("SEARCH_REQUEST_YAML")
 		_ = os.Setenv("QUERY_REGEX", tt.env)
 		t.Run(tt.name, func(t *testing.T) {
 			assert.Equalf(t, tt.wantRet, getQueries(), "getQueries()")
