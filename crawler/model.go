@@ -18,6 +18,7 @@ type query struct {
 	PriceMax    *float64 `yaml:"price_max" bson:"price_max"`
 	DiscountMin *int     `yaml:"discount_min" bson:"discount_min"`
 	OutletId    *int     `yaml:"outlet_id" bson:"outlet_id"`
+	Ids         []string `yaml:"-" json:"-" bson:"-"`
 }
 
 func (q query) String() string {

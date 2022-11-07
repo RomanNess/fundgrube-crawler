@@ -20,8 +20,8 @@ func CrawlPostings(mockedPostings bool) error {
 		if err != nil {
 			return err // TODO: log error and continue?
 		}
-		inserted, updated := saveAll(postings)
-		log.Infof("Fetched %d Postings for %s. inserted: %d, updated: %d", len(postings), shop, inserted, updated)
+		inserted, updated, took := saveAll(postings)
+		log.Infof("Fetched %d Postings for %s. inserted: %d, updated: %d, took: %fs", len(postings), shop, inserted, updated, took.Seconds())
 	}
 	return nil
 }

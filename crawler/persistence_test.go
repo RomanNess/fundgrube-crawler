@@ -122,6 +122,10 @@ func (suite *PersistenceSuite) Test_findAll() {
 			"after time",
 			args{query{}, parseDate("2022-10-30T00:00:00Z"), 100, 0},
 			[]string{PID_CHEF_PARTY, PID_ASUS},
+		}, {
+			"search by ids",
+			args{query{Ids: []string{PID_NECRODANCER, PID_ASUS}}, nil, 100, 0},
+			[]string{PID_NECRODANCER, PID_ASUS},
 		},
 	}
 
@@ -171,7 +175,7 @@ func (suite *PersistenceSuite) Test_saveAll() {
 	alreadySaved.Name = "New Name"
 	notSavedYet := getExamplePosting("notSavedYet")
 
-	inserted, updated := saveAll([]posting{alreadySaved, notSavedYet})
+	inserted, updated, took := saveAll([]posting{alreadySaved, notSavedYet})
 
 	all := findAll(query{}, nil, 100, 0)
 	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
@@ -179,6 +183,7 @@ func (suite *PersistenceSuite) Test_saveAll() {
 
 	assert.Equal(suite.T(), 1, inserted)
 	assert.Equal(suite.T(), 1, updated)
+	assert.NotNil(suite.T(), took)
 }
 
 func (suite *PersistenceSuite) Test_saveOperation() {

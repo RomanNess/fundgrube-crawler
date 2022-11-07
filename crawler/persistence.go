@@ -47,6 +47,9 @@ func findAll(q query, afterTime *time.Time, limit int64, offset int64) []posting
 	if q.OutletId != nil {
 		filter["outlet.id"] = bson.M{"$eq": q.OutletId}
 	}
+	if q.Ids != nil {
+		filter["_id"] = bson.M{"$in": q.Ids}
+	}
 
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
 	cur, err := postingsCollection().Find(context.TODO(), filter, findOptions)
@@ -114,14 +117,15 @@ func saveOne(posting posting) (inserted int, updated int) {
 	return 0, 0
 }
 
-func saveAll(postings []posting) (int, int) {
+func saveAll(postings []posting) (int, int, time.Duration) {
+	start := time.Now()
 	overallInserted, overallUpdated := 0, 0
 	for _, posting := range postings {
 		inserted, updated := saveOne(posting)
 		overallInserted = overallInserted + inserted
 		overallUpdated = overallUpdated + updated
 	}
-	return overallInserted, overallUpdated
+	return overallInserted, overallUpdated, time.Since(start)
 }
 
 func clearAll() {
