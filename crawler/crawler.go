@@ -50,7 +50,7 @@ func searchDealsForSingleQuery(query query) {
 		message := fmtDealsMessage(query, deals)
 		err := alert.SendAlertMail(formatSubject(query, deals), message)
 		if err != nil {
-			panic(err)
+			log.Fatalf("Could not send deals via mail: %s", err)
 		}
 	}
 	updateSearchOperation(query, now())

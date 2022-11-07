@@ -53,11 +53,21 @@ func configureLogger() {
 
 func mailAlertOnPanic() {
 	if r := recover(); r != nil {
-		subject := fmt.Sprint("💥Panic occurred : ", r.(string))
+		var errorString string
+		switch x := r.(type) {
+		case string:
+			errorString = x
+		case error:
+			errorString = x.Error()
+		default:
+			errorString = "Unknown panic"
+		}
+
+		subject := fmt.Sprint("💥Panic occurred : ", errorString)
 		contentBytes := getContentBytes()
 		err := alert.SendAlertMailBytes(subject, contentBytes)
 		if err != nil {
-			panic(err)
+			log.Fatalf("Failed to alert abount panic '%s' via mail. Send error '%s'", r.(string), err.Error())
 		}
 		log.Errorln("💥Panic occurred. Send alert mail.", r)
 	}
