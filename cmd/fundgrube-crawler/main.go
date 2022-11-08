@@ -13,6 +13,8 @@ import (
 var LOG_FILE = fmt.Sprintf("/tmp/fundgrube-%s.txt", time.Now().Format("2006-01-02T15-04-05"))
 
 func main() {
+	start := time.Now()
+
 	configureLogger()
 	if envBool("LOG_TO_FILE") {
 		defer mailAlertOnPanic()
@@ -26,6 +28,7 @@ func main() {
 	}
 
 	crawler.SearchDeals()
+	log.Infof("Finished in %fs", time.Since(start).Seconds())
 }
 
 func configureLogger() {
