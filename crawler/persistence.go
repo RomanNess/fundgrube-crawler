@@ -2,6 +2,7 @@ package crawler
 
 import (
 	"context"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -81,7 +82,8 @@ func priceFilter(priceMin *float64, priceMax *float64) bson.M {
 	panic("priceFilter called without priceMin or priceMax set")
 }
 
-func saveOne(posting posting) (inserted int, updated int) {
+// TODO: now obsolete
+func saveOneNewOrUpdated(posting posting) (inserted int, updated int) {
 	existing := _findOne(posting.PostingId)
 	now := time.Now()
 
@@ -117,15 +119,85 @@ func saveOne(posting posting) (inserted int, updated int) {
 	return 0, 0
 }
 
-func saveAll(postings []posting) (int, int, time.Duration) {
+func saveAllNewOrUpdated(postings []posting) (int, int, time.Duration) {
 	start := time.Now()
-	overallInserted, overallUpdated := 0, 0
+	loadedPostings := loadAll(postings)
+
+	postingsToInsert := []posting{}
+	postingsToUpdate := []posting{}
+
 	for _, posting := range postings {
-		inserted, updated := saveOne(posting)
-		overallInserted = overallInserted + inserted
-		overallUpdated = overallUpdated + updated
+		existing, ok := loadedPostings[posting.PostingId]
+		if !ok {
+			postingsToInsert = append(postingsToInsert, posting)
+		} else {
+			posting.CreDat = existing.CreDat
+			posting.ModDat = existing.ModDat
+
+			if !reflect.DeepEqual(existing, posting) {
+				posting.ModDat = &start
+				postingsToUpdate = append(postingsToUpdate, posting)
+			}
+
+		}
 	}
+
+	overallInserted := insertAll(postingsToInsert)
+	overallUpdated := updateAll(postingsToUpdate)
+
 	return overallInserted, overallUpdated, time.Since(start)
+}
+
+func insertAll(postings []posting) int {
+	if len(postings) == 0 {
+		return 0
+	}
+
+	var postingsI []interface{}
+	for _, p := range postings {
+		postingsI = append(postingsI, p)
+	}
+
+	manyResult, err := postingsCollection().InsertMany(context.TODO(), postingsI)
+	if err != nil {
+		panic(err)
+	}
+	return len(manyResult.InsertedIDs)
+}
+
+func updateAll(postings []posting) int {
+	if len(postings) == 0 {
+		return 0
+	}
+
+	for _, p := range postings {
+		// TODO: bulk call somehow?
+		postingsCollection().FindOneAndReplace(
+			context.TODO(),
+			bson.M{"_id": p.PostingId},
+			p,
+			options.FindOneAndReplace().SetUpsert(true),
+		)
+	}
+	return len(postings)
+}
+
+func loadAll(postings []posting) map[string]posting {
+	start := time.Now()
+
+	var ids []string
+	for _, p := range postings {
+		ids = append(ids, p.PostingId)
+	}
+
+	loadedPostings := findAll(query{Ids: ids}, nil, int64(len(postings)), 0) // todo: pagination?
+
+	ret := make(map[string]posting)
+	for _, loadedPosting := range loadedPostings {
+		ret[loadedPosting.PostingId] = loadedPosting
+	}
+	log.Infof("Loaded %d existing postings for diff in %fs", len(ret), time.Since(start).Seconds())
+	return ret
 }
 
 func clearAll() {
