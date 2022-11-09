@@ -68,6 +68,8 @@ type posting struct {
 	Price             float64       `json:"-" bson:"price"`
 	PriceOld          float64       `json:"-" bson:"price_old"`
 	DiscountInPercent int           `json:"discount_in_percent" bson:"discount_in_percent"`
+	ShippingCost      float64       `json:"shipping_cost" bson:"shipping_cost"`
+	ShippingType      string        `json:"shipping_type" bson:"shipping_type"`
 	Name              string        `json:"name" bson:"name"`
 	Url               []string      `json:"original_url" bson:"url"`
 	Text              string        `json:"posting_text" bson:"text"`
@@ -75,12 +77,22 @@ type posting struct {
 	Brand             brand         `json:"brand" bson:"brand"`
 	Shop              Shop          `json:"-" bson:"shop"`
 	ShopUrl           string        `json:"-" bson:"shop_url"`
+	PimId             int           `json:"pim_id" bson:"pim_id"`
 	CreDat            *time.Time    `json:"-" bson:"cre_dat" `
 	ModDat            *time.Time    `json:"-" bson:"mod_dat"`
 }
 
 func (p posting) String() string {
-	return fmt.Sprintf("%.2f€ (UVP %.2f€ -%d%%) %s in %s\n\t🌄 %s\n\t🛒 %s", p.Price, p.PriceOld, p.DiscountInPercent, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
+	shippingInfo := ""
+	if p.ShippingType == "shipping" {
+		shippingInfo = fmt.Sprintf(" +%.2f€", p.ShippingCost)
+	}
+	uvpInfo := ""
+	if p.PriceOld != 0 {
+		uvpInfo = fmt.Sprintf(" (UVP %.2f€ -%d%%)", p.PriceOld, p.DiscountInPercent)
+	}
+	priceInfo := fmt.Sprintf("%.2f€%s%s", p.Price, shippingInfo, uvpInfo)
+	return fmt.Sprintf("%s 👉%s👈 in %s\n\t📸 %s\n\t🛒 %s", priceInfo, p.Name, p.Outlet.Name, p.Url[0], p.ShopUrl)
 }
 
 /*

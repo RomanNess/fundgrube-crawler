@@ -10,6 +10,13 @@
     "discount_in_percent": {
       "$numberInt": "64"
     },
+    "shipping_cost": {
+      "$numberDouble": "0"
+    },
+    "shipping_type": "shipping",
+    "pim_id": {
+      "$numberInt": "1111111"
+    },
     "name": "Instant Chef Party - [Nintendo Switch]",
     "url": [
       "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
@@ -51,6 +58,13 @@
     "discount_in_percent": {
       "$numberInt": "50"
     },
+    "shipping_cost": {
+      "$numberDouble": "0.99"
+    },
+    "shipping_type": "shipping",
+    "pim_id": {
+      "$numberInt": "2222222"
+    },
     "name": "SW CADENCE OF HYRULE-CRYPT OF THE NECRODANCER - [Nintendo Switch]",
     "url": [
       "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/2efed7db9d164a7c8a10ca5820a9e4ee?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
@@ -85,6 +99,13 @@
     "_id": "ffba6620-c96e-43f3-9e1e-05f1bb3f0981",
     "price": {
       "$numberDouble": "970.0"
+    },
+    "shipping_cost": {
+      "$numberInt": "5"
+    },
+    "shipping_type": "shipping",
+    "pim_id": {
+      "$numberInt": "3333333"
     },
     "name": "ASUS ROG Flow X13 (GV301QH-K6034T), Gaming NoteBook mit 13,4 Zoll Display Touchscreen, AMD Ryzen™ 7 Prozessor, 16 GB RAM, 512 GB SSD, GeForce® GTX 1650, Off Black",
     "url": [
