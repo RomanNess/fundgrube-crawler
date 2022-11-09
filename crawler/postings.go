@@ -157,6 +157,9 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	if err != nil {
 		return nil, err
 	}
+	if response.StatusCode > 200 {
+		return nil, errors.New(fmt.Sprintf("Http Status %d on call of '%s'", response.StatusCode, url))
+	}
 	responseBody := response.Body
 	return responseBody, err
 }
@@ -173,11 +176,11 @@ func buildUrl(shop Shop, outlets []outlet, brand *brand, pageRequest *pageReques
 		q.Set("limit", strconv.Itoa(pageRequest.limit))
 		q.Set("offset", strconv.Itoa(pageRequest.offset))
 	}
-	if outlets != nil {
+	if outlets != nil && len(outlets) > 0 {
 		q.Set("outletIds", commaSeparatedOutletIds(outlets))
 	}
 	if brand != nil {
-		q.Set("brands", url.QueryEscape(brand.Name))
+		q.Set("brands", brand.Name)
 	}
 
 	u.RawQuery = q.Encode()
