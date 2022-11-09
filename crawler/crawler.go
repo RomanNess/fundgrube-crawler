@@ -39,12 +39,12 @@ func searchDealsForSingleQuery(query query) {
 	for true {
 		postings := findAll(query, getLastSearchTime(query), limit, offset)
 		log.Infof("Found %d deals for query '%s'.", len(postings), query.Desc)
+		deals = append(deals, postings...)
 
-		offset = offset + limit
-		if len(postings) == 0 {
+		if len(postings) < int(limit) {
 			break
 		}
-		deals = append(deals, postings...)
+		offset = offset + limit
 	}
 	if len(deals) > 0 {
 		message := fmtDealsMessage(query, deals)

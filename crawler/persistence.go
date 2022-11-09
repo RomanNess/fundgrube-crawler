@@ -43,7 +43,7 @@ func findAll(q query, afterTime *time.Time, limit int64, offset int64) []posting
 		filter["price"] = priceFilter(q.PriceMin, q.PriceMax)
 	}
 	if q.DiscountMin != nil {
-		filter["discount"] = bson.M{"$gte": q.DiscountMin}
+		filter["discount_in_percent"] = bson.M{"$gte": q.DiscountMin}
 	}
 	if q.OutletId != nil {
 		filter["outlet.id"] = bson.M{"$eq": q.OutletId}
@@ -209,7 +209,7 @@ func clearAll() {
 
 func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 	md5Hex := hashQuery(query)
-	op := operation{md5Hex, query.String(), query, now}
+	op := operation{md5Hex, query.Desc, query, now}
 	return operationsCollection().FindOneAndReplace(
 		context.TODO(),
 		bson.M{"_id": md5Hex},
