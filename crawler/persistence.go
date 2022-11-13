@@ -82,43 +82,6 @@ func priceFilter(priceMin *float64, priceMax *float64) bson.M {
 	panic("priceFilter called without priceMin or priceMax set")
 }
 
-// TODO: now obsolete
-func saveOneNewOrUpdated(posting posting) (inserted int, updated int) {
-	existing := _findOne(posting.PostingId)
-	now := time.Now()
-
-	if existing == nil {
-		posting.CreDat = &now
-		posting.ModDat = &now
-
-		_, err := postingsCollection().InsertOne(
-			context.TODO(),
-			posting,
-		)
-		if err != nil {
-			panic(err)
-		}
-		return 1, 0
-	}
-
-	// set cre_dat & mod_dat so we can use equals
-	posting.CreDat = existing.CreDat
-	posting.ModDat = existing.ModDat
-
-	if !reflect.DeepEqual(*existing, posting) {
-		posting.ModDat = &now
-
-		postingsCollection().FindOneAndReplace(
-			context.TODO(),
-			bson.M{"_id": posting.PostingId},
-			posting,
-			options.FindOneAndReplace().SetUpsert(true),
-		)
-		return 0, 1
-	}
-	return 0, 0
-}
-
 func saveAllNewOrUpdated(postings []posting) (int, int, time.Duration) {
 	start := time.Now()
 	loadedPostings := loadAll(postings)
@@ -190,7 +153,8 @@ func loadAll(postings []posting) map[string]posting {
 		ids = append(ids, p.PostingId)
 	}
 
-	loadedPostings := findAll(query{Ids: ids}, nil, int64(len(postings)), 0) // todo: pagination?
+	// todo: will this require pagination later?
+	loadedPostings := findAll(query{Ids: ids}, nil, int64(len(postings)), 0)
 
 	ret := make(map[string]posting)
 	for _, loadedPosting := range loadedPostings {

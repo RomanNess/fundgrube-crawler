@@ -150,35 +150,27 @@ func (suite *PersistenceSuite) Test_findAll() {
 
 func (suite *PersistenceSuite) Test_findAll_findNew() {
 	foo := getExamplePosting("foo")
-	saveOneNewOrUpdated(foo)
+	saveAllNewOrUpdated([]posting{foo})
 
 	postings := findAll(query{}, nil, 100, 3)
 	assert.Equal(suite.T(), 1, len(postings))
 	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
 }
 
-func (suite *PersistenceSuite) Test_saveOne() {
-	posting := getExamplePosting("foo")
-	inserted, updated := saveOneNewOrUpdated(posting)
-	assertEqualPostingIgnoringDates(suite.T(), posting, *findOne(posting.PostingId))
-	assert.Equal(suite.T(), 1, inserted)
-	assert.Equal(suite.T(), 0, updated)
-}
+func (suite *PersistenceSuite) Test_saveAll_updateName() {
+	p := findOne(PID_CHEF_PARTY)
 
-func (suite *PersistenceSuite) Test_saveOne_updateName() {
-	posting := findOne(PID_CHEF_PARTY)
+	p.Name = "New Name"
+	inserted, updated, _ := saveAllNewOrUpdated([]posting{*p})
 
-	posting.Name = "New Name"
-	inserted, updated := saveOneNewOrUpdated(*posting)
-
-	assert.Equal(suite.T(), "New Name", findOne(posting.PostingId).Name)
+	assert.Equal(suite.T(), "New Name", findOne(p.PostingId).Name)
 	assert.Equal(suite.T(), 0, inserted)
 	assert.Equal(suite.T(), 1, updated)
 }
 
 func (suite *PersistenceSuite) Test_saveAll() {
 	alreadySaved := getExamplePosting("alreadySaved")
-	saveOneNewOrUpdated(alreadySaved)
+	saveAllNewOrUpdated([]posting{alreadySaved})
 	alreadySaved.Name = "New Name"
 	notSavedYet := getExamplePosting("notSavedYet")
 
