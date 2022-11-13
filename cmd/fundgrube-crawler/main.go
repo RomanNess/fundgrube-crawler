@@ -6,6 +6,7 @@ import (
 	"fundgrube-crawler/crawler"
 	log "github.com/sirupsen/logrus"
 	easy "github.com/t-tomalak/logrus-easy-formatter"
+	"io"
 	"os"
 	"time"
 )
@@ -50,7 +51,8 @@ func configureLogger() {
 		}
 
 		log.Infof("Logging into '%s'", LOG_FILE)
-		log.SetOutput(file)
+		mw := io.MultiWriter(os.Stdout, file)
+		log.SetOutput(mw)
 	}
 }
 
