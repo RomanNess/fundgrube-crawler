@@ -52,7 +52,7 @@ func (suite *PersistenceSuite) Test_connect() {
 }
 
 func (suite *PersistenceSuite) Test_findOne_nonexistent() {
-	posting := findOne("does-not-exist")
+	posting := FindOne("does-not-exist")
 	assert.Nil(suite.T(), posting)
 }
 
@@ -78,7 +78,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		ModDat:            parseDate("2022-10-31T21:47:16.898Z"),
 	}
 
-	assert.Equal(suite.T(), expectedPosting, *findOne(PID_CHEF_PARTY))
+	assert.Equal(suite.T(), expectedPosting, *FindOne(PID_CHEF_PARTY))
 }
 
 func (suite *PersistenceSuite) Test_findAll() {
@@ -138,7 +138,7 @@ func (suite *PersistenceSuite) Test_findAll() {
 
 	for _, tt := range tests {
 		suite.Run(tt.name, func() {
-			postings := findAll(tt.args.q, tt.args.afterTime, tt.args.limit, tt.args.offset)
+			postings := FindAll(tt.args.q, tt.args.afterTime, tt.args.limit, tt.args.offset)
 			var postingIds []string
 			for _, p := range postings {
 				postingIds = append(postingIds, p.PostingId)
@@ -150,39 +150,51 @@ func (suite *PersistenceSuite) Test_findAll() {
 
 func (suite *PersistenceSuite) Test_findAll_findNew() {
 	foo := getExamplePosting("foo")
-	saveAllNewOrUpdated([]posting{foo})
+	SaveAllNewOrUpdated([]posting{foo})
 
-	postings := findAll(query{}, nil, 100, 3)
+	postings := FindAll(query{}, nil, 100, 3)
 	assert.Equal(suite.T(), 1, len(postings))
 	assertPostingsContainIgnoringDates(suite.T(), postings, foo)
 }
 
 func (suite *PersistenceSuite) Test_saveAll_updateName() {
-	p := findOne(PID_CHEF_PARTY)
+	p := FindOne(PID_CHEF_PARTY)
 
 	p.Name = "New Name"
-	inserted, updated, _ := saveAllNewOrUpdated([]posting{*p})
+	inserted, updated, _ := SaveAllNewOrUpdated([]posting{*p})
 
-	assert.Equal(suite.T(), "New Name", findOne(p.PostingId).Name)
+	assert.Equal(suite.T(), "New Name", FindOne(p.PostingId).Name)
 	assert.Equal(suite.T(), 0, inserted)
 	assert.Equal(suite.T(), 1, updated)
 }
 
 func (suite *PersistenceSuite) Test_saveAll() {
 	alreadySaved := getExamplePosting("alreadySaved")
-	saveAllNewOrUpdated([]posting{alreadySaved})
+	SaveAllNewOrUpdated([]posting{alreadySaved})
 	alreadySaved.Name = "New Name"
 	notSavedYet := getExamplePosting("notSavedYet")
 
-	inserted, updated, took := saveAllNewOrUpdated([]posting{alreadySaved, notSavedYet})
+	inserted, updated, took := SaveAllNewOrUpdated([]posting{alreadySaved, notSavedYet})
 
-	all := findAll(query{}, nil, 100, 0)
+	all := FindAll(query{}, nil, 100, 0)
 	assertPostingsContainIgnoringDates(suite.T(), all, alreadySaved)
 	assertPostingsContainIgnoringDates(suite.T(), all, notSavedYet)
 
 	assert.Equal(suite.T(), 1, inserted)
 	assert.Equal(suite.T(), 1, updated)
 	assert.NotNil(suite.T(), took)
+}
+
+func (suite *PersistenceSuite) Test_insertOrUpdateAll_insertNew() {
+	insertedCount, updatedCount := insertOrUpdateAll([]posting{getExamplePosting("foo")})
+	assert.Equal(suite.T(), 1, insertedCount)
+	assert.Equal(suite.T(), 0, updatedCount)
+}
+
+func (suite *PersistenceSuite) Test_insertOrUpdateAll_updateExisting() {
+	insertedCount, updatedCount := insertOrUpdateAll([]posting{*FindOne(PID_CHEF_PARTY)})
+	assert.Equal(suite.T(), 0, insertedCount)
+	assert.Equal(suite.T(), 1, updatedCount)
 }
 
 func (suite *PersistenceSuite) Test_saveOperation() {
@@ -225,10 +237,6 @@ func parseDate(dateString string) *time.Time {
 		panic(err)
 	}
 	return &parse
-}
-
-func ptr(s string) *string {
-	return &s
 }
 
 func getExamplePosting(prefix string) posting {

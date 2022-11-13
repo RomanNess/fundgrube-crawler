@@ -15,11 +15,7 @@ import (
 var collectionPostings *mongo.Collection
 var collectionOperations *mongo.Collection
 
-func findOne(postingId string) *posting {
-	return _findOne(postingId)
-}
-
-func _findOne(postingId string) *posting {
+func FindOne(postingId string) *posting {
 	posting := posting{}
 	err := postingsCollection().FindOne(context.TODO(), bson.M{"_id": postingId}).Decode(&posting)
 	if err != nil {
@@ -28,7 +24,7 @@ func _findOne(postingId string) *posting {
 	return &posting
 }
 
-func findAll(q query, afterTime *time.Time, limit int64, offset int64) []posting {
+func FindAll(q query, afterTime *time.Time, limit int64, offset int64) []posting {
 	filter := bson.M{}
 	if afterTime != nil {
 		filter["mod_dat"] = bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}
@@ -82,67 +78,51 @@ func priceFilter(priceMin *float64, priceMax *float64) bson.M {
 	panic("priceFilter called without priceMin or priceMax set")
 }
 
-func saveAllNewOrUpdated(postings []posting) (int, int, time.Duration) {
+func SaveAllNewOrUpdated(postings []posting) (insertedCount int, updatedCount int, took time.Duration) {
 	start := time.Now()
 	loadedPostings := loadAll(postings)
 
-	postingsToInsert := []posting{}
-	postingsToUpdate := []posting{}
+	postingsToUpsert := []posting{}
 
 	for _, posting := range postings {
 		existing, ok := loadedPostings[posting.PostingId]
 		if !ok {
-			postingsToInsert = append(postingsToInsert, posting)
+			postingsToUpsert = append(postingsToUpsert, posting)
 		} else {
 			posting.CreDat = existing.CreDat
 			posting.ModDat = existing.ModDat
 
 			if !reflect.DeepEqual(existing, posting) {
 				posting.ModDat = &start
-				postingsToUpdate = append(postingsToUpdate, posting)
+				postingsToUpsert = append(postingsToUpsert, posting)
 			}
-
 		}
 	}
 
-	overallInserted := insertAll(postingsToInsert)
-	overallUpdated := updateAll(postingsToUpdate)
-
-	return overallInserted, overallUpdated, time.Since(start)
+	insertedCount, updatedCount = insertOrUpdateAll(postingsToUpsert)
+	return insertedCount, updatedCount, time.Since(start)
 }
 
-func insertAll(postings []posting) int {
+func insertOrUpdateAll(postings []posting) (insertedCount int, updatedCount int) {
 	if len(postings) == 0 {
-		return 0
+		return 0, 0
 	}
 
-	var postingsI []interface{}
+	var operations []mongo.WriteModel
 	for _, p := range postings {
-		postingsI = append(postingsI, p)
+		update := mongo.NewReplaceOneModel()
+		update.SetFilter(bson.M{"_id": p.PostingId})
+		update.SetReplacement(p)
+		update.SetUpsert(true)
+
+		operations = append(operations, update)
 	}
 
-	manyResult, err := postingsCollection().InsertMany(context.TODO(), postingsI)
+	write, err := postingsCollection().BulkWrite(context.TODO(), operations)
 	if err != nil {
 		panic(err)
 	}
-	return len(manyResult.InsertedIDs)
-}
-
-func updateAll(postings []posting) int {
-	if len(postings) == 0 {
-		return 0
-	}
-
-	for _, p := range postings {
-		// TODO: bulk call somehow?
-		postingsCollection().FindOneAndReplace(
-			context.TODO(),
-			bson.M{"_id": p.PostingId},
-			p,
-			options.FindOneAndReplace().SetUpsert(true),
-		)
-	}
-	return len(postings)
+	return int(write.UpsertedCount), int(write.ModifiedCount)
 }
 
 func loadAll(postings []posting) map[string]posting {
@@ -154,7 +134,7 @@ func loadAll(postings []posting) map[string]posting {
 	}
 
 	// todo: will this require pagination later?
-	loadedPostings := findAll(query{Ids: ids}, nil, int64(len(postings)), 0)
+	loadedPostings := FindAll(query{Ids: ids}, nil, int64(len(postings)), 0)
 
 	ret := make(map[string]posting)
 	for _, loadedPosting := range loadedPostings {

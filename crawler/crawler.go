@@ -20,7 +20,7 @@ func CrawlPostings(mockedPostings bool) error {
 		if err != nil {
 			return err // TODO: log error and continue?
 		}
-		inserted, updated, took := saveAllNewOrUpdated(postings)
+		inserted, updated, took := SaveAllNewOrUpdated(postings)
 		log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, took: %fs", len(postings), shop, inserted, updated, took.Seconds())
 	}
 	return nil
@@ -37,7 +37,7 @@ func searchDealsForSingleQuery(query query) {
 	var limit, offset int64 = 100, 0
 	deals := []posting{}
 	for true {
-		postings := findAll(query, getLastSearchTime(query), limit, offset)
+		postings := FindAll(query, getLastSearchTime(query), limit, offset)
 		log.Infof("Found %d deals for query '%s'.", len(postings), query.Desc)
 		deals = append(deals, postings...)
 
