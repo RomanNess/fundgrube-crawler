@@ -102,7 +102,7 @@ func now() *time.Time {
 func fmtDealsMessage(q query, deals []posting) string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Found %d deals for query '%s'.\n\n", len(deals), q.Desc))
+	buffer.WriteString(fmt.Sprintf("Query '%s' matched by %d new deals.\n\n", q.Desc, len(deals)))
 	for _, deal := range deals {
 		buffer.WriteString(deal.String() + "\n\n")
 	}
