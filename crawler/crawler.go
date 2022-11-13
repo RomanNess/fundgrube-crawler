@@ -21,7 +21,14 @@ func CrawlPostings(mockedPostings bool) error {
 			return err // TODO: log error and continue?
 		}
 		inserted, updated, took := SaveAllNewOrUpdated(postings)
-		log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, took: %fs", len(postings), shop, inserted, updated, took.Seconds())
+
+		var ids []string
+		for _, p := range postings {
+			ids = append(ids, p.PostingId)
+		}
+		inactiveCount := SetRemainingPostingInactive(shop, ids)
+		log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", len(postings), shop, inserted, updated, inactiveCount, took.Seconds())
+
 	}
 	return nil
 }

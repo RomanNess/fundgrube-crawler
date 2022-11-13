@@ -45,7 +45,8 @@
       "$date": {
         "$numberLong": "1667252836898"
       }
-    }
+    },
+    "active": true
   },
   {
     "_id": "ffd23648-6353-4c18-93d5-78e0ac838da1",
@@ -93,7 +94,8 @@
       "$date": {
         "$numberLong": "1666913081000"
       }
-    }
+    },
+    "active": true
   },
   {
     "_id": "ffba6620-c96e-43f3-9e1e-05f1bb3f0981",
@@ -136,6 +138,56 @@
       "$date": {
         "$numberLong": "1667227127053"
       }
-    }
+    },
+    "active": true
+  },
+  {
+    "_id": "2822b32a-1057-4b21-ad2d-8d297a88d00c",
+    "price": {
+      "$numberDouble": "9.99"
+    },
+    "price_old": {
+      "$numberDouble": "29.99"
+    },
+    "discount_in_percent": {
+      "$numberInt": "67"
+    },
+    "shipping_cost": {
+      "$numberDouble": "0.0"
+    },
+    "shipping_type": "shipping",
+    "name": "NHL 20 - [Xbox One]",
+    "url": [
+      "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/e9bf88a64c7a497885ac35936d2f97fe?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"
+    ],
+    "text": "Restposten",
+    "outlet": {
+      "id": {
+        "$numberInt": "67"
+      },
+      "name": "Neu-Isenburg"
+    },
+    "brand": {
+      "id": {
+        "$numberInt": "10234"
+      },
+      "name": "ELECTRONIC ARTS"
+    },
+    "shop": "SATURN",
+    "shop_url": "https://www.saturn.de/de/data/fundgrube?brands=ELECTRONIC+ARTS&categorieIds=CAT_DE_SAT_786&outletIds=67",
+    "pim_id": {
+      "$numberInt": "2569683"
+    },
+    "cre_dat": {
+      "$date": {
+        "$numberLong": "1666888016316"
+      }
+    },
+    "mod_dat": {
+      "$date": {
+        "$numberLong": "1666372989070"
+      }
+    },
+    "active": false
   }
 ]

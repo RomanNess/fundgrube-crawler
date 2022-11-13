@@ -92,6 +92,7 @@ func preparePosting(shop Shop, posting posting) posting {
 	posting.PriceOld, _ = strconv.ParseFloat(posting.PriceOldString, 64)
 	posting.PriceString = ""
 	posting.PriceOldString = ""
+	posting.Active = true
 	for i := range posting.Url {
 		posting.Url[i] = fmt.Sprintf("%s?strip=yes&quality=75&backgroundsize=cover&x=640&y=640", posting.Url[i])
 	}

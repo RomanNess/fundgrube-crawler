@@ -14,6 +14,7 @@ type PersistenceSuite struct {
 	suite.Suite
 }
 
+const PID_NHL = "2822b32a-1057-4b21-ad2d-8d297a88d00c"
 const PID_CHEF_PARTY = "ffd51e3a-01e6-40fc-a6e3-c241fbd88a7a"
 const PID_NECRODANCER = "ffd23648-6353-4c18-93d5-78e0ac838da1"
 const PID_ASUS = "ffba6620-c96e-43f3-9e1e-05f1bb3f0981"
@@ -76,6 +77,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
 		CreDat:            parseDate("2022-10-27T18:10:00.796Z"),
 		ModDat:            parseDate("2022-10-31T21:47:16.898Z"),
+		Active:            true,
 	}
 
 	assert.Equal(suite.T(), expectedPosting, *FindOne(PID_CHEF_PARTY))
@@ -97,6 +99,10 @@ func (suite *PersistenceSuite) Test_findAll() {
 			"find all",
 			args{query{}, nil, 100, 0},
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER, PID_ASUS},
+		}, {
+			"find all; find inactive",
+			args{query{FindInactive: true}, nil, 100, 0},
+			[]string{PID_NHL, PID_CHEF_PARTY, PID_NECRODANCER, PID_ASUS},
 		}, {
 			"offset 1",
 			args{query{}, nil, 100, 1},
@@ -133,6 +139,10 @@ func (suite *PersistenceSuite) Test_findAll() {
 			"search by ids",
 			args{query{Ids: []string{PID_NECRODANCER, PID_ASUS}}, nil, 100, 0},
 			[]string{PID_NECRODANCER, PID_ASUS},
+		}, {
+			"active only",
+			args{query{FindInactive: false}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER, PID_ASUS},
 		},
 	}
 
@@ -197,6 +207,26 @@ func (suite *PersistenceSuite) Test_insertOrUpdateAll_updateExisting() {
 	assert.Equal(suite.T(), 1, updatedCount)
 }
 
+func (suite *PersistenceSuite) Test_SetRemainingPostingInactive() {
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
+	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
+	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
+	SetRemainingPostingInactive(MM, []string{PID_CHEF_PARTY})
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
+	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
+	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)
+}
+
+func (suite *PersistenceSuite) Test_SetRemainingPostingInactive_noNotInFilter() {
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
+	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
+	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
+	SetRemainingPostingInactive(MM, []string{})
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
+	assert.Equal(suite.T(), false, FindOne(PID_CHEF_PARTY).Active)
+	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)
+}
+
 func (suite *PersistenceSuite) Test_saveOperation() {
 	now := time.Now().UTC().Round(time.Millisecond)
 	hash := getExampleHash()
@@ -214,12 +244,6 @@ func (suite *PersistenceSuite) Test_updateOperation() {
 	now2 := now.AddDate(0, 0, 1)
 	updateSearchOperation(getExampleQuery(), &now2)
 	assert.Equal(suite.T(), operation{hash, "description", getExampleQuery(), &now2}, *findSearchOperation(hash))
-}
-
-func assertEqualPostingIgnoringDates(t *testing.T, expected posting, actual posting) {
-	actual.CreDat = expected.CreDat
-	actual.ModDat = expected.ModDat
-	assert.Equal(t, expected, actual)
 }
 
 func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contained posting) bool {
@@ -249,6 +273,7 @@ func getExamplePosting(prefix string) posting {
 		PriceOld:          1338.00,
 		DiscountInPercent: 1,
 		Outlet:            postingOutlet{42, "outlet"},
+		Active:            true,
 	}
 }
 

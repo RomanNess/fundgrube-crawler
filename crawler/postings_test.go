@@ -42,6 +42,7 @@ func Test_preparePosting(t *testing.T) {
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 				},
+				Active: true,
 			},
 		},
 	}
@@ -97,6 +98,7 @@ func Test_preparePostings(t *testing.T) {
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 				},
+				Active: true,
 			}},
 		},
 	}

@@ -46,6 +46,8 @@ func FindAll(q query, afterTime *time.Time, limit int64, offset int64) []posting
 	}
 	if q.Ids != nil {
 		filter["_id"] = bson.M{"$in": q.Ids}
+	} else if !q.FindInactive {
+		filter["active"] = bson.M{"$eq": true}
 	}
 
 	findOptions := options.Find().SetLimit(limit).SetSkip(offset).SetSort(bson.M{"price": 1})
@@ -142,6 +144,18 @@ func loadAll(postings []posting) map[string]posting {
 	}
 	log.Infof("Loaded %d existing postings for diff in %fs", len(ret), time.Since(start).Seconds())
 	return ret
+}
+
+func SetRemainingPostingInactive(shop Shop, postingIds []string) int {
+	many, err := postingsCollection().UpdateMany(
+		context.TODO(),
+		bson.M{"shop": shop, "_id": bson.M{"$nin": postingIds}},
+		bson.M{"$set": bson.M{"active": false}},
+	)
+	if err != nil {
+		panic(err)
+	}
+	return int(many.ModifiedCount)
 }
 
 func clearAll() {

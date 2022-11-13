@@ -11,14 +11,15 @@ type queries struct {
 }
 
 type query struct {
-	Desc        string   `yaml:"desc" bson:"desc"`
-	NameRegex   *string  `yaml:"name_regex" bson:"name_regex"`
-	BrandRegex  *string  `yaml:"brand_regex" bson:"brand_regex"`
-	PriceMin    *float64 `yaml:"price_min" bson:"price_min"`
-	PriceMax    *float64 `yaml:"price_max" bson:"price_max"`
-	DiscountMin *int     `yaml:"discount_min" bson:"discount_min"`
-	OutletId    *int     `yaml:"outlet_id" bson:"outlet_id"`
-	Ids         []string `yaml:"-" json:"-" bson:"-"`
+	Desc         string   `yaml:"desc" json:"desc,omitempty" bson:"desc"`
+	NameRegex    *string  `yaml:"name_regex" json:"name_regex,omitempty" bson:"name_regex"`
+	BrandRegex   *string  `yaml:"brand_regex" json:"brand_regex,omitempty" bson:"brand_regex"`
+	PriceMin     *float64 `yaml:"price_min" json:"price_min,omitempty" bson:"price_min"`
+	PriceMax     *float64 `yaml:"price_max" json:"price_max,omitempty" bson:"price_max"`
+	DiscountMin  *int     `yaml:"discount_min" json:"discount_min,omitempty" bson:"discount_min"`
+	OutletId     *int     `yaml:"outlet_id" json:"outlet_id,omitempty" bson:"outlet_id"`
+	Ids          []string `yaml:"-" json:"-,omitempty" bson:"-"`
+	FindInactive bool     `yaml:"find_inactive" json:"find_inactive,omitempty" bson:"find_inactive"`
 }
 
 func (q query) String() string {
@@ -80,6 +81,7 @@ type posting struct {
 	PimId             int           `json:"pim_id" bson:"pim_id"`
 	CreDat            *time.Time    `json:"-" bson:"cre_dat" `
 	ModDat            *time.Time    `json:"-" bson:"mod_dat"`
+	Active            bool          `json:"-" bson:"active"`
 }
 
 func (p posting) String() string {
