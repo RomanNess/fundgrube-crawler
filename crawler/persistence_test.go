@@ -247,12 +247,15 @@ func (suite *PersistenceSuite) Test_updateOperation() {
 }
 
 func assertPostingsContainIgnoringDates(t *testing.T, postings []posting, contained posting) bool {
-	for i, p := range postings {
+	postingsWithoutDates := []posting{}
+	for _, p := range postings {
+		assert.NotNil(t, p.CreDat)
+		assert.NotNil(t, p.ModDat)
 		p.CreDat = nil
 		p.ModDat = nil
-		postings[i] = p
+		postingsWithoutDates = append(postingsWithoutDates, p)
 	}
-	return assert.Contains(t, postings, contained)
+	return assert.Contains(t, postingsWithoutDates, contained)
 }
 
 func parseDate(dateString string) *time.Time {

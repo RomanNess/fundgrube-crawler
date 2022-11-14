@@ -89,6 +89,8 @@ func SaveAllNewOrUpdated(postings []posting) (insertedCount int, updatedCount in
 	for _, posting := range postings {
 		existing, ok := loadedPostings[posting.PostingId]
 		if !ok {
+			posting.CreDat = &start
+			posting.ModDat = &start
 			postingsToUpsert = append(postingsToUpsert, posting)
 		} else {
 			posting.CreDat = existing.CreDat
