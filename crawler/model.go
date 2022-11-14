@@ -3,6 +3,7 @@ package crawler
 import (
 	"bytes"
 	"fmt"
+	"regexp"
 	"time"
 )
 
@@ -94,7 +95,16 @@ func (p posting) String() string {
 		uvpInfo = fmt.Sprintf(" (UVP %.2f€ -%d%%)", p.PriceOld, p.DiscountInPercent)
 	}
 	priceInfo := fmt.Sprintf("%.2f€%s%s", p.Price, shippingInfo, uvpInfo)
-	return fmt.Sprintf("%s 👉%s👈 in %s [%s]\n\t📸 %s\n\t🛒 %s", priceInfo, p.Name, p.Outlet.Name, p.PostingId, p.Url[0], p.ShopUrl)
+	return fmt.Sprintf("%s 👉%s👈 in %s [%s]\n\t📗 %s\n\t📸 %s\n\t🛒 %s", priceInfo, p.Name, p.Outlet.Name, p.PostingId, shorten(p.Text), p.Url[0], p.ShopUrl)
+}
+
+func shorten(text string) string {
+	re := regexp.MustCompile("\\r?\\n")
+	text = re.ReplaceAllString(text, " | ")
+	if len(text) > 150 {
+		text = text[:150] + "..."
+	}
+	return text
 }
 
 /*
