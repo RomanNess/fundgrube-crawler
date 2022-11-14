@@ -17,6 +17,7 @@ fmt:
 
 build:
 	go build -o bin/fundgrube-crawler cmd/fundgrube-crawler/main.go
+	go build -o bin/fundgrube-migrate cmd/fundgrube-migrate/main.go
 
 build-pi:
 	GOOS=linux GOARCH=arm GOARM=6 go build -o bin_pi/$(PI_BINARY) cmd/fundgrube-crawler/main.go
@@ -26,6 +27,10 @@ deploy-pi: build-pi
 
 run: build
 	./bin/fundgrube-crawler
+
+## migrate mongodb schema or clean up entries
+migrate: build
+	./bin/fundgrube-migrate
 
 ## export necessary env vars in env.sh before running
 run-pi:

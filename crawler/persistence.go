@@ -167,6 +167,53 @@ func clearAll() {
 	}
 }
 
+func Migrate(filterString string, updateString string) int {
+	if !envBool("MIGRATE") {
+		return dryRunFilter(filterString)
+	}
+
+	manyResponse, err := postingsCollection().UpdateMany(context.TODO(), toBson(filterString), toBson(updateString))
+	if err != nil {
+		panic(err)
+	}
+	migratedCount := int(manyResponse.ModifiedCount)
+	log.Warnf("Migrated %d entries in posting collection filter: '%s' and update: '%s'", migratedCount, filterString, updateString)
+	return migratedCount
+}
+
+func CleanUp(filterString string) int {
+	if !envBool("CLEANUP") {
+		return dryRunFilter(filterString)
+	}
+
+	deleteMany, err := postingsCollection().DeleteMany(context.TODO(), toBson(filterString))
+	if err != nil {
+		panic(err)
+	}
+
+	deletedCount := int(deleteMany.DeletedCount)
+	log.Warnf("Deleted %d entries in posting collection with filter: '%s'", deletedCount, filterString)
+	return deletedCount
+}
+
+func dryRunFilter(filterString string) int {
+	cursor, err := postingsCollection().Find(context.TODO(), toBson(filterString))
+	if err != nil {
+		panic(err)
+	}
+	log.Warnf("[DRY_RUN] Filter '%s' matches %d elements.", filterString, cursor.RemainingBatchLength())
+	return 0
+}
+
+func toBson(jsonString string) interface{} {
+	var bsonFilter interface{}
+	err := bson.UnmarshalExtJSON([]byte(jsonString), true, &bsonFilter)
+	if err != nil {
+		panic(err)
+	}
+	return bsonFilter
+}
+
 func updateSearchOperation(query query, now *time.Time) *mongo.SingleResult {
 	md5Hex := hashQuery(query)
 	op := operation{md5Hex, query.Desc, query, now}
