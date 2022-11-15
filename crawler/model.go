@@ -102,7 +102,8 @@ func shorten(text string) string {
 	re := regexp.MustCompile("\\r?\\n")
 	text = re.ReplaceAllString(text, " | ")
 	if len(text) > 150 {
-		text = text[:150] + "..."
+		r := []rune(text)
+		text = string(r[:150]) + "..."
 	}
 	return text
 }
