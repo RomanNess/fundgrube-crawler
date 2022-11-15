@@ -71,10 +71,10 @@ func priceFilter(priceMin *float64, priceMax *float64) bson.M {
 	if priceMin != nil && priceMax != nil {
 		return bson.M{"$gte": priceMin, "$lte": priceMax}
 	}
-	if priceMin == nil {
+	if priceMin != nil {
 		return bson.M{"$gte": priceMin}
 	}
-	if priceMax == nil {
+	if priceMax != nil {
 		return bson.M{"$lte": priceMax}
 	}
 	panic("priceFilter called without priceMin or priceMax set")

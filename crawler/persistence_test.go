@@ -116,6 +116,14 @@ func (suite *PersistenceSuite) Test_findAll() {
 			args{query{NameRegex: sPtr("^.*nintendo.*$")}, nil, 100, 0},
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
+			"price min",
+			args{query{PriceMin: fPtr(15)}, nil, 100, 0},
+			[]string{PID_NECRODANCER, PID_ASUS},
+		}, {
+			"price max",
+			args{query{PriceMax: fPtr(30)}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
+		}, {
 			"price min/max",
 			args{query{PriceMin: fPtr(15), PriceMax: fPtr(30)}, nil, 100, 0},
 			[]string{PID_NECRODANCER},
