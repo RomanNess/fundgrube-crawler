@@ -32,9 +32,10 @@ func (q query) String() string {
 }
 
 type postingsResponse struct {
-	Postings     []posting `json:"postings"`
-	Outlets      []outlet  `json:"outlets"`
-	HasMorePages bool      `json:"morePostingsAvailable"`
+	Postings     []posting  `json:"postings"`
+	Outlets      []outlet   `json:"outlets"`
+	Categories   []category `json:"categories"`
+	HasMorePages bool       `json:"morePostingsAvailable"`
 }
 
 /* Example json
@@ -64,25 +65,26 @@ type postingsResponse struct {
    }
 */
 type posting struct {
-	PostingId         string        `json:"posting_id" bson:"_id"`
-	PriceString       string        `json:"price" bson:"-"`
-	PriceOldString    string        `json:"price_old" bson:"-"`
-	Price             float64       `json:"-" bson:"price"`
-	PriceOld          float64       `json:"-" bson:"price_old"`
-	DiscountInPercent int           `json:"discount_in_percent" bson:"discount_in_percent"`
-	ShippingCost      float64       `json:"shipping_cost" bson:"shipping_cost"`
-	ShippingType      string        `json:"shipping_type" bson:"shipping_type"`
-	Name              string        `json:"name" bson:"name"`
-	Url               []string      `json:"original_url" bson:"url"`
-	Text              string        `json:"posting_text" bson:"text"`
-	Outlet            postingOutlet `json:"outlet" bson:"outlet"`
-	Brand             brand         `json:"brand" bson:"brand"`
-	Shop              Shop          `json:"-" bson:"shop"`
-	ShopUrl           string        `json:"-" bson:"shop_url"`
-	PimId             int           `json:"pim_id" bson:"pim_id"`
-	CreDat            *time.Time    `json:"-" bson:"cre_dat" `
-	ModDat            *time.Time    `json:"-" bson:"mod_dat"`
-	Active            bool          `json:"-" bson:"active"`
+	PostingId         string          `json:"posting_id" bson:"_id"`
+	PriceString       string          `json:"price" bson:"-"`
+	PriceOldString    string          `json:"price_old" bson:"-"`
+	Price             float64         `json:"-" bson:"price"`
+	PriceOld          float64         `json:"-" bson:"price_old"`
+	DiscountInPercent int             `json:"discount_in_percent" bson:"discount_in_percent"`
+	ShippingCost      float64         `json:"shipping_cost" bson:"shipping_cost"`
+	ShippingType      string          `json:"shipping_type" bson:"shipping_type"`
+	Name              string          `json:"name" bson:"name"`
+	Url               []string        `json:"original_url" bson:"url"`
+	Text              string          `json:"posting_text" bson:"text"`
+	Outlet            postingOutlet   `json:"outlet" bson:"outlet"`
+	Category          postingCategory `json:"-" bson:"category"`
+	Brand             brand           `json:"brand" bson:"brand"`
+	Shop              Shop            `json:"-" bson:"shop"`
+	ShopUrl           string          `json:"-" bson:"shop_url"`
+	PimId             int             `json:"pim_id" bson:"pim_id"`
+	CreDat            *time.Time      `json:"-" bson:"cre_dat" `
+	ModDat            *time.Time      `json:"-" bson:"mod_dat"`
+	Active            bool            `json:"-" bson:"active"`
 }
 
 func (p posting) String() string {
@@ -126,6 +128,28 @@ type outlet struct {
 type postingOutlet struct {
 	OutletId int    `json:"id" bson:"id"`
 	Name     string `json:"name" bson:"name"`
+}
+
+/*
+{
+ "id": "CAT_DE_SA_0",
+ "name": "Sonstige Produkte",
+ "count": 382
+}
+*/
+type category struct {
+	CategoryId string `json:"id"`
+	Name       string `json:"name"`
+	Count      int    `json:"count"`
+}
+
+type postingCategory struct {
+	CategoryId string `json:"id" bson:"id"`
+	Name       string `json:"name" bson:"name"`
+}
+
+func (c *category) toPostingCategory() postingCategory {
+	return postingCategory{CategoryId: c.CategoryId, Name: c.Name}
 }
 
 type brand struct {

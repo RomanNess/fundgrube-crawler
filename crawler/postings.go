@@ -28,12 +28,30 @@ type pageRequest struct {
 }
 
 func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
-	outlets, err := fetchOutlets(shop, mockedPostings)
+	categories, err := fetchCategories(shop, mockedPostings)
 	if err != nil {
 		return nil, err
 	}
 
-	if envBool("LIMIT_OUTLETS") {
+	for _, c := range categories {
+		postingsForCategory, err2 := fetchPostingsForCategory(shop, mockedPostings, c)
+		if err2 != nil {
+			return nil, err2
+		}
+		ret = append(ret, postingsForCategory...)
+	}
+	return ret, nil
+}
+
+func fetchPostingsForCategory(shop Shop, mockedPostings bool, c category) ([]posting, error) {
+	outlets, err := fetchOutlets(shop, c, mockedPostings)
+	if err != nil {
+		return nil, err
+	}
+
+	postingsForCategory := []posting{}
+
+	if envBool("LIMIT_OUTLETS") && len(outlets) > 5 {
 		outlets = outlets[0:5]
 	}
 
@@ -42,11 +60,11 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 		limit := 90
 		offset := 0
 		for true {
-			postingsResponse, e := fetchSinglePageOfPostings(shop, outlets, nil, limit, offset, mockedPostings)
-			if e != nil {
-				return nil, e
+			postingsResponse, err := fetchSinglePageOfPostings(shop, outlets, []category{c}, nil, limit, offset, mockedPostings)
+			if err != nil {
+				return nil, err
 			}
-			ret = append(ret, postingsResponse.Postings...)
+			postingsForCategory = append(postingsForCategory, postingsResponse.Postings...)
 
 			// api cannot request offset > 990; iterate over outlets or brands
 			offset = offset + limit
@@ -55,7 +73,7 @@ func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
 			}
 		}
 	}
-	return preparePostings(shop, ret), err
+	return preparePostings(shop, postingsForCategory, c), nil
 }
 
 func sliceOutlets(outlets []outlet) [][]outlet {
@@ -78,16 +96,17 @@ func sliceOutlets(outlets []outlet) [][]outlet {
 	return ret
 }
 
-func preparePostings(shop Shop, postings []posting) []posting {
+func preparePostings(shop Shop, postings []posting, c category) []posting {
 	for i, p := range postings {
-		postings[i] = preparePosting(shop, p)
+		postings[i] = preparePosting(shop, p, c)
 	}
 	return postings
 }
 
-func preparePosting(shop Shop, posting posting) posting {
+func preparePosting(shop Shop, posting posting, c category) posting {
 	posting.Shop = shop
-	posting.ShopUrl = buildUrl(shop, []outlet{{OutletId: posting.Outlet.OutletId}}, &posting.Brand, nil)
+	posting.ShopUrl = buildUrl(shop, []outlet{{OutletId: posting.Outlet.OutletId}}, []category{c}, &posting.Brand, nil)
+	posting.Category = c.toPostingCategory()
 	posting.Price, _ = strconv.ParseFloat(posting.PriceString, 64)
 	posting.PriceOld, _ = strconv.ParseFloat(posting.PriceOldString, 64)
 	posting.PriceString = ""
@@ -99,17 +118,26 @@ func preparePosting(shop Shop, posting posting) posting {
 	return posting
 }
 
-func fetchOutlets(shop Shop, mockedPostings bool) ([]outlet, error) {
-	postingsResponse, err := fetchSinglePageOfPostings(shop, nil, nil, 1, 0, mockedPostings)
+func fetchCategories(shop Shop, mockedPostings bool) ([]category, error) {
+	postingsResponse, err := fetchSinglePageOfPostings(shop, nil, nil, nil, 1, 0, mockedPostings)
 	if err != nil {
 		return nil, err
 	}
-	log.Infof("Discovered %d Outlets for %s", len(postingsResponse.Outlets), shop)
+	log.Infof("Discovered %d Categories for %s", len(postingsResponse.Categories), shop)
+	return postingsResponse.Categories, err
+}
+
+func fetchOutlets(shop Shop, c category, mockedPostings bool) ([]outlet, error) {
+	postingsResponse, err := fetchSinglePageOfPostings(shop, nil, []category{c}, nil, 1, 0, mockedPostings)
+	if err != nil {
+		return nil, err
+	}
+	log.Infof("Discovered %d Outlets for %s and category '%s'", len(postingsResponse.Outlets), shop, c.Name)
 	return postingsResponse.Outlets, err
 }
 
-func fetchSinglePageOfPostings(shop Shop, outlets []outlet, brand *brand, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
-	urlString := buildUrl(shop, outlets, brand, &pageRequest{limit, offset})
+func fetchSinglePageOfPostings(shop Shop, outlets []outlet, categories []category, brand *brand, limit int, offset int, mockedPostings bool) (*postingsResponse, error) {
+	urlString := buildUrl(shop, outlets, categories, brand, &pageRequest{limit, offset})
 	responseBodyReader, err := getResponseBody(urlString, mockedPostings)
 	if err != nil {
 		return nil, err
@@ -165,7 +193,7 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	return responseBody, err
 }
 
-func buildUrl(shop Shop, outlets []outlet, brand *brand, pageRequest *pageRequest) string {
+func buildUrl(shop Shop, outlets []outlet, categories []category, brand *brand, pageRequest *pageRequest) string {
 	isApiRequest := pageRequest != nil
 	u, err := url.Parse(buildBaseUrl(shop, isApiRequest))
 	if err != nil {
@@ -180,12 +208,23 @@ func buildUrl(shop Shop, outlets []outlet, brand *brand, pageRequest *pageReques
 	if outlets != nil && len(outlets) > 0 {
 		q.Set("outletIds", commaSeparatedOutletIds(outlets))
 	}
+	if categories != nil && len(categories) > 0 {
+		q.Set("categorieIds", commaSeparatedCategoryIds(categories))
+	}
 	if brand != nil {
 		q.Set("brands", brand.Name)
 	}
 
 	u.RawQuery = q.Encode()
 	return u.String()
+}
+
+func commaSeparatedCategoryIds(categories []category) string {
+	categoryIds := []string{}
+	for _, c := range categories {
+		categoryIds = append(categoryIds, c.CategoryId)
+	}
+	return strings.Join(categoryIds, ",")
 }
 
 func commaSeparatedOutletIds(outlets []outlet) string {
@@ -199,15 +238,15 @@ func commaSeparatedOutletIds(outlets []outlet) string {
 func buildBaseUrl(shop Shop, isApiRequest bool) string {
 	if shop == SATURN {
 		if isApiRequest {
-			return "https://www.saturn.de/de/data/fundgrube/api/postings?categorieIds=CAT_DE_SAT_786"
+			return "https://www.saturn.de/de/data/fundgrube/api/postings"
 		}
-		return "https://www.saturn.de/de/data/fundgrube?categorieIds=CAT_DE_SAT_786"
+		return "https://www.saturn.de/de/data/fundgrube"
 	}
 	if shop == MM {
 		if isApiRequest {
-			return "https://www.mediamarkt.de/de/data/fundgrube/api/postings?categorieIds=CAT_DE_MM_626"
+			return "https://www.mediamarkt.de/de/data/fundgrube/api/postings"
 		}
-		return "https://www.mediamarkt.de/de/data/fundgrube?categorieIds=CAT_DE_MM_626"
+		return "https://www.mediamarkt.de/de/data/fundgrube"
 	}
 
 	panic(fmt.Sprintf("Unkown Shop %s", shop))

@@ -7,8 +7,9 @@ import (
 
 func Test_preparePosting(t *testing.T) {
 	type args struct {
-		shop    Shop
-		posting posting
+		shop Shop
+		p    posting
+		c    category
 	}
 	tests := []struct {
 		name string
@@ -27,17 +28,19 @@ func Test_preparePosting(t *testing.T) {
 					DiscountInPercent: 50,
 					Url:               []string{"https://foo.bar", "https://the.back"},
 				},
+				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			posting{
 				Brand:             brand{10, "Sony"},
 				Outlet:            postingOutlet{100, "Outlet"},
+				Category:          postingCategory{"CAT_ID", "Category"},
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
 				PriceOldString:    "",
 				DiscountInPercent: 50,
 				Shop:              MM,
-				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
+				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_ID&outletIds=100",
 				Url: []string{
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
@@ -48,7 +51,7 @@ func Test_preparePosting(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equalf(t, tt.want, preparePosting(tt.args.shop, tt.args.posting), "preparePosting(%v, %v)", tt.args.shop, tt.args.posting)
+			assert.Equalf(t, tt.want, preparePosting(tt.args.shop, tt.args.p, tt.args.c), "preparePosting(%v, %v, %v)", tt.args.shop, tt.args.p, tt.args.c)
 		})
 	}
 }
@@ -57,6 +60,7 @@ func Test_preparePostings(t *testing.T) {
 	type args struct {
 		shop     Shop
 		postings []posting
+		c        category
 	}
 	tests := []struct {
 		name string
@@ -68,6 +72,7 @@ func Test_preparePostings(t *testing.T) {
 			args{
 				MM,
 				[]posting{},
+				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			[]posting{},
 		},
@@ -83,17 +88,19 @@ func Test_preparePostings(t *testing.T) {
 					DiscountInPercent: 50,
 					Url:               []string{"https://foo.bar", "https://the.back"},
 				}},
+				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			[]posting{{
 				Brand:             brand{10, "Sony"},
 				Outlet:            postingOutlet{100, "Outlet"},
+				Category:          postingCategory{"CAT_ID", "Category"},
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
 				PriceOldString:    "",
 				DiscountInPercent: 50,
 				Shop:              MM,
-				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_DE_MM_626&outletIds=100",
+				ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=Sony&categorieIds=CAT_ID&outletIds=100",
 				Url: []string{
 					"https://foo.bar?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
 					"https://the.back?strip=yes&quality=75&backgroundsize=cover&x=640&y=640",
@@ -104,7 +111,7 @@ func Test_preparePostings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			postings := preparePostings(tt.args.shop, tt.args.postings)
+			postings := preparePostings(tt.args.shop, tt.args.postings, tt.args.c)
 			assert.Equal(t, tt.want, postings)
 		})
 	}
@@ -166,6 +173,7 @@ func Test_buildUrl(t *testing.T) {
 	type args struct {
 		shop        Shop
 		outlets     []outlet
+		categories  []category
 		brand       *brand
 		pageRequest *pageRequest
 	}
@@ -182,10 +190,14 @@ func Test_buildUrl(t *testing.T) {
 					{23, "Duisburg", 17},
 					{24, "Düsseldorf", 18},
 				},
+				[]category{
+					category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
+					category{CategoryId: "CAT_ID_2", Name: "Category2", Count: 2345},
+				},
 				&brand{42, "A COOL BRAND"},
 				&pageRequest{limit: 100, offset: 200},
 			},
-			"https://www.mediamarkt.de/de/data/fundgrube/api/postings?brands=A+COOL+BRAND&categorieIds=CAT_DE_MM_626&limit=100&offset=200&outletIds=23%2C24",
+			"https://www.mediamarkt.de/de/data/fundgrube/api/postings?brands=A+COOL+BRAND&categorieIds=CAT_ID%2CCAT_ID_2&limit=100&offset=200&outletIds=23%2C24",
 		}, {
 			"set none results in shop link",
 			args{
@@ -193,22 +205,24 @@ func Test_buildUrl(t *testing.T) {
 				nil,
 				nil,
 				nil,
+				nil,
 			},
-			"https://www.mediamarkt.de/de/data/fundgrube?categorieIds=CAT_DE_MM_626",
+			"https://www.mediamarkt.de/de/data/fundgrube",
 		}, {
-			"empty outlets",
+			"empty outlets & categories",
 			args{
 				MM,
 				[]outlet{},
+				[]category{},
 				nil,
 				nil,
 			},
-			"https://www.mediamarkt.de/de/data/fundgrube?categorieIds=CAT_DE_MM_626",
+			"https://www.mediamarkt.de/de/data/fundgrube",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equalf(t, tt.want, buildUrl(tt.args.shop, tt.args.outlets, tt.args.brand, tt.args.pageRequest), "buildUrl(%v, %v, %v, %v)", tt.args.shop, tt.args.outlets, tt.args.brand, tt.args.pageRequest)
+			assert.Equalf(t, tt.want, buildUrl(tt.args.shop, tt.args.outlets, tt.args.categories, tt.args.brand, tt.args.pageRequest), "buildUrl(%v, %v, %v, %v, %v)", tt.args.shop, tt.args.outlets, tt.args.categories, tt.args.brand, tt.args.pageRequest)
 		})
 	}
 }

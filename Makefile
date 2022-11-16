@@ -28,6 +28,10 @@ deploy-pi: build-pi
 run: build
 	./bin/fundgrube-crawler
 
+## scripts
+script-fetch-categories:
+	for outlet in mediamarkt saturn; do https "https://www.$${outlet}.de/de/data/fundgrube/api/postings?limit=1&offset=0" | jq ".categories" | jq "del(.[].count)" | jq "sort_by(.name)" > "bin/cat.$${outlet}.json"; done
+
 ## migrate mongodb schema or clean up entries
 migrate: build
 	./bin/fundgrube-migrate
@@ -35,6 +39,9 @@ migrate: build
 ## export necessary env vars in env.sh before running
 run-pi:
 	ssh $(PI_SSH_PROFILE) bash -c "'cd $(PI_DEPLOYMENT_PATH) && source env.sh && ./fundgrube-crawler-pi'"
+
+logs-pi:
+	ssh $(PI_SSH_PROFILE) less +F "\$$(ls /tmp/fundgrube-*.txt | tail -n1)"
 
 crontab-pi:
 	ssh $(PI_SSH_PROFILE) bash -c 'echo; echo "10 * * * * . $(PI_DEPLOYMENT_PATH)/env.sh && $(PI_DEPLOYMENT_PATH)/$(PI_BINARY)" | crontab -'

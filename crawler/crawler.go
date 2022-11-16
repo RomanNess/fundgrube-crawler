@@ -28,7 +28,6 @@ func CrawlPostings(mockedPostings bool) error {
 		}
 		inactiveCount := SetRemainingPostingInactive(shop, ids)
 		log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", len(postings), shop, inserted, updated, inactiveCount, took.Seconds())
-
 	}
 	return nil
 }
