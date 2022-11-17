@@ -82,7 +82,7 @@ func mailAlertOnPanic() {
 
 func getContentBytes() []byte {
 	if envBool("LOG_TO_FILE") {
-		contentBytes := []byte("\n\nLogs:\n\n")
+		contentBytes := []byte(fmt.Sprintf("\n\nLogs: %s\n\n", LOG_FILE))
 		logBytes, err := os.ReadFile(LOG_FILE)
 		if err != nil {
 			panic(err)
