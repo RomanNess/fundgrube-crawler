@@ -71,7 +71,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		Name:              "Instant Chef Party - [Nintendo Switch]",
 		Url:               []string{"https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"},
 		Text:              "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
-		Outlet:            postingOutlet{475, "Lübeck"},
+		Outlet:            postingOutlet{111, "Lübeck"},
 		Category:          postingCategory{"CAT_DE_SAT_786", "Gaming + VR"},
 		Brand:             brand{10312, "WILD RIVER"},
 		Shop:              MM,
@@ -138,8 +138,8 @@ func (suite *PersistenceSuite) Test_findAll() {
 			[]string{PID_NECRODANCER},
 		}, {
 			"outletId",
-			args{query{OutletId: iPtr(475)}, nil, 100, 0},
-			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
+			args{query{OutletId: iPtr(111)}, nil, 100, 0},
+			[]string{PID_CHEF_PARTY},
 		}, {
 			"after time",
 			args{query{}, parseDate("2022-10-30T00:00:00Z"), 100, 0},
@@ -217,23 +217,23 @@ func (suite *PersistenceSuite) Test_insertOrUpdateAll_updateExisting() {
 }
 
 func (suite *PersistenceSuite) Test_SetRemainingPostingInactive() {
-	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
-	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []string{PID_CHEF_PARTY})
-	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
+	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []outlet{outl(111), outl(222)}, []string{PID_CHEF_PARTY})
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)
 }
 
-func (suite *PersistenceSuite) Test_SetRemainingPostingInactive_noActive() {
-	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
+func (suite *PersistenceSuite) Test_SetRemainingPostingInactive_noActiveInCategoryAndOutlet() {
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
-	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []string{})
-	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
-	assert.Equal(suite.T(), false, FindOne(PID_CHEF_PARTY).Active)
-	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)
+	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []outlet{outl(111)}, []string{})
+	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)        // saturn
+	assert.Equal(suite.T(), false, FindOne(PID_CHEF_PARTY).Active) // outlet 111
+	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
 }
 
 func (suite *PersistenceSuite) Test_saveOperation() {
@@ -295,4 +295,8 @@ func getExampleHash() string {
 
 func getExampleQuery() query {
 	return query{NameRegex: sPtr("keyword"), Desc: "description"}
+}
+
+func outl(id int) outlet {
+	return outlet{OutletId: id, Name: "Outlet" + string(rune(id)), Count: 100 + id}
 }

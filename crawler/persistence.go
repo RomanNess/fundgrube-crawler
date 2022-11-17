@@ -132,21 +132,25 @@ func insertOrUpdateAll(postings []posting) (insertedCount int, updatedCount int)
 func loadAll(postings []posting) map[string]posting {
 	start := time.Now()
 
-	// todo: will this require pagination later?
 	loadedPostings := FindAll(query{Ids: toIds(postings)}, nil, int64(len(postings)), 0)
 
 	ret := make(map[string]posting)
 	for _, loadedPosting := range loadedPostings {
 		ret[loadedPosting.PostingId] = loadedPosting
 	}
-	log.Infof("Loaded %d existing postings for diff in %fs", len(ret), time.Since(start).Seconds())
+	log.Debugf("Loaded %d existing postings for diff in %.2fs", len(ret), time.Since(start).Seconds())
 	return ret
 }
 
-func SetRemainingPostingInactive(shop Shop, c category, postingIds []string) int {
+func SetRemainingPostingInactive(shop Shop, c category, outlets []outlet, postingIds []string) int {
+	filter := bson.M{"shop": shop, "category.id": c.CategoryId, "_id": bson.M{"$nin": postingIds}}
+	if outlets != nil && len(outlets) > 0 {
+		filter["outlet.id"] = bson.M{"$in": outletIds(outlets)}
+	}
+
 	many, err := postingsCollection().UpdateMany(
 		context.TODO(),
-		bson.M{"shop": shop, "category.id": c.CategoryId, "_id": bson.M{"$nin": postingIds}},
+		filter,
 		bson.M{"$set": bson.M{"active": false}},
 	)
 	if err != nil {

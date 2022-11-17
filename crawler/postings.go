@@ -28,14 +28,32 @@ type pageRequest struct {
 }
 
 func updatePostingsForOneCategory(shop Shop, mockedPostings bool, c category) error {
-	postingsForCategory, err := fetchPostingsForCategory(shop, mockedPostings, c)
+	outlets, err := fetchOutlets(shop, c, mockedPostings)
 	if err != nil {
 		return err
 	}
 
-	inserted, updated, took := SaveAllNewOrUpdated(postingsForCategory)
-	inactiveCount := SetRemainingPostingInactive(shop, c, toIds(postingsForCategory))
-	log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", len(postingsForCategory), shop, inserted, updated, inactiveCount, took.Seconds())
+	if envBool("LIMIT_OUTLETS") && len(outlets) > 5 {
+		outlets = outlets[0:5]
+	}
+
+	overallFetched, overallInserted, overallUpdated, overallInactive := 0, 0, 0, 0
+	var overallTook time.Duration
+	for _, outlets := range sliceOutlets(outlets) {
+		postings, err := fetchPostingsForCategoryAndOutlets(shop, mockedPostings, c, outlets)
+		if err != nil {
+			return err
+		}
+		inserted, updated, took := SaveAllNewOrUpdated(postings)
+		inactiveCount := SetRemainingPostingInactive(shop, c, outlets, toIds(postings))
+
+		overallFetched = overallFetched + len(postings)
+		overallInserted = overallInserted + inserted
+		overallUpdated = overallUpdated + updated
+		overallInactive = overallInactive + inactiveCount
+		overallTook = overallTook + took
+	}
+	log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", overallFetched, shop, overallInserted, overallUpdated, overallInactive, overallTook.Seconds())
 	return nil
 }
 
@@ -66,37 +84,26 @@ func Contains[T comparable](s []T, e T) bool {
 	return false
 }
 
-func fetchPostingsForCategory(shop Shop, mockedPostings bool, c category) ([]posting, error) {
-	outlets, err := fetchOutlets(shop, c, mockedPostings)
-	if err != nil {
-		return nil, err
-	}
+func fetchPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c category, outlets []outlet) ([]posting, error) {
+	postings := []posting{}
+	// api always returns same page if limit >= 100 is requested
+	limit := 90
+	offset := 0
+	for true {
+		postingsResponse, err := fetchSinglePageOfPostings(shop, outlets, []category{c}, nil, limit, offset, mockedPostings)
+		if err != nil {
+			return nil, err
+		}
+		postings = append(postings, postingsResponse.Postings...)
 
-	postingsForCategory := []posting{}
-
-	if envBool("LIMIT_OUTLETS") && len(outlets) > 5 {
-		outlets = outlets[0:5]
-	}
-
-	for _, outlets := range sliceOutlets(outlets) {
-		// api always returns same page if limit >= 100 is requested
-		limit := 90
-		offset := 0
-		for true {
-			postingsResponse, err := fetchSinglePageOfPostings(shop, outlets, []category{c}, nil, limit, offset, mockedPostings)
-			if err != nil {
-				return nil, err
-			}
-			postingsForCategory = append(postingsForCategory, postingsResponse.Postings...)
-
-			// api cannot request offset > 990; iterate over outlets or brands
-			offset = offset + limit
-			if !postingsResponse.HasMorePages || offset > 990 {
-				break
-			}
+		// api cannot request offset > 990; iterate over outlets or brands
+		offset = offset + limit
+		if !postingsResponse.HasMorePages || offset > 990 {
+			break
 		}
 	}
-	return preparePostings(shop, postingsForCategory, c), nil
+	log.Infof("Fetched %d postings for %d outlets and category '%s'.", len(postings), len(outlets), c.Name)
+	return preparePostings(shop, postings, c), nil
 }
 
 func sliceOutlets(outlets []outlet) [][]outlet {
@@ -155,7 +162,7 @@ func fetchOutlets(shop Shop, c category, mockedPostings bool) ([]outlet, error) 
 	if err != nil {
 		return nil, err
 	}
-	log.Infof("Discovered %d Outlets for %s and category '%s'", len(postingsResponse.Outlets), shop, c.Name)
+	log.Infof("Discovered %d Outlets for %s and Category '%s'", len(postingsResponse.Outlets), shop, c.Name)
 	return postingsResponse.Outlets, err
 }
 
@@ -183,7 +190,7 @@ func fetchSinglePageOfPostings(shop Shop, outlets []outlet, categories []categor
 	}
 
 	if outlets != nil {
-		log.Infof("Fetched %d postings in %d outlets with offset %d.", len(postingResponse.Postings), len(outlets), offset)
+		log.Debugf("Fetched %d postings for %d Outlets with offset %d.", len(postingResponse.Postings), len(outlets), offset)
 	}
 	return &postingResponse, nil
 }
@@ -256,6 +263,14 @@ func commaSeparatedOutletIds(outlets []outlet) string {
 		outletIds = append(outletIds, strconv.Itoa(o.OutletId))
 	}
 	return strings.Join(outletIds, ",")
+}
+
+func outletIds(outlets []outlet) []int {
+	outletIds := []int{}
+	for _, o := range outlets {
+		outletIds = append(outletIds, o.OutletId)
+	}
+	return outletIds
 }
 
 func buildBaseUrl(shop Shop, isApiRequest bool) string {

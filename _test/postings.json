@@ -24,7 +24,7 @@
     "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
     "outlet": {
       "id": {
-        "$numberInt": "475"
+        "$numberInt": "111"
       },
       "name": "Lübeck"
     },
@@ -77,7 +77,7 @@
     "text": "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
     "outlet": {
       "id": {
-        "$numberInt": "475"
+        "$numberInt": "222"
       },
       "name": "Lübeck"
     },
@@ -125,7 +125,7 @@
     "text": "Ausstellungsstück",
     "outlet": {
       "id": {
-        "$numberInt": "136"
+        "$numberInt": "333"
       },
       "name": "Marl"
     },
