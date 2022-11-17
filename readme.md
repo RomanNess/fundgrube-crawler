@@ -28,7 +28,6 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 | `MOCKED_POSTINGS`               | mock response from api                                | `false`                     |
 | `SKIP_CRAWLING`                 | skip fetching postings from api                       | `false`                     |
 | `LOG_LEVEL`                     | levels: trace, debug, info, warn, error, fatal, panic | `info`                      |
-| `SEARCH_KEYWORD`                | keyword used to search for deals                      | `example`                   |
 
 ## API peculiarities
 

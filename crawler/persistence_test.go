@@ -72,6 +72,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		Url:               []string{"https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"},
 		Text:              "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
 		Outlet:            postingOutlet{475, "Lübeck"},
+		Category:          postingCategory{"CAT_DE_SAT_786", "Gaming + VR"},
 		Brand:             brand{10312, "WILD RIVER"},
 		Shop:              MM,
 		ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
@@ -219,17 +220,17 @@ func (suite *PersistenceSuite) Test_SetRemainingPostingInactive() {
 	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
-	SetRemainingPostingInactive(MM, []string{PID_CHEF_PARTY})
+	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []string{PID_CHEF_PARTY})
 	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)
 }
 
-func (suite *PersistenceSuite) Test_SetRemainingPostingInactive_noNotInFilter() {
+func (suite *PersistenceSuite) Test_SetRemainingPostingInactive_noActive() {
 	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active) // saturn
 	assert.Equal(suite.T(), true, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), true, FindOne(PID_NECRODANCER).Active)
-	SetRemainingPostingInactive(MM, []string{})
+	SetRemainingPostingInactive(MM, category{"CAT_DE_SAT_786", "Cat1", 1}, []string{})
 	assert.Equal(suite.T(), true, FindOne(PID_ASUS).Active)
 	assert.Equal(suite.T(), false, FindOne(PID_CHEF_PARTY).Active)
 	assert.Equal(suite.T(), false, FindOne(PID_NECRODANCER).Active)

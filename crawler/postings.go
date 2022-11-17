@@ -27,20 +27,43 @@ type pageRequest struct {
 	offset int
 }
 
-func fetchPostings(shop Shop, mockedPostings bool) (ret []posting, err error) {
-	categories, err := fetchCategories(shop, mockedPostings)
+func updatePostingsForOneCategory(shop Shop, mockedPostings bool, c category) error {
+	postingsForCategory, err := fetchPostingsForCategory(shop, mockedPostings, c)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	for _, c := range categories {
-		postingsForCategory, err2 := fetchPostingsForCategory(shop, mockedPostings, c)
-		if err2 != nil {
-			return nil, err2
-		}
-		ret = append(ret, postingsForCategory...)
+	inserted, updated, took := SaveAllNewOrUpdated(postingsForCategory)
+	inactiveCount := SetRemainingPostingInactive(shop, c, toIds(postingsForCategory))
+	log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", len(postingsForCategory), shop, inserted, updated, inactiveCount, took.Seconds())
+	return nil
+}
+
+func toIds(postingsForCategory []posting) []string {
+	ids := []string{}
+	for _, p := range postingsForCategory {
+		ids = append(ids, p.PostingId)
 	}
-	return ret, nil
+	return ids
+}
+
+func filterCategories(categories []category, blacklist []string) []category {
+	ret := []category{}
+	for _, c := range categories {
+		if !Contains(blacklist, c.CategoryId) {
+			ret = append(ret, c)
+		}
+	}
+	return ret
+}
+
+func Contains[T comparable](s []T, e T) bool {
+	for _, v := range s {
+		if v == e {
+			return true
+		}
+	}
+	return false
 }
 
 func fetchPostingsForCategory(shop Shop, mockedPostings bool, c category) ([]posting, error) {

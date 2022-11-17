@@ -7,8 +7,13 @@ import (
 	"time"
 )
 
-type queries struct {
-	Queries []query `yaml:"queries"`
+type ConfigFile struct {
+	Queries      []query      `yaml:"queries"`
+	GlobalConfig globalConfig `yaml:"globalConfig"`
+}
+
+type globalConfig struct {
+	BlacklistedCategories []string `yaml:"blacklistedCategories"`
 }
 
 type query struct {

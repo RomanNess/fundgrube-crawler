@@ -262,3 +262,84 @@ func Test_commaSeparatedOutletIds(t *testing.T) {
 		})
 	}
 }
+
+func Test_filterCategories(t *testing.T) {
+	type args struct {
+		categories []category
+		blacklist  []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []category
+	}{
+		{
+			"empty list",
+			args{
+				[]category{},
+				[]string{},
+			},
+			[]category{},
+		}, {
+			"no blacklist",
+			args{
+				[]category{
+					{"CAT_1", "Cat1", 1},
+					{"CAT_2", "Cat2", 2},
+				},
+				[]string{},
+			},
+			[]category{
+				{"CAT_1", "Cat1", 1},
+				{"CAT_2", "Cat2", 2},
+			},
+		}, {
+			"blacklist",
+			args{
+				[]category{
+					{"CAT_1", "Cat1", 1},
+					{"CAT_2", "Cat2", 2},
+				},
+				[]string{"CAT_1"},
+			},
+			[]category{
+				{"CAT_2", "Cat2", 2},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, filterCategories(tt.args.categories, tt.args.blacklist), "filterCategories(%v, %v)", tt.args.categories, tt.args.blacklist)
+		})
+	}
+}
+
+func Test_toIds(t *testing.T) {
+	type args struct {
+		postingsForCategory []posting
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{
+			"empty list",
+			args{[]posting{}},
+			[]string{},
+		}, {
+			"list of one",
+			args{[]posting{{PostingId: "fefe"}}},
+			[]string{"fefe"},
+		}, {
+			"list of two",
+			args{[]posting{{PostingId: "fefe"}, {PostingId: "dada"}}},
+			[]string{"fefe", "dada"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, toIds(tt.args.postingsForCategory), "toIds(%v)", tt.args.postingsForCategory)
+		})
+	}
+}

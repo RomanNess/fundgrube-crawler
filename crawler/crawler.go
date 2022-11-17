@@ -10,31 +10,33 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 	"os"
-	"strings"
 	"time"
 )
 
+var CONFIG ConfigFile
+
 func CrawlPostings(mockedPostings bool) error {
 	for _, shop := range []Shop{SATURN, MM} {
-		postings, err := fetchPostings(shop, mockedPostings)
+		categories, err := fetchCategories(shop, mockedPostings)
 		if err != nil {
-			return err // TODO: log error and continue?
+			return err
 		}
-		inserted, updated, took := SaveAllNewOrUpdated(postings)
 
-		var ids []string
-		for _, p := range postings {
-			ids = append(ids, p.PostingId)
+		categories = filterCategories(categories, CONFIG.GlobalConfig.BlacklistedCategories)
+
+		for _, c := range categories {
+			err = updatePostingsForOneCategory(shop, mockedPostings, c)
+			if err != nil {
+				return err
+			}
 		}
-		inactiveCount := SetRemainingPostingInactive(shop, ids)
-		log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", len(postings), shop, inserted, updated, inactiveCount, took.Seconds())
 	}
+
 	return nil
 }
 
 func SearchDeals() {
-	queries := getQueries()
-	for _, query := range queries {
+	for _, query := range CONFIG.Queries {
 		searchDealsForSingleQuery(query)
 	}
 }
@@ -111,40 +113,15 @@ func fmtDealsMessage(q query, deals []posting) string {
 	return message
 }
 
-func getQueries() (ret []query) {
-	yamlPath := os.Getenv("SEARCH_REQUEST_YAML")
-	if yamlPath != "" {
-		return getQueriesFromYaml(yamlPath)
-	}
-
-	searchRegexes := os.Getenv("QUERY_REGEX")
-	if searchRegexes != "" {
-		return getQueriesFromEnv(searchRegexes)
-	}
-
-	log.Warnln("QUERY_REGEX not set! Default to 'example'.")
-	regex := "example"
-	return []query{{NameRegex: &regex}}
-}
-
-func getQueriesFromYaml(yamlPath string) []query {
+func GetConfigFromFile(yamlPath string) ConfigFile {
 	yamlBytes, err := os.ReadFile(yamlPath)
 	if err != nil {
 		panic(err)
 	}
-	searchRequest := queries{}
-	err = yaml.Unmarshal(yamlBytes, &searchRequest)
+	cf := ConfigFile{}
+	err = yaml.Unmarshal(yamlBytes, &cf)
 	if err != nil {
 		panic(err)
 	}
-	return searchRequest.Queries
-}
-
-func getQueriesFromEnv(searchRegexes string) (ret []query) {
-	split := strings.Split(searchRegexes, ";")
-	for _, regex := range split {
-		regexCopy := regex // don't return a pointer on loop variable :)
-		ret = append(ret, query{NameRegex: &regexCopy, Desc: regex})
-	}
-	return
+	return cf
 }

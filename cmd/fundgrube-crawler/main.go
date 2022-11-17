@@ -21,6 +21,8 @@ func main() {
 		defer mailAlertOnPanic()
 	}
 
+	crawler.CONFIG = crawler.GetConfigFromFile(env("SEARCH_REQUEST_YAML", "./bin_pi/config.yml"))
+
 	if !envBool("SKIP_CRAWLING") {
 		err := crawler.CrawlPostings(envBool("MOCKED_POSTINGS"))
 		if err != nil {
