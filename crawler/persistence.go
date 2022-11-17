@@ -252,7 +252,7 @@ func connect(collectionName string) *mongo.Collection {
 	// Set client options
 	clientOptions := options.Client().ApplyURI(env("MONGODB_URI", "mongodb://localhost:27017")).
 		SetAuth(credential).
-		SetTimeout(5 * time.Second)
+		SetTimeout(15 * time.Second)
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
