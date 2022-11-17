@@ -28,10 +28,7 @@
       },
       "name": "Lübeck"
     },
-    "category": {
-      "id": "CAT_DE_SAT_786",
-      "name": "Gaming + VR"
-    },
+    "category_id": "CAT_DE_SAT_786",
     "brand": {
       "id": {
         "$numberInt": "10312"
@@ -81,10 +78,7 @@
       },
       "name": "Lübeck"
     },
-    "category": {
-      "id": "CAT_DE_SAT_786",
-      "name": "Gaming + VR"
-    },
+    "category_id": "CAT_DE_SAT_786",
     "brand": {
       "id": {
         "$numberInt": "10313"
@@ -129,10 +123,7 @@
       },
       "name": "Marl"
     },
-    "category": {
-      "id": "CAT_DE_SAT_786",
-      "name": "Gaming + VR"
-    },
+    "category_id": "CAT_DE_SAT_786",
     "brand": {
       "id": {
         "$numberInt": "2383"
@@ -179,10 +170,7 @@
       },
       "name": "Neu-Isenburg"
     },
-    "category": {
-      "id": "CAT_DE_SAT_786",
-      "name": "Gaming + VR"
-    },
+    "category_id": "CAT_DE_SAT_786",
     "brand": {
       "id": {
         "$numberInt": "10234"

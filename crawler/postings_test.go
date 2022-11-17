@@ -21,6 +21,7 @@ func Test_preparePosting(t *testing.T) {
 			args{
 				MM,
 				posting{
+					CategoryId:        "CAT_ID",
 					Brand:             brand{10, "Sony"},
 					Outlet:            postingOutlet{100, "Outlet"},
 					PriceString:       "12.34",
@@ -31,9 +32,9 @@ func Test_preparePosting(t *testing.T) {
 				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			posting{
+				CategoryId:        "CAT_ID",
 				Brand:             brand{10, "Sony"},
 				Outlet:            postingOutlet{100, "Outlet"},
-				Category:          postingCategory{"CAT_ID", "Category"},
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
@@ -51,7 +52,7 @@ func Test_preparePosting(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equalf(t, tt.want, preparePosting(tt.args.shop, tt.args.p, tt.args.c), "preparePosting(%v, %v, %v)", tt.args.shop, tt.args.p, tt.args.c)
+			assert.Equalf(t, tt.want, preparePosting(tt.args.shop, tt.args.p), "preparePosting(%v, %v)", tt.args.shop, tt.args.p)
 		})
 	}
 }
@@ -60,7 +61,6 @@ func Test_preparePostings(t *testing.T) {
 	type args struct {
 		shop     Shop
 		postings []posting
-		c        category
 	}
 	tests := []struct {
 		name string
@@ -72,7 +72,6 @@ func Test_preparePostings(t *testing.T) {
 			args{
 				MM,
 				[]posting{},
-				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			[]posting{},
 		},
@@ -81,6 +80,7 @@ func Test_preparePostings(t *testing.T) {
 			args{
 				MM,
 				[]posting{{
+					CategoryId:        "CAT_ID",
 					Brand:             brand{10, "Sony"},
 					Outlet:            postingOutlet{100, "Outlet"},
 					PriceString:       "12.34",
@@ -88,12 +88,11 @@ func Test_preparePostings(t *testing.T) {
 					DiscountInPercent: 50,
 					Url:               []string{"https://foo.bar", "https://the.back"},
 				}},
-				category{CategoryId: "CAT_ID", Name: "Category", Count: 1234},
 			},
 			[]posting{{
 				Brand:             brand{10, "Sony"},
 				Outlet:            postingOutlet{100, "Outlet"},
-				Category:          postingCategory{"CAT_ID", "Category"},
+				CategoryId:        "CAT_ID",
 				Price:             12.34,
 				PriceString:       "",
 				PriceOld:          24.68,
@@ -111,7 +110,7 @@ func Test_preparePostings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			postings := preparePostings(tt.args.shop, tt.args.postings, tt.args.c)
+			postings := preparePostings(tt.args.shop, tt.args.postings)
 			assert.Equal(t, tt.want, postings)
 		})
 	}

@@ -44,4 +44,4 @@ logs-pi:
 	ssh $(PI_SSH_PROFILE) less +F "\$$(ls /tmp/fundgrube-*.txt | tail -n1)"
 
 crontab-pi:
-	ssh $(PI_SSH_PROFILE) bash -c 'echo; echo "10 * * * * . $(PI_DEPLOYMENT_PATH)/env.sh && $(PI_DEPLOYMENT_PATH)/$(PI_BINARY)" | crontab -'
+	ssh $(PI_SSH_PROFILE) bash -c 'echo; echo -e "*/10 * * * * . $(PI_DEPLOYMENT_PATH)/env.sh && export FAST_CRAWLING="true" && $(PI_DEPLOYMENT_PATH)/$(PI_BINARY)\n5 * * * * . $(PI_DEPLOYMENT_PATH)/env.sh && $(PI_DEPLOYMENT_PATH)/$(PI_BINARY)" | crontab -'

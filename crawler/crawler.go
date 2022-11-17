@@ -38,6 +38,19 @@ func RefreshAllPostings(mockedPostings bool) error {
 	return nil
 }
 
+func RefreshOnlyNewPostings() error {
+	log.Info("Fetching only new Postings.")
+	stats := CrawlerStats{}
+	for _, shop := range []Shop{SATURN, MM} {
+		shopStats, err := refreshOnlyNewPostingsForShop(shop)
+		if err != nil {
+			return err
+		}
+		stats.add(shopStats)
+	}
+	return nil
+}
+
 func SearchDeals() {
 	for _, query := range CONFIG.Queries {
 		searchDealsForSingleQuery(query)

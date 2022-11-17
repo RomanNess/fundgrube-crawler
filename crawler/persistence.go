@@ -145,7 +145,7 @@ func loadAll(postings []posting) map[string]posting {
 func SetRemainingPostingInactive(shop Shop, c category, outlets []outlet, postingIds []string) *CrawlerStats {
 	start := time.Now()
 
-	filter := bson.M{"shop": shop, "category.id": c.CategoryId, "_id": bson.M{"$nin": postingIds}}
+	filter := bson.M{"shop": shop, "category_id": c.CategoryId, "_id": bson.M{"$nin": postingIds}}
 	if outlets != nil && len(outlets) > 0 {
 		filter["outlet.id"] = bson.M{"$in": outletIds(outlets)}
 	}

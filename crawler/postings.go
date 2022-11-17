@@ -101,7 +101,29 @@ func refreshPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c cate
 
 	stats := CrawlerStats{Postings: len(postings), TookApi: time.Since(start)}
 	log.Infof("Crawled %d outlets for category '%s'. %s", len(outlets), c.Name, stats.String())
-	return preparePostings(shop, postings, c), &stats, nil
+	return preparePostings(shop, postings), &stats, nil
+}
+
+func refreshOnlyNewPostingsForShop(shop Shop) (*CrawlerStats, error) {
+	stats := CrawlerStats{}
+	for true {
+		limit := 90
+		offset := 0
+		postingsResponse, err := fetchSinglePageOfPostings(shop, nil, nil, nil, limit, offset, false)
+		if err != nil {
+			return nil, err
+		}
+		stats.add(&CrawlerStats{Postings: len(postingsResponse.Postings)})
+		saveStats := SaveAllNewOrUpdated(preparePostings(shop, preparePostings(shop, postingsResponse.Postings)))
+
+		stats.add(saveStats)
+		offset = offset + limit
+		if saveStats.Inserted == 0 || offset+limit > 990 {
+			log.Warnf("Finish crawling %s because no new postings on page. %s", shop, stats.String())
+			break
+		}
+	}
+	return &stats, nil
 }
 
 func sliceOutlets(outlets []outlet) [][]outlet {
@@ -124,17 +146,16 @@ func sliceOutlets(outlets []outlet) [][]outlet {
 	return ret
 }
 
-func preparePostings(shop Shop, postings []posting, c category) []posting {
+func preparePostings(shop Shop, postings []posting) []posting {
 	for i, p := range postings {
-		postings[i] = preparePosting(shop, p, c)
+		postings[i] = preparePosting(shop, p)
 	}
 	return postings
 }
 
-func preparePosting(shop Shop, posting posting, c category) posting {
+func preparePosting(shop Shop, posting posting) posting {
 	posting.Shop = shop
-	posting.ShopUrl = buildUrl(shop, []outlet{{OutletId: posting.Outlet.OutletId}}, []category{c}, &posting.Brand, nil)
-	posting.Category = c.toPostingCategory()
+	posting.ShopUrl = buildUrl(shop, []outlet{{OutletId: posting.Outlet.OutletId}}, []category{{CategoryId: posting.CategoryId}}, &posting.Brand, nil)
 	posting.Price, _ = strconv.ParseFloat(posting.PriceString, 64)
 	posting.PriceOld, _ = strconv.ParseFloat(posting.PriceOldString, 64)
 	posting.PriceString = ""

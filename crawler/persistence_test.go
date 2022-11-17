@@ -72,7 +72,7 @@ func (suite *PersistenceSuite) Test_findOne() {
 		Url:               []string{"https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/05154e6b51204fa699e88d114dba9b6d?strip=yes&quality=75&backgroundsize=cover&x=640&y=640"},
 		Text:              "Neu, Verpackungsschaden / Folie kann beschädigt sein. OVP",
 		Outlet:            postingOutlet{111, "Lübeck"},
-		Category:          postingCategory{"CAT_DE_SAT_786", "Gaming + VR"},
+		CategoryId:        "CAT_DE_SAT_786",
 		Brand:             brand{10312, "WILD RIVER"},
 		Shop:              MM,
 		ShopUrl:           "https://www.mediamarkt.de/de/data/fundgrube?brands=WILD%2BRIVER&categorieIds=CAT_DE_MM_626&outletIds=475",
@@ -278,6 +278,7 @@ func getExamplePosting(prefix string) posting {
 	return posting{
 		PostingId:         prefix + "-id",
 		Name:              prefix,
+		CategoryId:        "CAT_DE_SAT_786",
 		Text:              prefix + " text",
 		Url:               []string{"http://" + prefix},
 		Price:             1337.00,

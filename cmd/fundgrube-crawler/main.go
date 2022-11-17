@@ -24,9 +24,16 @@ func main() {
 	crawler.CONFIG = crawler.GetConfigFromFile(env("SEARCH_REQUEST_YAML", "./bin_pi/config.yml"))
 
 	if !envBool("SKIP_CRAWLING") {
-		err := crawler.RefreshAllPostings(envBool("MOCKED_POSTINGS"))
-		if err != nil {
-			panic(err)
+		if envBool("FAST_CRAWLING") {
+			err := crawler.RefreshOnlyNewPostings()
+			if err != nil {
+				panic(err)
+			}
+		} else {
+			err := crawler.RefreshAllPostings(envBool("MOCKED_POSTINGS"))
+			if err != nil {
+				panic(err)
+			}
 		}
 	}
 
