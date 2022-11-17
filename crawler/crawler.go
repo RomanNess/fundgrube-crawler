@@ -15,7 +15,8 @@ import (
 
 var CONFIG ConfigFile
 
-func CrawlPostings(mockedPostings bool) error {
+func RefreshAllPostings(mockedPostings bool) error {
+	stats := CrawlerStats{}
 	for _, shop := range []Shop{SATURN, MM} {
 		categories, err := fetchCategories(shop, mockedPostings)
 		if err != nil {
@@ -25,13 +26,15 @@ func CrawlPostings(mockedPostings bool) error {
 		categories = filterCategories(categories, CONFIG.GlobalConfig.BlacklistedCategories)
 
 		for _, c := range categories {
-			err = updatePostingsForOneCategory(shop, mockedPostings, c)
+			categoryStats, err := RefreshPostingsForCategory(shop, mockedPostings, c)
 			if err != nil {
 				return err
 			}
+			stats.add(categoryStats)
 		}
 	}
 
+	log.Infof("Refreshed postings. %s", stats.String())
 	return nil
 }
 

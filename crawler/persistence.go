@@ -80,7 +80,7 @@ func priceFilter(priceMin *float64, priceMax *float64) bson.M {
 	panic("priceFilter called without priceMin or priceMax set")
 }
 
-func SaveAllNewOrUpdated(postings []posting) (insertedCount int, updatedCount int, took time.Duration) {
+func SaveAllNewOrUpdated(postings []posting) *CrawlerStats {
 	start := time.Now()
 	loadedPostings := loadAll(postings)
 
@@ -103,8 +103,8 @@ func SaveAllNewOrUpdated(postings []posting) (insertedCount int, updatedCount in
 		}
 	}
 
-	insertedCount, updatedCount = insertOrUpdateAll(postingsToUpsert)
-	return insertedCount, updatedCount, time.Since(start)
+	insertedCount, updatedCount := insertOrUpdateAll(postingsToUpsert)
+	return &CrawlerStats{Inserted: insertedCount, Updated: updatedCount, TookDB: time.Since(start)}
 }
 
 func insertOrUpdateAll(postings []posting) (insertedCount int, updatedCount int) {
@@ -142,7 +142,9 @@ func loadAll(postings []posting) map[string]posting {
 	return ret
 }
 
-func SetRemainingPostingInactive(shop Shop, c category, outlets []outlet, postingIds []string) int {
+func SetRemainingPostingInactive(shop Shop, c category, outlets []outlet, postingIds []string) *CrawlerStats {
+	start := time.Now()
+
 	filter := bson.M{"shop": shop, "category.id": c.CategoryId, "_id": bson.M{"$nin": postingIds}}
 	if outlets != nil && len(outlets) > 0 {
 		filter["outlet.id"] = bson.M{"$in": outletIds(outlets)}
@@ -156,7 +158,7 @@ func SetRemainingPostingInactive(shop Shop, c category, outlets []outlet, postin
 	if err != nil {
 		panic(err)
 	}
-	return int(many.ModifiedCount)
+	return &CrawlerStats{Inactive: int(many.ModifiedCount), TookDB: time.Since(start)}
 }
 
 func clearAll() {

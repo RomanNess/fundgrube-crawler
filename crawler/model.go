@@ -36,6 +36,31 @@ func (q query) String() string {
 	return buffer.String()
 }
 
+type CrawlerStats struct {
+	Postings int
+	Inserted int
+	Updated  int
+	Inactive int
+	TookApi  time.Duration
+	TookDB   time.Duration
+}
+
+func (c *CrawlerStats) add(other *CrawlerStats) {
+	c.Postings = c.Postings + other.Postings
+	c.Inserted = c.Inserted + other.Inserted
+	c.Updated = c.Updated + other.Updated
+	c.Inactive = c.Inactive + other.Inactive
+	c.TookApi = c.TookApi + other.TookApi
+	c.TookDB = c.TookDB + other.TookDB
+}
+
+func (c *CrawlerStats) String() string {
+	if c.TookDB == time.Duration(0) {
+		return fmt.Sprintf("postings: %d, tookApi: %.3fs", c.Postings, c.TookApi.Seconds())
+	}
+	return fmt.Sprintf("postings: %d, inserted: %d, updated: %d, inactive: %d, tookApi: %.3fs, tookDB: %.3fs", c.Postings, c.Inserted, c.Updated, c.Inactive, c.TookApi.Seconds(), c.TookDB.Seconds())
+}
+
 type postingsResponse struct {
 	Postings     []posting  `json:"postings"`
 	Outlets      []outlet   `json:"outlets"`

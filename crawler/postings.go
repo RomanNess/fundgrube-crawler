@@ -27,34 +27,28 @@ type pageRequest struct {
 	offset int
 }
 
-func updatePostingsForOneCategory(shop Shop, mockedPostings bool, c category) error {
+func RefreshPostingsForCategory(shop Shop, mockedPostings bool, c category) (*CrawlerStats, error) {
 	outlets, err := fetchOutlets(shop, c, mockedPostings)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if envBool("LIMIT_OUTLETS") && len(outlets) > 5 {
 		outlets = outlets[0:5]
 	}
 
-	overallFetched, overallInserted, overallUpdated, overallInactive := 0, 0, 0, 0
-	var overallTook time.Duration
+	stats := CrawlerStats{}
 	for _, outlets := range sliceOutlets(outlets) {
-		postings, err := fetchPostingsForCategoryAndOutlets(shop, mockedPostings, c, outlets)
+		postings, crawlStats, err := refreshPostingsForCategoryAndOutlets(shop, mockedPostings, c, outlets)
 		if err != nil {
-			return err
+			return nil, err
 		}
-		inserted, updated, took := SaveAllNewOrUpdated(postings)
-		inactiveCount := SetRemainingPostingInactive(shop, c, outlets, toIds(postings))
-
-		overallFetched = overallFetched + len(postings)
-		overallInserted = overallInserted + inserted
-		overallUpdated = overallUpdated + updated
-		overallInactive = overallInactive + inactiveCount
-		overallTook = overallTook + took
+		stats.add(crawlStats)
+		stats.add(SaveAllNewOrUpdated(postings))
+		stats.add(SetRemainingPostingInactive(shop, c, outlets, toIds(postings)))
 	}
-	log.Infof("Refreshed %d Postings for %s. inserted: %d, updated: %d, inactive: %d, took: %fs", overallFetched, shop, overallInserted, overallUpdated, overallInactive, overallTook.Seconds())
-	return nil
+	log.Infof("Refreshed '%s' for %s. %s", c.Name, shop, stats.String())
+	return &stats, nil
 }
 
 func toIds(postingsForCategory []posting) []string {
@@ -84,7 +78,9 @@ func Contains[T comparable](s []T, e T) bool {
 	return false
 }
 
-func fetchPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c category, outlets []outlet) ([]posting, error) {
+func refreshPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c category, outlets []outlet) ([]posting, *CrawlerStats, error) {
+	start := time.Now()
+
 	postings := []posting{}
 	// api always returns same page if limit >= 100 is requested
 	limit := 90
@@ -92,7 +88,7 @@ func fetchPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c catego
 	for true {
 		postingsResponse, err := fetchSinglePageOfPostings(shop, outlets, []category{c}, nil, limit, offset, mockedPostings)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 		postings = append(postings, postingsResponse.Postings...)
 
@@ -102,8 +98,10 @@ func fetchPostingsForCategoryAndOutlets(shop Shop, mockedPostings bool, c catego
 			break
 		}
 	}
-	log.Infof("Fetched %d postings for %d outlets and category '%s'.", len(postings), len(outlets), c.Name)
-	return preparePostings(shop, postings, c), nil
+
+	stats := CrawlerStats{Postings: len(postings), TookApi: time.Since(start)}
+	log.Infof("Crawled %d outlets for category '%s'. %s", len(outlets), c.Name, stats.String())
+	return preparePostings(shop, postings, c), &stats, nil
 }
 
 func sliceOutlets(outlets []outlet) [][]outlet {
