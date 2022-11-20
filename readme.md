@@ -37,6 +37,8 @@ Implemented in Golang and using MongoDB as persistence since I usually don't use
 - Requests with a `limit >= 100` always return the first page.
 - Requests with an `offset > 990` return `422 Unprocessable Entity`, so you need to iterate over `brands` or `outlets`
   to see all `postings`.
+- I assume that `postings` are sorted by descending creation date in the API.
+  So it's possible to implement a "fast refresh" by cancelling the update when a page contains no new `postings`.
 
 ## Shell script
 
@@ -46,8 +48,12 @@ Simply run `SEARCH_REGEX="sony walkman" ./_sh/fundgrube-crawler.sh` to search fo
 The script creates a TSV file with previous results in `/tmp` and will therefore only discover new postings.
 
 ## MongoDB migrations
-[`cmd/fundgrube-migrate/main.go`](cmd/fundgrube-migrate/main.go) contains poor man's db migrations and a tooling to clean up obsolete db entries.
-* Provide a `filterString` and `updateString` to perform a migration on the `postings` collection with `MIGRATE=true make migrate`.
+
+[`cmd/fundgrube-migrate/main.go`](cmd/fundgrube-migrate/main.go) contains poor man's db migrations and a tooling to
+clean up obsolete db entries.
+
+* Provide a `filterString` and `updateString` to perform a migration on the `postings` collection
+  with `MIGRATE=true make migrate`.
 * Provide a `filterString` to delete entries from the `postings` collection with `CLEANUP=true make migrate`.
 
 If the env var is not provided a dry run with the `filterString` is performed in both cases.

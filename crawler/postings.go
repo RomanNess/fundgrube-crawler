@@ -114,7 +114,7 @@ func refreshOnlyNewPostingsForShop(shop Shop) (*CrawlerStats, error) {
 			return nil, err
 		}
 		stats.add(&CrawlerStats{Postings: len(postingsResponse.Postings)})
-		saveStats := SaveAllNewOrUpdated(preparePostings(shop, preparePostings(shop, postingsResponse.Postings)))
+		saveStats := SaveAllNewOrUpdated(preparePostings(shop, postingsResponse.Postings))
 
 		stats.add(saveStats)
 		offset = offset + limit
