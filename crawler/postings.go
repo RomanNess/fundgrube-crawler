@@ -218,11 +218,11 @@ func getResponseBody(url string, mockedResponse bool) (io.ReadCloser, error) {
 	if mockedResponse {
 		return getResponseBodyFromMock()
 	}
-	return getResponseBodyFromServer(url)
+	return getResponseBodyFromServer(url, true)
 }
 
-func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
-	client := http.Client{Timeout: 5 * time.Second}
+func getResponseBodyFromServer(url string, retryable bool) (io.ReadCloser, error) {
+	client := getClientWithTimeout(retryable)
 
 	request, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
@@ -233,6 +233,10 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	log.Debugf("Querying: %s", url)
 	response, err := client.Do(request)
 	if err != nil {
+		if strings.Contains(err.Error(), "context deadline exceeded") && retryable {
+			log.Warnf("Retrying call failed with: %s", err.Error())
+			return getResponseBodyFromServer(url, false)
+		}
 		return nil, err
 	}
 	if response.StatusCode > 200 {
@@ -240,6 +244,13 @@ func getResponseBodyFromServer(url string) (io.ReadCloser, error) {
 	}
 	responseBody := response.Body
 	return responseBody, err
+}
+
+func getClientWithTimeout(retryable bool) http.Client {
+	if retryable {
+		return http.Client{Timeout: 5 * time.Second}
+	}
+	return http.Client{Timeout: 10 * time.Second}
 }
 
 func buildUrl(shop Shop, outlets []outlet, categories []category, brand *brand, pageRequest *pageRequest) string {
