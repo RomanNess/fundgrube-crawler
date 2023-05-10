@@ -4,6 +4,7 @@
     <working_directory value="$PROJECT_DIR$" />
     <envs>
       <env name="LOG_LEVEL" value="debug" />
+      <env name="SKIP_CRAWLING" value="true" />
     </envs>
     <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.GolandRunConfigurationExtension">
       <option name="DIRENV_ENABLED" value="true" />

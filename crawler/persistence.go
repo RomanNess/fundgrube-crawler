@@ -30,7 +30,18 @@ func FindAll(q query, afterTime *time.Time, limit int64, offset int64) []posting
 		filter["mod_dat"] = bson.M{"$gte": primitive.NewDateTimeFromTime(*afterTime)}
 	}
 	if q.NameRegex != nil {
-		filter["name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.NameRegex, Options: "i"}}
+		//filter["name"] = bson.M{"$not": primitive.Regex{Pattern: "BIGBEN", Options: "i"}, "$all": bson.A{primitive.Regex{Pattern: "Switch", Options: "i"}, primitive.Regex{Pattern: "Zelda", Options: "i"}}}
+		regexPatterns := []primitive.Regex{}
+		for _, regexPattern := range q.NameRegex {
+			regexPatterns = append(regexPatterns, primitive.Regex{Pattern: regexPattern, Options: "i"})
+		}
+		regexes := bson.M{"$all": regexPatterns}
+
+		if q.NotRegex != nil {
+			regexes["$not"] = primitive.Regex{Pattern: *q.NotRegex, Options: "i"}
+		}
+
+		filter["name"] = regexes
 	}
 	if q.BrandRegex != nil {
 		filter["brand.name"] = bson.M{"$regex": primitive.Regex{Pattern: *q.BrandRegex, Options: "i"}}

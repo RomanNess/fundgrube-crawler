@@ -17,9 +17,9 @@ func Test_hashQuery(t *testing.T) {
 		{
 			"simple query",
 			args{
-				query{NameRegex: sPtr("foobar")},
+				query{NameRegex: []string{"foobar"}},
 			},
-			"4baeec635d7f15efa872a24506fc2390",
+			"b3e89b1768fc91f39d3c262d65ed8cab",
 		},
 	}
 	for _, tt := range tests {

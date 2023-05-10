@@ -1,7 +1,6 @@
 package crawler
 
 import (
-	"bytes"
 	"fmt"
 	"regexp"
 	"time"
@@ -18,7 +17,8 @@ type globalConfig struct {
 
 type query struct {
 	Desc         string   `yaml:"desc" json:"desc,omitempty" bson:"desc"`
-	NameRegex    *string  `yaml:"name_regex" json:"name_regex,omitempty" bson:"name_regex"`
+	NameRegex    []string `yaml:"name_regex" json:"name_regex,omitempty" bson:"name_regex"`
+	NotRegex     *string  `yaml:"not_regex" json:"not_regex,omitempty" bson:"not_regex"`
 	BrandRegex   *string  `yaml:"brand_regex" json:"brand_regex,omitempty" bson:"brand_regex"`
 	PriceMin     *float64 `yaml:"price_min" json:"price_min,omitempty" bson:"price_min"`
 	PriceMax     *float64 `yaml:"price_max" json:"price_max,omitempty" bson:"price_max"`
@@ -29,11 +29,10 @@ type query struct {
 }
 
 func (q query) String() string {
-	var buffer bytes.Buffer
-	if q.NameRegex != nil {
-		buffer.WriteString("regex: " + *q.NameRegex)
+	if q.NameRegex == nil {
+		return ""
 	}
-	return buffer.String()
+	return fmt.Sprintf("regex: %s", q.NameRegex)
 }
 
 type CrawlerStats struct {
@@ -68,31 +67,33 @@ type postingsResponse struct {
 	HasMorePages bool       `json:"morePostingsAvailable"`
 }
 
-/* Example json
-   {
-     "posting_id": "e6194b60-f031-4e25-b2c7-e8067ad9dac1",
-     "posting_text": "Neuware",
-     "price": "139.00",
-     "price_old": "319.00",
-     "shipping_cost": 0,
-     "shipping_type": "shipping",
-     "discount_in_percent": 56,
-     "name": "AKRACING Core EXSE Schwarz/Carbon Gaming Stuhl, Carbon",
-     "brand": {
-       "id": 6927,
-       "name": "AKRACING"
-     },
-     "eek": {},
-     "top_level_catalog_id": "CAT_DE_SAT_786",
-     "original_url": [
-       "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/31b5554e0e7f4ad5a6a07101fd3750aa"
-     ],
-     "outlet": {
-       "id": 60,
-       "name": "Braunschweig"
-     },
-     "pim_id": 2681077
-   }
+/*
+Example json
+
+	{
+	  "posting_id": "e6194b60-f031-4e25-b2c7-e8067ad9dac1",
+	  "posting_text": "Neuware",
+	  "price": "139.00",
+	  "price_old": "319.00",
+	  "shipping_cost": 0,
+	  "shipping_type": "shipping",
+	  "discount_in_percent": 56,
+	  "name": "AKRACING Core EXSE Schwarz/Carbon Gaming Stuhl, Carbon",
+	  "brand": {
+	    "id": 6927,
+	    "name": "AKRACING"
+	  },
+	  "eek": {},
+	  "top_level_catalog_id": "CAT_DE_SAT_786",
+	  "original_url": [
+	    "https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/31b5554e0e7f4ad5a6a07101fd3750aa"
+	  ],
+	  "outlet": {
+	    "id": 60,
+	    "name": "Braunschweig"
+	  },
+	  "pim_id": 2681077
+	}
 */
 type posting struct {
 	PostingId         string        `json:"posting_id" bson:"_id"`
@@ -141,13 +142,13 @@ func shorten(text string) string {
 }
 
 /*
-   {
-     "id": 67,
-     "nameFull": "Saturn Neu-Isenburg",
-     "name": "Neu-Isenburg",
-     "isActive": true,
-     "count": 76
-   }
+	{
+	  "id": 67,
+	  "nameFull": "Saturn Neu-Isenburg",
+	  "name": "Neu-Isenburg",
+	  "isActive": true,
+	  "count": 76
+	}
 */
 type outlet struct {
 	OutletId int    `json:"id"`
@@ -161,11 +162,11 @@ type postingOutlet struct {
 }
 
 /*
-{
- "id": "CAT_DE_SA_0",
- "name": "Sonstige Produkte",
- "count": 382
-}
+	{
+	 "id": "CAT_DE_SA_0",
+	 "name": "Sonstige Produkte",
+	 "count": 382
+	}
 */
 type category struct {
 	CategoryId string `json:"id"`

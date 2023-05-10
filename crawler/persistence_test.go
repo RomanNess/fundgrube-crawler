@@ -114,7 +114,7 @@ func (suite *PersistenceSuite) Test_findAll() {
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"regex search",
-			args{query{NameRegex: sPtr("^.*nintendo.*$")}, nil, 100, 0},
+			args{query{NameRegex: []string{"^.*nintendo.*$"}}, nil, 100, 0},
 			[]string{PID_CHEF_PARTY, PID_NECRODANCER},
 		}, {
 			"price min",
@@ -294,7 +294,7 @@ func getExampleHash() string {
 }
 
 func getExampleQuery() query {
-	return query{NameRegex: sPtr("keyword"), Desc: "description"}
+	return query{NameRegex: []string{"keyword"}, Desc: "description"}
 }
 
 func outl(id int) outlet {

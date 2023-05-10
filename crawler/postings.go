@@ -6,7 +6,6 @@ import (
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -197,7 +196,7 @@ func fetchSinglePageOfPostings(shop Shop, outlets []outlet, categories []categor
 	}
 
 	defer responseBodyReader.Close()
-	body, err := ioutil.ReadAll(responseBodyReader)
+	body, err := io.ReadAll(responseBodyReader)
 	if err != nil {
 		return nil, err
 	}
